@@ -53,6 +53,7 @@ export default function LandingPage({ navigation }) {
       return (
         <>
           <Text style={styles.textOr}> ──────── OR ────────</Text>
+          {/* Button Handel nya nanti di Ganti Tambak API GOOGLE */}
           <TouchableOpacity style={styles.button} onPress={btnHandle}>
             <View style={styles.buttonBox}>
               <Text style = {{color: 'white'}}>Continue with Google</Text>
@@ -65,7 +66,9 @@ export default function LandingPage({ navigation }) {
 
   const btnHandle = function() {
     if (!register) {
+      // Sementara langsung ke HomePage 
       console.log('brati ntar nembak post LOGIN')
+      navigation.navigate('HomePage')
     }
     else {
       if(name, email, password, conPassword) {
@@ -103,6 +106,7 @@ export default function LandingPage({ navigation }) {
           <Image
             style={styles.RegLogLogoImg}
             source={{
+              // Logo di Ganti ??
               uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRgUbNj4M940krAk__eEii1OBGaaRAgA7mfcw&usqp=CAU',
             }}
           />
