@@ -5,15 +5,16 @@ import PlanToWaterBox from '../component/PlantToWaterBox'
 import FruitsCard from '../component/FruitsCard'
 import VegetablesCard from '../component/VegetablesCard'
 import BottomNavBar from '../component/BottomNavBar';
-// import BottomNavBar from '../component/BottomNavBar'
 
 export default function HomePage() { // PROPS
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scroll}>
-
+          
           <PlanToWaterBox />
+
           {/* Yang di bawah ini Komponen My Fruits */}
+
           <View style={styles.fruitContainer}>
             <Text style={styles.fruitTitle}>Fruits</Text>
             <TouchableOpacity>
@@ -38,7 +39,11 @@ export default function HomePage() { // PROPS
             <VegetablesCard />
           </View>
       </ScrollView>
+
+          {/* Navbar */}
+
       <BottomNavBar/>
+
     </View>
   );
 }
