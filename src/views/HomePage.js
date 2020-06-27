@@ -2,44 +2,25 @@ import React, {useState} from 'react';
 import {Platform, StyleSheet, Text, View, Image, TextInput, ScrollView, TouchableOpacity, Button, ImageBackground} from 'react-native';
 import styles from '../style/homePageStyle'
 import PlanToWaterBox from '../component/PlantToWaterBox'
+import FruitsCard from '../component/FruitsCard'
+import VegetablesCard from '../component/VegetablesCard'
 
 export default function HomePage() { // PROPS
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scroll}>
+
           <PlanToWaterBox />
-            {/* Yang di bawah ini Komponen My Fruits */}
+          {/* Yang di bawah ini Komponen My Fruits */}
           <View style={styles.fruitContainer}>
             <Text style={styles.fruitTitle}>Fruits</Text>
             <TouchableOpacity>
               <Text style={styles.seeAllBtn}>See All</Text>
             </TouchableOpacity>
           </View>
+
           <View style={styles.fruitContainer}>
-
-            <View style={styles.fruitCardContainer}>
-              <View style={styles.fruitCard}>
-                <ImageBackground
-                  style={styles.fruitCardImage}
-                  source={{
-                    uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQioIYpIr5c7BW4jNiUiLt-5W_-oK-i-I061w&usqp=CAU',
-                  }}
-                >
-                  <Text style={styles.fruitCardTitle}>Dummy</Text>
-                </ImageBackground>
-              </View>
-            </View>
-
-            <View style={styles.fruitCard}>
-              <ImageBackground
-                style={styles.fruitCardImage}
-                source={{
-                  uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQioIYpIr5c7BW4jNiUiLt-5W_-oK-i-I061w&usqp=CAU',
-                }}
-              >
-                <Text style={styles.fruitCardTitle}>Dummy</Text>
-              </ImageBackground>
-            </View>
+            <FruitsCard/>
           </View>
           
           {/* Yang di bawah ini Komponen My Vegetable */}
@@ -50,29 +31,9 @@ export default function HomePage() { // PROPS
               <Text style={styles.seeAllBtn}>See All</Text>
             </TouchableOpacity>
           </View>
+
           <View style={styles.fruitContainer}>
-
-            <View style={styles.fruitCard}>
-              <ImageBackground
-                style={styles.fruitCardImage}
-                source={{
-                  uri: 'https://img1.mashed.com/img/gallery/7-vegetables-you-should-be-eating-and-7-you-shouldnt/intro-1543595549.jpg',
-                }}
-              >
-                <Text style={styles.fruitCardTitle}>Dummy</Text>
-              </ImageBackground>
-            </View>
-
-            <View style={styles.fruitCard}>
-              <ImageBackground
-                style={styles.fruitCardImage}
-                source={{
-                  uri: 'https://img1.mashed.com/img/gallery/7-vegetables-you-should-be-eating-and-7-you-shouldnt/intro-1543595549.jpg',
-                }}
-              >
-                <Text style={styles.fruitCardTitle}>Dummy</Text>
-              </ImageBackground>
-            </View>
+            <VegetablesCard />
           </View>
       </ScrollView>
       <View style={{height: 55, flexDirection:'row', backgroundColor: 'white'}}>
