@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {Platform, StyleSheet, Text, View, Image, TextInput, ScrollView, TouchableOpacity, Button, ImageBackground} from 'react-native';
-// import styles from '../style/fruitVegeCardStyle'
-import styles from '../style/homePageStyle'
+import styles from '../style/fruitVegeCardStyle'
 
 export default function FruitsCard() {
   return (
+    // React fragment sementara biar bisa liat kalau data nya banyak
     <>
     <TouchableOpacity>
       <View style={styles.fruitCard}>
@@ -18,7 +18,7 @@ export default function FruitsCard() {
         </ImageBackground>
       </View>
     </TouchableOpacity>
-    
+
     <TouchableOpacity>    
       <View style={styles.fruitCard}>
         <ImageBackground

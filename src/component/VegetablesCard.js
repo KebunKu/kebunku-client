@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Platform, StyleSheet, Text, View, Image, TextInput, ScrollView, TouchableOpacity, Button, ImageBackground} from 'react-native';
 // import styles from '../style/fruitVegeCardStyle'
-import styles from '../style/homePageStyle'
+import styles from '../style/fruitVegeCardStyle'
 
 export default function VegetablesCard() {
   return (
