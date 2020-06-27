@@ -4,6 +4,7 @@ import styles from '../style/loginStyle'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+
 const Stack = createStackNavigator();
 
 export default function LandingPage({ navigation }) {
