@@ -1,85 +1,13 @@
 import React, {useState} from 'react';
 import {Platform, StyleSheet, Text, View, Image, TextInput, ScrollView, TouchableOpacity, Button, ImageBackground} from 'react-native';
 import styles from '../style/homePageStyle'
-// import card
-
+import PlanToWaterBox from '../component/PlantToWaterBox'
 
 export default function HomePage() { // PROPS
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scroll}>
-        <View style={styles.waterToday}>
-          <Text style={styles.heloUsername}>Hello Brandon</Text>
-          <Text style={styles.planToWater}>You Have 5 plants to water today</Text>
-          <ScrollView horizontal style={styles.horizontalScroll}>
-            {/* ------------- CARD -----------------*/}
-            {/* ITEMS NANTI DI MAP */}
-            <View style={styles.containerCard}>
-              <View style={styles.card}>
-                <ImageBackground
-                  style={styles.cardImage}
-                  source={{
-                    uri: 'https://ak.picdn.net/shutterstock/videos/1037437067/thumb/6.jpg',
-                  }}
-                >
-                  <Text style={styles.cardTitle}>Dummy</Text>
-                </ImageBackground>
-              </View>
-            </View>
-
-            <View style={styles.containerCard}>
-              <View style={styles.card}>
-                <ImageBackground
-                  style={styles.cardImage}
-                  source={{
-                    uri: 'https://ak.picdn.net/shutterstock/videos/1037437067/thumb/6.jpg',
-                  }}
-                >
-                  <Text style={styles.cardTitle}>Dummy</Text>
-                </ImageBackground>
-              </View>
-            </View>
-
-            <View style={styles.containerCard}>
-              <View style={styles.card}>
-                <ImageBackground
-                  style={styles.cardImage}
-                  source={{
-                    uri: 'https://ak.picdn.net/shutterstock/videos/1037437067/thumb/6.jpg',
-                  }}
-                >
-                  <Text style={styles.cardTitle}>Dummy</Text>
-                </ImageBackground>
-              </View>
-            </View>
-
-            <View style={styles.containerCard}>
-              <View style={styles.card}>
-                <ImageBackground
-                  style={styles.cardImage}
-                  source={{
-                    uri: 'https://ak.picdn.net/shutterstock/videos/1037437067/thumb/6.jpg',
-                  }}
-                >
-                  <Text style={styles.cardTitle}>Dummy</Text>
-                </ImageBackground>
-              </View>
-            </View>
-
-            <View style={styles.containerCard}>
-              <View style={styles.card}>
-                <ImageBackground
-                  style={styles.cardImage}
-                  source={{
-                    uri: 'https://ak.picdn.net/shutterstock/videos/1037437067/thumb/6.jpg',
-                  }}
-                >
-                  <Text style={styles.cardTitle}>Dummy</Text>
-                </ImageBackground>
-              </View>
-            </View>
-            {/* Batas CARD yg nanti di Buat komponent Sendiri */}
-          </ScrollView>
+          <PlanToWaterBox />
             {/* Yang di bawah ini Komponen My Fruits */}
           <View style={styles.fruitContainer}>
             <Text style={styles.fruitTitle}>Fruits</Text>
@@ -88,7 +16,6 @@ export default function HomePage() { // PROPS
             </TouchableOpacity>
           </View>
           <View style={styles.fruitContainer}>
-
 
             <View style={styles.fruitCardContainer}>
               <View style={styles.fruitCard}>
@@ -147,7 +74,6 @@ export default function HomePage() { // PROPS
               </ImageBackground>
             </View>
           </View>
-        </View>
       </ScrollView>
       <View style={{height: 55, flexDirection:'row', backgroundColor: 'white'}}>
 
@@ -174,7 +100,6 @@ export default function HomePage() { // PROPS
             <Text style={styles.navMenuText}>Profile</Text>
           </View>
         </TouchableOpacity>
-
       </View>
     </View>
   );
