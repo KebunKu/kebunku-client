@@ -1,22 +1,31 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import LandingPage from './src/views/LandingPage'
-import HomePage from './src/views/HomePage'
-import ProfilePage from './src/views/ProfilePage'
-import FruitDetail from './src/views/FruitDetail'
+import { LandingPage, HomePage, ProfilePage, FruitDetail } from './src/views';
+import { Provider } from 'react-redux';
+import store from './src/store/index';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="FruitDetail">
-        <Stack.Screen name="LandingPage" component={LandingPage} />
-        <Stack.Screen name="HomePage" component={HomePage} />
-        <Stack.Screen name="ProfilePage" component={ProfilePage} />
-        <Stack.Screen name="FruitDetail" component={FruitDetail} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  )
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="FruitDetail">
+          <Stack.Screen name="Landing" component={LandingPage} />
+          <Stack.Screen
+            name="Home"
+            component={HomePage}
+            options={{ headerTitleAlign: 'center' }}
+          />
+          <Stack.Screen name="Profile Page" component={ProfilePage} />
+          <Stack.Screen
+            name="FruitDetail"
+            component={FruitDetail}
+            options={{ title: 'Fruits', headerTitleAlign: 'center' }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
+  );
 }

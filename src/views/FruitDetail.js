@@ -166,9 +166,12 @@ const styles = StyleSheet.create({
 
   action: {
     backgroundColor: '#00B761',
-    width: 414,
+    // backgroundColor: 'red',
+    width: "100%",
     height: 80,
-    borderRadius: 25,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    // borderRadius: 25,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

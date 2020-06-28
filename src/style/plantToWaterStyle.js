@@ -4,19 +4,24 @@ export default StyleSheet.create({
 
   waterToday: {
     backgroundColor: '#F7F7F5',
-    width: 360,
+    // width: 360,
   },
 
   heloUsername: {
     fontSize: 24,
     fontWeight: 'bold',
+    marginTop: 8,
+    marginLeft: 16
   },
 
   horizontalScroll: {
-    flexDirection:'row'
+    flexDirection:'row',
+    marginTop: 8,
   },
 
   planToWater: {
+    // marginTop: 4,
+    marginLeft: 16,
     fontSize: 16,
     color: '#C4C4C4',
   },

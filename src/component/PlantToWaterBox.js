@@ -3,10 +3,10 @@ import {Platform, StyleSheet, Text, View, Image, TextInput, ScrollView, Touchabl
 import styles from '../style/plantToWaterStyle'
 import PlantCard from '../component/PlantCard'
 
-export default function PlanToWaterCard() {
+export default function PlantToWaterBox() {
   return (
     <View style={styles.waterToday}>
-      <Text style={styles.heloUsername}>Hello Brandon</Text>
+      <Text style={styles.heloUsername}>Hello Brandon,</Text>
       <Text style={styles.planToWater}>You Have 5 plants to water today</Text>
       <ScrollView horizontal style={styles.horizontalScroll}>
         <PlantCard />

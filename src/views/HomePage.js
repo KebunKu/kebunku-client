@@ -1,49 +1,61 @@
-import React, {useState} from 'react';
-import {Platform, StyleSheet, Text, View, Image, TextInput, ScrollView, TouchableOpacity, Button, ImageBackground} from 'react-native';
-import styles from '../style/homePageStyle'
-import PlanToWaterBox from '../component/PlantToWaterBox'
-import FruitsCard from '../component/FruitsCard'
-import VegetablesCard from '../component/VegetablesCard'
-import BottomNavBar from '../component/BottomNavBar';
+import React, { useState } from 'react';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+  Button,
+  ImageBackground,
+} from 'react-native';
+import styles from '../style/homePageStyle';
+import {
+  PlantToWaterBox,
+  FruitsCard,
+  VegetablesCard,
+  BottomNavBar,
+} from '../component';
 
-export default function HomePage() { // PROPS
+export default function HomePage() {
+  // PROPS
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scroll}>
-          
-          <PlanToWaterBox />
+        <PlantToWaterBox />
 
-          {/* Yang di bawah ini Komponen My Fruits */}
+        {/* Yang di bawah ini Komponen My Fruits */}
 
-          <View style={styles.fruitContainer}>
-            <Text style={styles.fruitTitle}>Fruits</Text>
-            <TouchableOpacity>
-              <Text style={styles.seeAllBtn}>See All</Text>
-            </TouchableOpacity>
-          </View>
+        <View style={styles.fruitContainer}>
+          <Text style={styles.fruitTitle}>Fruits</Text>
+          <TouchableOpacity>
+            <Text style={styles.seeAllBtn}>See All</Text>
+          </TouchableOpacity>
+        </View>
 
-          <View style={styles.fruitContainer}>
-            <FruitsCard/>
-          </View>
-          
-          {/* Yang di bawah ini Komponen My Vegetable */}
+        <View style={styles.fruitContainer}>
+          <FruitsCard />
+        </View>
 
-          <View style={styles.fruitContainer}>
-            <Text style={styles.fruitTitle}>Vegetables</Text>
-            <TouchableOpacity>
-              <Text style={styles.seeAllBtn}>See All</Text>
-            </TouchableOpacity>
-          </View>
+        {/* Yang di bawah ini Komponen My Vegetable */}
 
-          <View style={styles.fruitContainer}>
-            <VegetablesCard />
-          </View>
+        <View style={styles.fruitContainer}>
+          <Text style={styles.fruitTitle}>Vegetables</Text>
+          <TouchableOpacity>
+            <Text style={styles.seeAllBtn}>See All</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.fruitContainer}>
+          <VegetablesCard />
+        </View>
       </ScrollView>
 
-          {/* Navbar */}
+      {/* Navbar */}
 
-      <BottomNavBar/>
-
+      <BottomNavBar />
     </View>
   );
 }
