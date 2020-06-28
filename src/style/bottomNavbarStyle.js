@@ -4,7 +4,9 @@ export default StyleSheet.create({
   navMenuBox: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderTopWidth: 0.4,
+    borderTopColor: 'grey'
   },
 
   navMenuIcon: {
