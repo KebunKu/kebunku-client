@@ -6,7 +6,8 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderTopWidth: 0.4,
-    borderTopColor: 'grey'
+    borderTopColor: 'gray',
+    width: 200,
   },
 
   navMenuIcon: {
