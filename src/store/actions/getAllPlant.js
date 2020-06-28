@@ -11,14 +11,14 @@ export const fetchAllPlant = () => {
         error: false,
         loading: true,
       },
-    });
+    })
     axios
-      .get('http://localhost:3000/plants')
+      .get('http://10.0.2.2:3000/plants')
       .then(({ data }) => {
         dispatch({
           type: FETCH_All_PLANT,
           payload: {
-            data,
+            data: data.Plants,
             error: false,
             loading: false,
           },

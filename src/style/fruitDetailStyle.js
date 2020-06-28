@@ -4,13 +4,12 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#FFFFFF',
   },
 
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
-    // backgroundColor: "red",
     width: 360,
     paddingTop: 16,
     paddingHorizontal: 16,
@@ -58,9 +57,10 @@ export default StyleSheet.create({
 
   action: {
     backgroundColor: '#00B761',
-    width: 414,
+    width: "100%",
     height: 80,
-    borderRadius: 25,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

@@ -1,23 +1,43 @@
-import React from 'react';
-import {Platform, StyleSheet, Text, View, Image, TextInput, ScrollView, TouchableOpacity, Button, ImageBackground} from 'react-native';
-import { color } from 'react-native-reanimated';
+import React, { useState } from 'react';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+  Button,
+  ImageBackground,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-export default function FruitPageCard () {
+export default function FruitPageCard(props) {
+  const navigation = useNavigation();
+
+  const toDetailPage = (obj) => {
+    navigation.navigate('FruitDetail', {
+      obj,
+    });
+  };
+
   return (
     <View style={styles.cardBox}>
-      <Image
-        style={styles.cardImg}
-        source={{
-          uri: 'https://harvesttotable.com/wp-content/uploads/2009/01/Cabbage-bigstock-Salad-Species-That-Includes-Se-251274103-scaled.jpg',
-        }}
-      />
+      <Image style={styles.cardImg} source={require('../../assets/image/allPlant/Anggur.jpg')} />
       <View>
-        <Text style={styles.cardTitle}>Cabbage</Text>
-        <Text style={styles.cardFamilyText}>Family : Musaceae</Text>
+        <Text style={styles.cardTitle}>{props.fruit.name}</Text>
         <Text style={styles.cardText}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          Scientific Name: {props.fruit.scientific_name}
         </Text>
-        <TouchableOpacity>
+        <Text style={styles.cardText}>
+          Fase Generatif: {props.fruit.fase_generatif}
+        </Text>
+        <Text style={styles.cardText}>
+          Fase Vegetatif: {props.fruit.fase_vegetatif}
+        </Text>
+
+        <TouchableOpacity onPress={() => toDetailPage(props.fruit)}>
           <Text style={styles.seeDetail}>See Detail</Text>
         </TouchableOpacity>
       </View>
@@ -33,7 +53,7 @@ const styles = StyleSheet.create({
     margin: 8,
     flex: 1,
     flexDirection: 'row',
-    borderRadius: 15
+    borderRadius: 15,
   },
 
   cardImg: {
@@ -45,12 +65,12 @@ const styles = StyleSheet.create({
   },
 
   cardTitle: {
-    fontSize: 24
+    fontSize: 24,
   },
 
   cardFamilyText: {
     fontSize: 16,
-    color: '#828282'
+    color: '#828282',
   },
 
   cardText: {
@@ -60,11 +80,11 @@ const styles = StyleSheet.create({
     // maxHeight: 40,
     width: 250,
     flex: 1,
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
 
   seeDetail: {
     color: '#00B761',
-    marginBottom: 16 
-  }
-})
+    marginBottom: 16,
+  },
+});
