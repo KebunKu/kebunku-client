@@ -40,22 +40,12 @@ export default StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 50,
-    // overflow: 'hidden',
+    overflow: 'hidden',
     borderColor: '#00B761',
     borderWidth: 4,
     alignItems: 'center',
     justifyContent: 'center',
     // backgroundColor: undefined
-    // padding: 32
-  },
-
-  innerImage: {
-    width: 68,
-    height: 68,
-    borderRadius: 50,
-    // backgroundColor: 'red',
-    alignItems: "center",
-    justifyContent: "center",
   },
 
   cardTitle: {
@@ -69,10 +59,10 @@ export default StyleSheet.create({
   },
 
   cardImage: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
-    borderRadius: 50,
+    width: 75,
+    height: 75,
+    // resizeMode: 'cover',
+    borderRadius: 100,
     // flex: 1,
   },
 });

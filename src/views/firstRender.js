@@ -6,11 +6,11 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {
   LandingPage,
   HomePage,
+  ProfilePage,
+  MyPlantDetail,
   FruitsPage,
   FruitDetail,
   VegetablesPage,
-  ProfilePage,
-  MyPlantDetail,
 } from './src/views';
 import { Provider } from 'react-redux';
 import store from './src/store/index';
@@ -20,19 +20,19 @@ const Tab = createBottomTabNavigator();
 
 const HomeNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Landing">
-      <Stack.Screen
+    <Stack.Navigator initialRouteName="Home">
+      {/* <Stack.Screen
         name="Landing"
         component={LandingPage}
         options={{ headerShown: false }}
-      />
+      /> */}
       <Stack.Screen
         name="Home"
         component={HomePage}
         // untuk menghilangkan back button ==> headerLeft: null
         options={{ headerTitleAlign: 'center' }}
       />
-      <Stack.Screen name="Profile Page" component={ProfilePage} />
+      {/* <Stack.Screen name="Profile Page" component={ProfilePage} /> */}
       <Stack.Screen name="MyPlantDetail" component={MyPlantDetail} />
       <Stack.Screen
         name="FruitsPage"
@@ -53,27 +53,16 @@ const HomeNavigator = () => {
   );
 };
 
-const ProfileNavigator = () => {
-  return (
-    <Stack.Navigator initialRouteName="Profile">
-      <Stack.Screen
-        name="Profile"
-        component={ProfilePage}
-        options={{ title: 'Profile', headerTitleAlign: 'center' }}
-      />
-      <Stack.Screen
-        name="MyPlant"
-        component={MyPlantDetail}
-        options={{ title: 'My Plant', headerTitleAlign: 'center' }}
-      />
-    </Stack.Navigator>
-  );
-};
-
-export default function App() {
+export default function firstRender() {
   return (
     <Provider store={store}>
       <NavigationContainer>
+        <Stack.Screen
+          name="Landing"
+          component={LandingPage}
+          options={{ headerShown: false }}
+        />
+
         <Tab.Navigator
           initialRouteName="Feed"
           tabBarOptions={{
@@ -94,10 +83,10 @@ export default function App() {
             }}
           />
           <Tab.Screen
-            name="Profile"
-            component={ProfileNavigator}
+            name="Profile Page"
+            component={ProfilePage}
             options={{
-              tabBarLabel: 'Profile',
+              tabBarLabel: 'Creator',
               tabBarIcon: ({ color, size }) => (
                 <MaterialCommunityIcons
                   name="account"
