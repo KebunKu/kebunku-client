@@ -14,9 +14,9 @@ import {
   ImageBackground,
 } from 'react-native';
 import BottomNavBar from '../component/BottomNavBar';
-import FruitPageCard from '../component/FruitPageCard';
+import VegetablePageCard from '../component/VegetablePageCard';
 
-export default function FruitsPage() {
+export default function VegetablesPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,8 +27,8 @@ export default function FruitsPage() {
   const error = useSelector((state) => state.plantReducer.error);
   const loading = useSelector((state) => state.plantReducer.loading);
 
-  const fruitList = plantList.filter((element) => {
-    return element.category == 'Buah';
+  const vegetableList = plantList.filter((element) => {
+    return element.category == 'Sayuran';
   });
 
   return (
@@ -42,13 +42,8 @@ export default function FruitsPage() {
               <Text style={{ marginTop: 50 }}>{error}</Text>
             ) : (
               <>
-                {fruitList.map((fruit, i) => {
-                  return (
-                    <FruitPageCard
-                      key={i}
-                      fruit={fruit}
-                    />
-                  );
+                {vegetableList.map((vegetable, i) => {
+                  return <VegetablePageCard key={i} vegetable={vegetable} />;
                 })}
               </>
             )}

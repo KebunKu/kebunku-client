@@ -26,7 +26,7 @@ export default function FruitPageCard(props) {
   let image;
 
   for (let i = 0; i < allPlantImage.length; i++) {
-    if (allPlantImage[i].imgName === props.fruit.name) {
+    if (allPlantImage[i].imgName === props.vegetable.name) {
       image = allPlantImage[i].uri;
     }
   }
@@ -35,18 +35,18 @@ export default function FruitPageCard(props) {
     <View style={styles.cardBox}>
       <Image style={styles.cardImg} source={image} />
       <View>
-        <Text style={styles.cardTitle}>{props.fruit.name}</Text>
+        <Text style={styles.cardTitle}>{props.vegetable.name}</Text>
         <Text style={styles.cardText}>
-          Scientific Name: {props.fruit.scientific_name}
+          Scientific Name: {props.vegetable.scientific_name}
         </Text>
         <Text style={styles.cardText}>
-          Fase Generatif: {props.fruit.fase_generatif} hari
+          Fase Generatif: {props.vegetable.fase_generatif} hari
         </Text>
         <Text style={styles.cardText}>
-          Fase Vegetatif: {props.fruit.fase_vegetatif} hari
+          Fase Vegetatif: {props.vegetable.fase_vegetatif} hari
         </Text>
 
-        <TouchableOpacity onPress={() => toDetailPage(props.fruit)}>
+        <TouchableOpacity onPress={() => toDetailPage(props.vegetable)}>
           <Text style={styles.seeDetail}>See Detail</Text>
         </TouchableOpacity>
       </View>

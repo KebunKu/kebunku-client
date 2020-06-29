@@ -18,8 +18,20 @@ import {
   VegetablesCard,
   BottomNavBar,
 } from '../component';
+import { useNavigation } from '@react-navigation/native';
 
 export default function HomePage() {
+
+  const navigation = useNavigation();
+
+  const toAllFruit = () => {
+    navigation.navigate('FruitsPage');
+  };
+
+  const toAllVegetable = () => {
+    navigation.navigate('VegetablesPage');
+  };
+
   // PROPS
   return (
     <View style={styles.container}>
@@ -30,7 +42,7 @@ export default function HomePage() {
 
         <View style={styles.fruitContainer}>
           <Text style={styles.fruitTitle}>Fruits</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => toAllFruit()}>
             <Text style={styles.seeAllBtn}>See All</Text>
           </TouchableOpacity>
         </View>
@@ -43,7 +55,7 @@ export default function HomePage() {
 
         <View style={styles.fruitContainer}>
           <Text style={styles.fruitTitle}>Vegetables</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => toAllVegetable()}>
             <Text style={styles.seeAllBtn}>See All</Text>
           </TouchableOpacity>
         </View>
@@ -52,10 +64,6 @@ export default function HomePage() {
           <VegetablesCard />
         </View>
       </ScrollView>
-
-      {/* Navbar */}
-
-      <BottomNavBar />
     </View>
   );
 }

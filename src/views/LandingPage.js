@@ -11,14 +11,16 @@ import {
   Button,
 } from 'react-native';
 import styles from '../style/loginStyle';
-import { NavigationContainer } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
-export default function LandingPage({ navigation }) {
+export default function LandingPage() {
+  const navigation = useNavigation();
+
   const [register, setRegister] = useState(false);
-  const [textRegLog, setText] = useState('Didnt Have Account ?');
+  const [textRegLog, setText] = useState('Didnt Have Account? Sign up');
   const [ValidationText, setValid] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -81,8 +83,8 @@ export default function LandingPage({ navigation }) {
   const btnHandle = function () {
     if (!register) {
       // Sementara langsung ke HomePage
-      console.log('brati ntar nembak post LOGIN');
-      navigation.navigate('HomePage');
+      // console.log('brati ntar nembak post LOGIN');
+      navigation.navigate('Home');
     } else {
       if ((name, email, password, conPassword)) {
         if (password === conPassword) {

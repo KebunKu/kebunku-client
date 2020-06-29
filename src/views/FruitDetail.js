@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { color } from 'react-native-reanimated';
 import styles from '../style/fruitDetailStyle';
+import detailImage from '../../assets/image/detail/detailImage';
 
 export default function FruitDetail({ route }) {
   const [fruit, setFruit] = useState('');
@@ -72,6 +73,14 @@ export default function FruitDetail({ route }) {
     }
   };
 
+  let image;
+
+  for (let i = 0; i < detailImage.length; i++) {
+    if (detailImage[i].imgName === fruit.name) {
+      image = detailImage[i].uri;
+    }
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -81,10 +90,7 @@ export default function FruitDetail({ route }) {
         </View>
         <Image
           style={styles.detailImg}
-          source={{
-            uri:
-              'https://gardenerspath.com/wp-content/uploads/2019/12/Overwinter-Banana-Plants-FB.jpg',
-          }}
+          source={image}
         />
         <Text style={styles.paragrafTitle}>Nama Buah</Text>
         <Text style={styles.paragrafText}>{fruit.name}</Text>
@@ -100,7 +106,7 @@ export default function FruitDetail({ route }) {
 
         <Text style={styles.paragrafTitle}>Fase Vegetatif</Text>
         <Text style={styles.paragrafText}>{fruit.fase_vegetatif}</Text>
-        <View style={{marginBottom: 50,}}></View>
+        <View style={{ marginBottom: 50 }}></View>
       </ScrollView>
       <View style={styles.action}>
         {/* <View style={styles.}></View> */}
