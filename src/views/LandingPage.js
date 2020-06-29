@@ -13,10 +13,14 @@ import {
 import styles from '../style/loginStyle';
 import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { useDispatch, useSelector } from 'react-redux';
+import { userRegister } from '../store/actions/index';
+import axios from 'axios';
 
 const Stack = createStackNavigator();
 
 export default function LandingPage() {
+  const dispatch = useDispatch()
   const navigation = useNavigation();
 
   const [register, setRegister] = useState(false);
@@ -82,13 +86,38 @@ export default function LandingPage() {
 
   const btnHandle = function () {
     if (!register) {
-      // Sementara langsung ke HomePage
-      // console.log('brati ntar nembak post LOGIN');
-      navigation.navigate('Home');
+      return axios
+      .post('http://localhost:3000/login', {
+      email: email,
+      password: password
+    })
+    .then((result) => {
+      console.log(result.data)
+      setName('')
+      setEmail('')
+      setPassword('')
+      setConPassword('')
+    }).catch((err) => {
+      console.log(err.message)
+    });
     } else {
       if ((name, email, password, conPassword)) {
         if (password === conPassword) {
-          console.log('brati ntar nembak post REGISTER');
+          return axios
+            .post('http://localhost:3000/register', {
+            name: name,
+            email: email,
+            password: password
+          })
+          .then((result) => {
+            console.log(result.data)
+            setName('')
+            setEmail('')
+            setPassword('')
+            setConPassword('')
+          }).catch((err) => {
+            console.log(err.message)
+          });
         } else {
           setValid('Please Input You data Correctly');
         }

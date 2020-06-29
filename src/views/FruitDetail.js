@@ -11,12 +11,14 @@ import {
   Button,
   ImageBackground,
 } from 'react-native';
-import { color } from 'react-native-reanimated';
+import { useDispatch, useSelector } from 'react-redux';
+import { postFavorite } from '../store/actions/index';
 import styles from '../style/fruitDetailStyle';
 import detailImage from '../../assets/image/detail/detailImage';
 
 export default function FruitDetail({ route }) {
   const [fruit, setFruit] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setFruit(route.params.obj);
@@ -33,16 +35,15 @@ export default function FruitDetail({ route }) {
     return <View style={styles.boxFavFalse}></View>;
   };
   //
-  const toogleFav = function () {
-    // kurang lebih nya dia nembak API ngirim data Lawan dari Favorite True atau False > Edit >
-    // Fect Dispatch data ambil yg paling baru
-    console.log(!favor);
+  const toogleFav = function (UserId, PlantId) {
+    if (!favor) return dispatch(postFavorite(UserId, PlantId))
+    
   };
 
   const checkIfFavorBot = function () {
     if (favor) {
       return (
-        <TouchableOpacity onPress={toogleFav}>
+        <TouchableOpacity onPress={()=> toogleFav(fruit.name, fruit.scientific_name)}>
           <View style={styles.actionFavFalse}>
             <Image
               style={styles.navMenuIcon}
@@ -57,7 +58,7 @@ export default function FruitDetail({ route }) {
       );
     } else {
       return (
-        <TouchableOpacity onPress={toogleFav}>
+        <TouchableOpacity onPress={()=> toogleFav(fruit.name, fruit.scientific_name)}>
           <View style={styles.actionFavFalse}>
             <Image
               style={styles.navMenuIcon}

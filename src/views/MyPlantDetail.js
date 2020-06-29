@@ -41,7 +41,7 @@ export default function MyPlantDetail() {
           </Text>
         </View>
         <TouchableOpacity onPress={() => toMyPlantDetail()}
-        style={{width: }}
+        style={{width: 100}}
         >
           <Text style={styles.cardSeeDetail}> Sudah di siram </Text>
         </TouchableOpacity>
