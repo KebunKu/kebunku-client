@@ -21,6 +21,10 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "googleServicesFile": "./google-services.json",
+      "package": "com.kebunku.kebunku_client"
+    },
     "ios": {
       "supportsTablet": true
     },

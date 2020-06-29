@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -14,11 +14,17 @@ import {
 } from './src/views';
 import { Provider } from 'react-redux';
 import store from './src/store/index';
+import registerForPushNotifications from './registerforPushNotificationsAsync';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const HomeNavigator = () => {
+
+  useEffect( () => {
+    registerForPushNotifications();
+  }, [])
+
   return (
     <Stack.Navigator initialRouteName="Landing">
       <Stack.Screen
