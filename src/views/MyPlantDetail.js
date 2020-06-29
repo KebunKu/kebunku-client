@@ -40,10 +40,9 @@ export default function MyPlantDetail() {
             posuere suspendisse sapien integer quam.
           </Text>
         </View>
-        <TouchableOpacity onPress={() => toMyPlantDetail()}
-        style={{width: }}
-        >
-          <Text style={styles.cardSeeDetail}> Sudah di siram </Text>
+        <TouchableOpacity
+          style={{ width: 320, height: 48, backgroundColor: 'green' }}>
+          <Text style={{textAlign: "center", alignItems: "center", marginTop: 10, color: "white"}}> Sudah di siram </Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
