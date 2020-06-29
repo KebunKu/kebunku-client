@@ -1,16 +1,18 @@
 import axios from 'axios';
-import {fetchAllMyPlant} from './getAllFav'
+import { fetchAllMyPlant } from './getUserPlant'
 import { AsyncStorage } from 'react-native';
 
-export const DELETE_FAV = 'DELETE_FAV';
+export const POST_USER_PLANT = 'POST_USER_PLANT';
 
-export const deleteFavorite = (id) => {
-  
+export const postUserPlant = (PlantId) => {
   return (dispatch) => {
     AsyncStorage.getItem('token', (err, result) => {
+    
       axios({
-        method: 'DELETE',
-        url: `http://localhost:3000/userfav/${id}`,
+        method: 'POST',
+        url: 'http://localhost:3000/userplant',
+        // mungkin nanti Object Plant keseluruhan ?
+        data: {PlantId},
         headers: {
           token: result
         }
@@ -21,6 +23,6 @@ export const deleteFavorite = (id) => {
       .catch((error) => {
         console.log(error)
       });
-    });
+    })
   };
 };

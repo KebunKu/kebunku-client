@@ -11,14 +11,13 @@ import {
   ScrollView,
   TouchableOpacity,
   Button,
-  ImageBackground,
+  AsyncStorage,
 } from 'react-native';
 import BottomNavBar from '../component/BottomNavBar';
 import FruitPageCard from '../component/FruitPageCard';
 
-export default function FruitsPage() {
+export default async function FruitsPage() {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(fetchAllPlant());
   }, [dispatch]);
