@@ -12,7 +12,7 @@ import {
   ImageBackground,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { postFavorite } from '../store/actions/index';
+import { postFavorite, deleteFavorite } from '../store/actions/index';
 import styles from '../style/fruitDetailStyle';
 import detailImage from '../../assets/image/detail/detailImage';
 
@@ -36,8 +36,10 @@ export default function FruitDetail({ route }) {
   };
   //
   const toogleFav = function (UserId, PlantId) {
-    if (!favor) return dispatch(postFavorite(UserId, PlantId))
-    
+    // PERINNGATAAAAN INI TESTTING KARENA GUA BLOM BISA DAPT REQ.CURRENTIDUSER yang LOGIN
+    // Tapi Login Regist udah dapet token
+    if (!favor) return dispatch(postFavorite('5ef978cfa4dd0e33b0deadd7', '5ef978cfa4dd0e33b0deadd7'))
+    return dispatch(deleteFavorite('5ef978cfa4dd0e33b0deadd7'))
   };
 
   const checkIfFavorBot = function () {

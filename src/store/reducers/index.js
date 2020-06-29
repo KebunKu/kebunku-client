@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import plantReducer from './plantReducer';
+import favReducer from './favReducer';
 
 const rootReducers = combineReducers({
-    plantReducer
+    plantReducer,
+    favReducer
 });
 
 export default rootReducers;
