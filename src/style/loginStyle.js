@@ -1,47 +1,54 @@
 import { StyleSheet } from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8F8F8',
+    backgroundColor: '#E5F8EF',
     alignItems: 'center',
     justifyContent: 'center',
-    // flex:1,
   },
 
-  // welcome: {
-  //   textAlign: 'center'
-  // },
+  element: {
+    marginTop: hp('10%'),
+    alignItems: 'center',
+    marginBottom: -hp('73%'),
+    width: wp('100%'),
+    height: hp('100%'),
+    resizeMode: 'cover',
+  },
 
-  focus: {
-    borderWidth: 5,
-    borderColor: '#00B761'
+  elementBottom: {
+    transform: [{ rotate: '180deg' }],
+    width: wp('100%'),
+    height: hp('100%'),
+    resizeMode: 'cover',
+    marginTop: -hp('75%'),
+    marginLeft: -wp('30%'),
+    zIndex: -99
+    
+  },
+
+  started: {
+    textAlign: 'left',
+    fontSize: wp('9%'),
+    fontWeight: 'bold',
+    color: '#00B761',
   },
 
   inputBox: {
-    width: 320,
-    height: 48,
+    width: wp('70%'),
+    height: hp('6%'),
     backgroundColor: '#fff',
-    // borderRadius: 25,
-    padding: 8,
+    borderRadius: wp('2%'),
+    paddingLeft: wp('2%'),
     fontSize: 16,
     color: '#828282',
-    // marginVertical: 10,
-    // borderColor: '#000',
+    backgroundColor: 'white',
     margin: 8,
-  },
-
-  RegLogLogoBox: {
-    width: 150,
-    height: 150,
-    borderRadius: 10,
-  },
-
-  RegLogLogoImg: {
-    width: undefined,
-    height: undefined,
-    resizeMode: 'contain',
-    flex: 1,
   },
 
   textOr: {
@@ -55,46 +62,48 @@ export default StyleSheet.create({
 
   textBig: {
     // fontFamily: 'roboto',
-    textAlign: 'center',
-    fontSize: 24,
+    textAlign: 'left',
+    fontSize: wp('15%'),
     fontWeight: 'bold',
-    color: '#323232',
+    color: '#00B761',
   },
 
   textSmall: {
     // fontFamily: 'roboto',
-    textAlign: 'center',
-    fontSize: 16,
+    marginBottom: -hp('2%'),
+    textAlign: 'left',
+    fontSize: wp('5%'),
     fontWeight: 'bold',
-    color: '#828282',
+    color: '#00B761',
   },
 
   textMini: {
     // fontFamily: 'roboto',
     textAlign: 'center',
-    fontSize: 12,
-    fontWeight: 'bold',
-    color: '#828282',
+    fontSize: wp('3.7%'),
+    // fontWeight: 'bold',
+    color: '#00B761',
   },
 
   buttonBox: {
     backgroundColor: '#00B761',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 8,
-    width: 320,
-    height: 48,
-    padding: 8,
-    margin: 8,
+    borderRadius: wp('2%'),
+    width: wp('70%'),
+    height: hp('6%'),
+    // padding: 8,
+    marginTop: hp('1%'),
+    marginBottom: hp('2%'),
   },
 
   buttonGoogle: {
     backgroundColor: '#395EE1',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 8,
-    width: 320,
-    height: 48,
+    borderRadius: wp('2%'),
+    width: wp('70%'),
+    height: hp('6%'),
     padding: 8,
     margin: 8,
   },

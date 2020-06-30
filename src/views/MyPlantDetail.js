@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Platform,
   StyleSheet,
@@ -13,38 +13,74 @@ import {
 } from 'react-native';
 import BottomNavBar from '../component/BottomNavBar';
 import styles from '../style/myPlantDetailStyle';
+import detailImage from '../../assets/image/detail/detailImage';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default function MyPlantDetail() {
+export default function MyPlantDetail({ route, navigation }) {
+  const [plant, setPlant] = useState('');
+
+  useEffect(() => {
+    setPlant(route.params.obj);
+  }, []);
+
+  const backBtn = () => {
+    console.log('masuuuukopjj');
+    navigation.navigate('Profile');
+  };
+
+  let image;
+
+  for (let i = 0; i < detailImage.length; i++) {
+    if (detailImage[i].imgName === plant.name) {
+      image = detailImage[i].uri;
+    }
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Image
-          style={styles.tinyLogo}
-          source={{
-            uri:
-              'https://d3dv6ncga0u0ql.cloudfront.net/wp-content/uploads/2017/06/Choosing-Orange-Variety.jpg',
-          }}
-        />
-        <View style={styles.paragrafBox}>
-          <Text style={styles.paragrafTitle}>Orange is my fruit</Text>
-          <Text style={styles.plantAge}>9 days old</Text>
-          <Text style={styles.noteText}>Your notes :</Text>
-          <Text style={styles.paragrafText}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fringilla
-            enim maecenas dapibus potenti odio nunc consectetur. Nec diam tortor
-            etiam fermentum convallis nibh hendrerit. Et non quam vel, ac dui
-            nunc mattis. Est, ultrices venenatis amet volutpat in ornare
-            hendrerit. Et semper iaculis tincidunt cursus ipsum arcu metus
-            pharetra mollis. Ac volutpat vitae purus nisl, ultricies sed. Ipsum
-            fames ac cursus fringilla fringilla quis. Nunc, amet lorem tincidunt
-            posuere suspendisse sapien integer quam.
-          </Text>
+        <View style={styles.background}>
+          <View>
+            <TouchableOpacity onPress={() => backBtn()}>
+              <MaterialCommunityIcons
+                name="arrow-left"
+                style={styles.backBtn}
+              />
+            </TouchableOpacity>
+            <Text style={styles.paragrafTitle}>{plant.name}</Text>
+            <Text style={styles.subtitle}>Umur</Text>
+            <Text style={styles.plantAge}>{plant.age} days old</Text>
+
+            <Text style={styles.subtitle}>Status</Text>
+            <Text style={styles.plantAge}>{plant.status}</Text>
+
+            <Text style={styles.subtitle}>Diingatkan</Text>
+            <Text style={styles.plantAge}>Setiap {plant.reminder} jam</Text>
+
+            <Text style={styles.subtitle}>Pupuk</Text>
+            <Text style={styles.plantAge}>{plant.pupuk}</Text>
+
+            <Text style={styles.subtitle}>Notes</Text>
+            <Text style={styles.plantAge}>{plant.notes}</Text>
+          </View>
         </View>
+        <Image style={styles.imagePlant} source={image} />
+        <View style={styles.backgroundWhite}>
+          <View style={{width: '60%', height: '30%', backgroundColor: '#BCECD6', marginTop: 20}}><Text>Image</Text></View>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.textButton}>Tanaman sudah disiram</Text>
+          </TouchableOpacity>
+        </View>
+
         <TouchableOpacity onPress={() => toMyPlantDetail()}
-        style={{width: 100}}
+
+     
+
+        // style={{width: 100}}
         >
           <Text style={styles.cardSeeDetail}> Sudah di siram </Text>
         </TouchableOpacity>
+
       </ScrollView>
     </View>
   );

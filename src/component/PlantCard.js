@@ -18,17 +18,14 @@ const PlantCard = () => {
   const navigation = useNavigation();
 
   const toDetailPage = () => {
-    navigation.navigate('FruitDetail', {
+    navigation.navigate('MyPlant', {
       obj: {
-        _id: '5ef849e4ac76c3346ce34aa6',
-        name: 'Cabai Merah',
-        scientific_name: 'Capsicum annuum L.',
-        overview:
-          "Cabai atau cabai merah adalah buah dan tumbuhan anggota genus Capsicum. Buahnya dapat digolongkan sebagai sayuran maupun bumbu, tergantung bagaimana digunakan. Sebagai bumbu, buah cabai yang pedas sangat populer di Asia Tenggara sebagai penguat rasa makanan. Bagi seni masakan Padang, cabai bahkan dianggap sebagai 'bahan makanan pokok' ke sepuluh (alih-alih sembilan). Sangat sulit bagi masakan Padang dibuat tanpa cabai.",
-        fase_vegetatif: '20-30',
-        fase_generatif: '40-90',
-        category: 'Sayuran',
-        __v: 0,
+        name: 'Wortel',
+        age: 12,
+        status: 'hidup',
+        reminder: 7,
+        pupuk: 'Pupuk cap 3 roda',
+        notes: "Ini adalah contoh notes yang dibuat oleh user oleh karenanya wajib dirender"
       },
     });
   };

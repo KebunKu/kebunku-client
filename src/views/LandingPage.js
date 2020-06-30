@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   Button,
   AsyncStorage,
+  StatusBar,
 } from 'react-native';
 import styles from '../style/loginStyle';
 import { useNavigation } from '@react-navigation/native';
@@ -44,7 +45,6 @@ export default function LandingPage() {
           style={styles.inputBox}
           placeholder="Name"
           placeholderTextColor="#828282"
-          // selectionColor="#FFFFFF"
           onChange={(e) => setName(e.nativeEvent.text)}
         />
       );
@@ -134,7 +134,7 @@ export default function LandingPage() {
     if (register) {
       return (
         <View>
-          <Text style={styles.textBig}>Let's Get Started!</Text>
+          <Text style={styles.started}>Let's Get Started!</Text>
           <Text style={styles.textMini}>
             Create a new account and start gardening
           </Text>
@@ -144,7 +144,7 @@ export default function LandingPage() {
       return (
         <View>
           <Text style={styles.textSmall}>Welcome On</Text>
-          <Text style={styles.textBig}>Kebunku</Text>
+          <Text style={styles.textBig}>KEBUNKU</Text>
         </View>
       );
     }
@@ -152,14 +152,11 @@ export default function LandingPage() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.RegLogLogoBox}>
+      <StatusBar hidden={true} />
+      <View>
         <Image
-          style={styles.RegLogLogoImg}
-          source={{
-            // Logo di Ganti ??
-            uri:
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRgUbNj4M940krAk__eEii1OBGaaRAgA7mfcw&usqp=CAU',
-          }}
+          style={styles.element}
+          source={require('../../assets/image/element/daun.png')}
         />
       </View>
 
@@ -196,9 +193,16 @@ export default function LandingPage() {
 
       {LoginGoogle()}
 
-      <TouchableOpacity onPress={regLogHandle}>
+      <TouchableOpacity onPress={regLogHandle} style={{ marginTop: 8 }}>
         <Text>{textRegLog}</Text>
       </TouchableOpacity>
+
+      <View>
+        <Image
+          style={styles.elementBottom}
+          source={require('../../assets/image/element/daun.png')}
+        />
+      </View>
     </View>
   );
 }

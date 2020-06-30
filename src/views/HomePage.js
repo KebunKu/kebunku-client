@@ -35,8 +35,11 @@ export default function HomePage() {
   // PROPS
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.scroll}>
+      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
+        
         <PlantToWaterBox />
+
+        <View style={styles.divider}></View>
 
         {/* Yang di bawah ini Komponen My Fruits */}
 
@@ -51,6 +54,8 @@ export default function HomePage() {
           <FruitsCard />
         </View>
 
+        <View style={{marginBottom: 1}}><Text></Text></View>
+
         {/* Yang di bawah ini Komponen My Vegetable */}
 
         <View style={styles.fruitContainer}>
@@ -63,6 +68,8 @@ export default function HomePage() {
         <View style={styles.fruitContainer}>
           <VegetablesCard />
         </View>
+
+        <View style={{marginBottom: 30}}><Text></Text></View>
       </ScrollView>
     </View>
   );
