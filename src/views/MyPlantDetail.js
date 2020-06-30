@@ -17,11 +17,13 @@ import detailImage from '../../assets/image/detail/detailImage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function MyPlantDetail({ route, navigation }) {
-  const [plant, setPlant] = useState('');
+  const [plant, setPlant] = useState({});
 
   useEffect(() => {
     setPlant(route.params.obj);
-  }, []);
+  }, [route.params.obj]);
+
+
 
   const backBtn = () => {
     console.log('masuuuukopjj');
@@ -36,6 +38,8 @@ export default function MyPlantDetail({ route, navigation }) {
     }
   }
 
+console.log(plant, "plant <++++++++++++<")
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -47,7 +51,7 @@ export default function MyPlantDetail({ route, navigation }) {
                 style={styles.backBtn}
               />
             </TouchableOpacity>
-            <Text style={styles.paragrafTitle}>{plant.name}</Text>
+            <Text style={styles.paragrafTitle}>{plant.PlantId.name}</Text>
             <Text style={styles.subtitle}>Umur</Text>
             <Text style={styles.plantAge}>{plant.age} days old</Text>
 

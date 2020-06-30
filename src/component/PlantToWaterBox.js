@@ -6,8 +6,8 @@ import PlantCard from '../component/PlantCard'
 export default function PlantToWaterBox() {
   return (
     <View style={styles.waterToday}>
-      <Text style={styles.heloUsername}>Hello Brandon,</Text>
-      <Text style={styles.planToWater}>You Have 5 plants to water today</Text>
+      <Text style={styles.heloUsername}>Halo Amir,</Text>
+      <Text style={styles.planToWater}>5 tanaman belum disiram hari ini</Text>
       <ScrollView horizontal style={styles.horizontalScroll} showsHorizontalScrollIndicator={false}>
         <PlantCard />
       </ScrollView>

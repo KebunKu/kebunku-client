@@ -13,7 +13,7 @@ const userPlantReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: payload.loading,
-        plantList: payload.data,
+        myPlant: payload.data,
         error: payload.error,
       };
     default:

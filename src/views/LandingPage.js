@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Platform,
   StyleSheet,
@@ -20,9 +20,21 @@ import { userRegister } from '../store/actions/index';
 import axios from 'axios';
 
 const Stack = createStackNavigator();
+
 export default function LandingPage() {
-  const dispatch = useDispatch()
+  // const [loggedIn, setLoggedIn] = useState(false);
+
+  const dispatch = useDispatch();
   const navigation = useNavigation();
+
+  useEffect(() => {
+    AsyncStorage.getItem('token').then((result) => {
+      console.log(result, 'token habis logout');
+      if (result) {
+        navigation.navigate('Home');
+      }
+    });
+  }, []);
 
   const [register, setRegister] = useState(false);
   const [textRegLog, setText] = useState('Didnt Have Account? Sign up');
@@ -86,43 +98,51 @@ export default function LandingPage() {
 
   const btnHandle = function () {
     if (!register) {
-      navigation.navigate('Home')
       return axios
-      .post('http://localhost:3000/login', {
-      email: email,
-      password: password
-    })
-    .then((result) => {
-      AsyncStorage.setItem(
-        'token',
-        result.data.token
-      );
-      console.log(result.data.token)
-      setName('')
-      setEmail('')
-      setPassword('')
-      setConPassword('')
-    }).catch((err) => {
-      console.log(err.message)
-    });
+        .post('http://192.168.43.189:3000/login', {
+          email: email,
+          password: password,
+        })
+        .then((result) => {
+          if (result.data.token) {
+            AsyncStorage.setItem('token', result.data.token);
+            AsyncStorage.setItem('name', result.data.name);
+            AsyncStorage.setItem('email', result.data.email);
+            console.log(result.data);
+
+            AsyncStorage.getItem('token').then((result) => {
+              console.log(result, 'token login ==========');
+            });
+            // setLoggedIn(true);
+            setName('');
+            setEmail('');
+            setPassword('');
+            setConPassword('');
+            navigation.navigate('Home');
+          }
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
     } else {
       if ((name, email, password, conPassword)) {
         if (password === conPassword) {
           return axios
-            .post('http://localhost:3000/register', {
-            name: name,
-            email: email,
-            password: password
-          })
-          .then((result) => {
-            console.log(result.data)
-            setName('')
-            setEmail('')
-            setPassword('')
-            setConPassword('')
-          }).catch((err) => {
-            console.log(err.message)
-          });
+            .post('http://192.168.43.189:3000/register', {
+              name: name,
+              email: email,
+              password: password,
+            })
+            .then((result) => {
+              console.log(result.data);
+              setName('');
+              setEmail('');
+              setPassword('');
+              setConPassword('');
+            })
+            .catch((err) => {
+              console.log(err.message);
+            });
         } else {
           setValid('Please Input You data Correctly');
         }
@@ -143,7 +163,7 @@ export default function LandingPage() {
     } else {
       return (
         <View>
-          <Text style={styles.textSmall}>Welcome On</Text>
+          <Text style={styles.textSmall}>Selamat Datang di</Text>
           <Text style={styles.textBig}>KEBUNKU</Text>
         </View>
       );

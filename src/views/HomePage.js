@@ -44,9 +44,9 @@ export default function HomePage() {
         {/* Yang di bawah ini Komponen My Fruits */}
 
         <View style={styles.fruitContainer}>
-          <Text style={styles.fruitTitle}>Fruits</Text>
+          <Text style={styles.fruitTitle}>Buah</Text>
           <TouchableOpacity onPress={() => toAllFruit()}>
-            <Text style={styles.seeAllBtn}>See All</Text>
+            <Text style={styles.seeAllBtn}>Lihat Semua</Text>
           </TouchableOpacity>
         </View>
 
@@ -59,9 +59,9 @@ export default function HomePage() {
         {/* Yang di bawah ini Komponen My Vegetable */}
 
         <View style={styles.fruitContainer}>
-          <Text style={styles.fruitTitle}>Vegetables</Text>
+          <Text style={styles.fruitTitle}>Sayuran</Text>
           <TouchableOpacity onPress={() => toAllVegetable()}>
-            <Text style={styles.seeAllBtn}>See All</Text>
+            <Text style={styles.seeAllBtn}>Lihat Semua</Text>
           </TouchableOpacity>
         </View>
 

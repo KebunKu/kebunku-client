@@ -16,17 +16,17 @@ export const fetchAllMyPlant = () => {
     AsyncStorage.getItem('token', (err, result) => {
       axios({
         method: 'GET',
-        url: 'http://localhost:3000/userplant',
+        url: 'http://192.168.43.189:3000/userplant',
         headers: {
           token: result
         }
       })
       .then(({ data }) => {
-        console.log(data, 'INI DATA USER PLANT')
+        // console.log(data.UserPlant, 'INI DATA USER PLANT')
         dispatch({
           type: FETCH_All_USER_PLANT,
           payload: {
-            data: data.Plants,
+            data: data.UserPlant,
             error: false,
             loading: false,
           },

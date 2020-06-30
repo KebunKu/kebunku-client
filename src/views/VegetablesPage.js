@@ -27,10 +27,13 @@ export default function VegetablesPage() {
   const error = useSelector((state) => state.plantReducer.error);
   const loading = useSelector((state) => state.plantReducer.loading);
 
+  console.log(plantList, "plantlist vegetable =========")
+
   const vegetableList = plantList.filter((element) => {
     return element.category == 'Sayuran';
   });
 
+  console.log(vegetableList, "vegetableList =========")
   return (
     <View style={styles.container}>
       <ScrollView>

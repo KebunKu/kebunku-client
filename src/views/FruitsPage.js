@@ -11,13 +11,14 @@ import {
   ScrollView,
   TouchableOpacity,
   Button,
-  AsyncStorage,
+  ImageBackground,
 } from 'react-native';
 import BottomNavBar from '../component/BottomNavBar';
 import FruitPageCard from '../component/FruitPageCard';
 
-export default async function FruitsPage() {
+export default function FruitPage() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchAllPlant());
   }, [dispatch]);
@@ -26,10 +27,13 @@ export default async function FruitsPage() {
   const error = useSelector((state) => state.plantReducer.error);
   const loading = useSelector((state) => state.plantReducer.loading);
 
+  console.log(plantList, "plantlist vegetable =========")
+
   const fruitList = plantList.filter((element) => {
     return element.category == 'Buah';
   });
 
+  console.log(fruitList, "vegetableList =========")
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -42,12 +46,7 @@ export default async function FruitsPage() {
             ) : (
               <>
                 {fruitList.map((fruit, i) => {
-                  return (
-                    <FruitPageCard
-                      key={i}
-                      fruit={fruit}
-                    />
-                  );
+                  return <FruitPageCard key={i} fruit={fruit} />;
                 })}
               </>
             )}

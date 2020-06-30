@@ -10,7 +10,7 @@ export const postUserPlant = (PlantId) => {
     
       axios({
         method: 'POST',
-        url: 'http://localhost:3000/userplant',
+        url: 'http://192.168.43.189:3000/userplant',
         // mungkin nanti Object Plant keseluruhan ?
         data: {PlantId},
         headers: {

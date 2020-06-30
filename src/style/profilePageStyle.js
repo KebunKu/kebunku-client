@@ -63,10 +63,10 @@ export default StyleSheet.create({
   },
 
   fruitContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     backgroundColor: '#E5F8EF',
     marginTop: hp('2%'),
+    marginRight: wp('3%'),
+    height: hp('30%')
   },
 
   overlay: {
@@ -91,6 +91,7 @@ export default StyleSheet.create({
     width: "100%",
     height: "100%",
     resizeMode: "cover",
+    
     flex:1, 
   },
 

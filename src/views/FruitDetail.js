@@ -50,12 +50,12 @@ export default function FruitDetail({ route }) {
   };
 
   const plantThis = function (PlantId) {
-    return dispatch(postUserPlant('5ef978cfa4dd0e33b0deadd7'))
+    return dispatch(postUserPlant(PlantId))
   }
   
   const toogleFav = async function (PlantId) {
-    if (!favor) return dispatch(postFavorite('5ef978cfa4dd0e33b0deadd7'))
-    return dispatch(deleteFavorite('5ef978cfa4dd0e33b0deadd7'))
+    if (!favor) return dispatch(postFavorite(PlantId))
+    return dispatch(deleteFavorite(PlantId))
   };
 
   const checkIfFavorBot = function () {
@@ -73,7 +73,7 @@ export default function FruitDetail({ route }) {
       );
     } else {
       return (
-        <TouchableOpacity onPress={()=> toogleFav(fruit.name, fruit.scientific_name)}>
+        <TouchableOpacity onPress={()=> toogleFav(fruit._id)}>
           <View style={styles.actionFavFalse}>
             <MaterialCommunityIcons
               name="bookmark"
@@ -124,7 +124,7 @@ export default function FruitDetail({ route }) {
 
         {checkIfFavorBot()}
 
-        <TouchableOpacity onPress={()=> plantThis(fruit.name, fruit.scientific_name)}>
+        <TouchableOpacity onPress={()=> plantThis(fruit._id)}>
           <View style={styles.actionPlant}>
             <MaterialCommunityIcons
               name="spa-outline"

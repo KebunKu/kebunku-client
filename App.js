@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import { AsyncStorage } from 'react-native';
 import {
   LandingPage,
   HomePage,
@@ -15,16 +15,21 @@ import {
 } from './src/views';
 import { Provider } from 'react-redux';
 import store from './src/store/index';
+import { useNavigation } from '@react-navigation/native';
 import registerForPushNotifications from './registerforPushNotificationsAsync';
 
+// const navigation = useNavigation()
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const HomeNavigator = () => {
-
-  useEffect( () => {
-    registerForPushNotifications();
-  }, [])
+  const navigation = useNavigation()
+  useEffect(() => {
+    // registerForPushNotifications();
+    if (AsyncStorage.getItem('token')) {
+      navigation.navigate('Home');
+    }
+  }, []);
 
   return (
     <Stack.Navigator initialRouteName="Landing">
