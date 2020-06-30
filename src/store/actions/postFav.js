@@ -5,7 +5,7 @@ import { AsyncStorage } from 'react-native';
 export const POST_FAVORITE = 'POST_FAVORITE';
 
 export const postFavorite = (PlantId) => {
-  console.log('masuk')
+  console.log('masuk ========')
   return (dispatch) => {
     AsyncStorage.getItem('token', (err, result) => {
       axios({

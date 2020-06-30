@@ -108,10 +108,10 @@ export default function LandingPage() {
             AsyncStorage.setItem('token', result.data.token);
             AsyncStorage.setItem('name', result.data.name);
             AsyncStorage.setItem('email', result.data.email);
-            console.log(result.data);
+            // console.log(result.data);
 
             AsyncStorage.getItem('token').then((result) => {
-              console.log(result, 'token login ==========');
+              // console.log(result, 'token login ==========');
             });
             // setLoggedIn(true);
             setName('');
@@ -134,7 +134,7 @@ export default function LandingPage() {
               password: password,
             })
             .then((result) => {
-              console.log(result.data);
+              // console.log(result.data);
               setName('');
               setEmail('');
               setPassword('');

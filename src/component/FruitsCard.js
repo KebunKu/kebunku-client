@@ -53,7 +53,7 @@ export default function FruitsCard() {
 
   return (
     // React fragment sementara biar bisa liat kalau data nya banyak
-    <>
+    <View style={styles.container}>
       <TouchableOpacity onPress={() => toApplePage()}>
         <View style={styles.overlay}>
           <Text></Text>
@@ -79,6 +79,6 @@ export default function FruitsCard() {
         </View>
         <Text style={styles.fruitCardTitle}>Anggur</Text>
       </TouchableOpacity>
-    </>
+    </View>
   );
 }

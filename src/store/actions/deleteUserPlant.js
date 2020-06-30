@@ -1,10 +1,10 @@
 import axios from 'axios';
-import {fetchAllFav} from './getAllFav'
+import {fetchAllMyPlant} from './getUserPlant'
 import { AsyncStorage } from 'react-native';
 
 export const DELETE_USER_PLANT = 'DELETE_USER_PLANT';
 
-export const deleteFavorite = (id) => {
+export const deleteUserPlant = (id) => {
   
   return (dispatch) => {
     AsyncStorage.getItem('token', (err, result) => {
@@ -16,7 +16,7 @@ export const deleteFavorite = (id) => {
         }
       })
       .then(({ data }) => {
-        dispatch(fetchAllFav())
+        dispatch(fetchAllMyPlant())
       })
       .catch((error) => {
         console.log(error)

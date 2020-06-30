@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Platform,
   StyleSheet,
@@ -14,13 +14,29 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import allPlantImage from '../../assets/image/allPlant/allPlantImage';
 import styles from '../style/fruitPageCardStyle';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAllFav } from '../store/actions';
 
 export default function FruitPageCard(props) {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
+  const [favor, setFavor] = useState(false);
+  const myFav = useSelector((state) => state.favReducer.favList);
+  
+
+  useEffect(() => {
+    dispatch(fetchAllFav());
+  }, [dispatch]);
 
   const toDetailPage = (obj) => {
+    for (let i = 0; i < myFav.length; i++) {
+      if (myFav[i].PlantId._id === obj._id) {
+        setFavor(true);
+      }
+    }
     navigation.navigate('FruitDetail', {
-      obj,
+      obj, favor
     });
   };
 

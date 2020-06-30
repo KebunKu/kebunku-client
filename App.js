@@ -23,7 +23,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const HomeNavigator = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   useEffect(() => {
     // registerForPushNotifications();
     if (AsyncStorage.getItem('token')) {
@@ -48,6 +48,15 @@ const HomeNavigator = () => {
         name="FruitsPage"
         component={FruitsPage}
         options={{ title: 'Fruits', headerTitleAlign: 'center' }}
+      />
+      <Stack.Screen
+        name="MyPlant"
+        component={MyPlantDetail}
+        options={{
+          title: 'My Plant',
+          headerTitleAlign: 'center',
+          headerShown: false,
+        }}
       />
       <Stack.Screen
         name="FruitDetail"

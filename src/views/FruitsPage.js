@@ -27,13 +27,13 @@ export default function FruitPage() {
   const error = useSelector((state) => state.plantReducer.error);
   const loading = useSelector((state) => state.plantReducer.loading);
 
-  console.log(plantList, "plantlist vegetable =========")
+  // console.log(plantList, "plantlist vegetable =========")
 
   const fruitList = plantList.filter((element) => {
     return element.category == 'Buah';
   });
 
-  console.log(fruitList, "vegetableList =========")
+  // console.log(fruitList, "vegetableList =========")
   return (
     <View style={styles.container}>
       <ScrollView>

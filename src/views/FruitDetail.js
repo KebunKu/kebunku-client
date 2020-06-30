@@ -13,23 +13,25 @@ import {
   AsyncStorage,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { postFavorite, deleteFavorite, postUserPlant } from '../store/actions/index';
+
+import {
+  postFavorite,
+  deleteFavorite,
+  postUserPlant,
+} from '../store/actions/index';
 import styles from '../style/fruitDetailStyle';
 import detailImage from '../../assets/image/detail/detailImage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function FruitDetail({ route }) {
-  const [fruit, setFruit] = useState('');
+  const fruit = route.params.obj
+  const favor = route.params.favor;
+
+  console.log(fruit, "ini fruit =======")
+
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    setFruit(route.params.obj);
-  }, []);
-
-  // math random cuma ilustrasi untuk nanti kan data data nya berbeda beda
-  let favor = true;
-  // let rng = Math.ceil(Math.random() * 6);
-  // if (rng > 3) favor = true;
+  const myFav = useSelector((state) => state.favReducer.favList);
 
   const checkIfFavorTop = function () {
     // TESTING IF PROPS APAAN GITU NTAR IJO / PUTIH
@@ -50,18 +52,18 @@ export default function FruitDetail({ route }) {
   };
 
   const plantThis = function (PlantId) {
-    return dispatch(postUserPlant(PlantId))
-  }
-  
+    return dispatch(postUserPlant(PlantId));
+  };
+
   const toogleFav = async function (PlantId) {
-    if (!favor) return dispatch(postFavorite(PlantId))
-    return dispatch(deleteFavorite(PlantId))
+    if (!favor) return dispatch(postFavorite(PlantId));
+    return dispatch(deleteFavorite(PlantId));
   };
 
   const checkIfFavorBot = function () {
-    if (favor) {
+    if (!favor) {
       return (
-        <TouchableOpacity onPress={()=> toogleFav(fruit.name, fruit.scientific_name)}>
+        <TouchableOpacity onPress={() => toogleFav(fruit._id)}>
           <View style={styles.actionFavFalse}>
             <MaterialCommunityIcons
               name="bookmark-outline"
@@ -73,7 +75,7 @@ export default function FruitDetail({ route }) {
       );
     } else {
       return (
-        <TouchableOpacity onPress={()=> toogleFav(fruit._id)}>
+        <TouchableOpacity onPress={() => toogleFav(fruit._id)}>
           <View style={styles.actionFavFalse}>
             <MaterialCommunityIcons
               name="bookmark"
@@ -98,7 +100,7 @@ export default function FruitDetail({ route }) {
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* <View style={styles.header}> */}
-        <Text style={styles.headerText}>How To Plant {fruit.name}</Text>
+        <Text style={styles.headerText}>{fruit.name}</Text>
         {checkIfFavorTop()}
         {/* </View> */}
         <Image style={styles.detailImg} source={image} />
@@ -124,7 +126,7 @@ export default function FruitDetail({ route }) {
 
         {checkIfFavorBot()}
 
-        <TouchableOpacity onPress={()=> plantThis(fruit._id)}>
+        <TouchableOpacity onPress={() => plantThis(fruit._id)}>
           <View style={styles.actionPlant}>
             <MaterialCommunityIcons
               name="spa-outline"

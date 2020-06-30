@@ -26,7 +26,7 @@ export const fetchAllFav = () => {
         dispatch({
           type: FETCH_All_FAV,
           payload: {
-            data: data.Plants,
+            data: data.UserFav,
             error: false,
             loading: false,
           },

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Platform,
   StyleSheet,
@@ -12,10 +12,21 @@ import {
   ImageBackground,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllMyPlant } from '../store/actions';
+import detailImage from '../../assets/image/detail/detailImage';
 import styles from '../style/plantCardStyle';
 
 const PlantCard = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllMyPlant());
+  }, [dispatch]);
+
+  const myPlant = useSelector((state) => state.userPlantReducer.myPlant);
+  console.log(myPlant, '======dari plantcard');
 
   const toDetailPage = () => {
     navigation.navigate('MyPlant', {
@@ -25,71 +36,43 @@ const PlantCard = () => {
         status: 'hidup',
         reminder: 7,
         pupuk: 'Pupuk cap 3 roda',
-        notes: "Ini adalah contoh notes yang dibuat oleh user oleh karenanya wajib dirender"
+        notes:
+          'Ini adalah contoh notes yang dibuat oleh user oleh karenanya wajib dirender',
       },
     });
   };
 
+  let image;
+
   return (
     <>
-      <TouchableOpacity onPress={() => toDetailPage()} >
-        <View style={styles.containerCard}>
-          <View style={styles.card}>
-            <ImageBackground
-              style={styles.cardImage}
-              source={require('../../assets/image/detail/Apel.jpg')}></ImageBackground>
-          </View>
-          <Text style={styles.cardTitle}>Apel</Text>
-        </View>
-      </TouchableOpacity>
+      {!myPlant.length ? (
+        <Text style={{ marginTop: 15 }}>Belum menanam</Text>
+      ) : (
+        <>
+          {myPlant.map((plant, i) => {
+            for (let i = 0; i < detailImage.length; i++) {
+              if (detailImage[i].imgName === plant.PlantId.name) {
+                image = detailImage[i].uri;
+              }
+            }
 
-      <TouchableOpacity onPress={() => toDetailPage()}>
-        <View style={styles.containerCard}>
-          <View style={styles.card}>
-            <ImageBackground
-              style={styles.cardImage}
-              source={require('../../assets/image/detail/Anggur.jpg')}></ImageBackground>
-          </View>
-          <Text style={styles.cardTitle}>Anggur</Text>
-        </View>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => toDetailPage()}>
-        <View style={styles.containerCard}>
-          <View style={styles.card}>
-            <ImageBackground
-              style={styles.cardImage}
-              source={require('../../assets/image/detail/Sawi.jpg')}></ImageBackground>
-          </View>
-          <Text style={styles.cardTitle}>Sawi</Text>
-        </View>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => toDetailPage()}>
-        <View style={styles.containerCard}>
-          <View style={styles.card}>
-            <ImageBackground
-              style={styles.cardImage}
-              source={require('../../assets/image/detail/Selada.jpg')}></ImageBackground>
-          </View>
-          <Text style={styles.cardTitle}>Selada</Text>
-        </View>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => toDetailPage()}>
-        <View style={styles.containerCard}>
-          <View style={styles.card}>
-            <ImageBackground
-              style={styles.cardImage}
-              source={require('../../assets/image/detail/Jeruk.jpg')}></ImageBackground>
-          </View>
-          <Text style={styles.cardTitle}>Jeruk</Text>
-        </View>
-      </TouchableOpacity>
-
+            return (
+              <TouchableOpacity key={i} onPress={() => toDetailPage()}>
+                <View style={styles.containerCard}>
+                  <View style={styles.card}>
+                    <ImageBackground
+                      style={styles.cardImage}
+                      source={image}></ImageBackground>
+                  </View>
+                  <Text style={styles.cardTitle}>{plant.PlantId.name}</Text>
+                </View>
+              </TouchableOpacity>
+            );
+          })}
+        </>
+      )}
     </>
-
-    
   );
 };
 
