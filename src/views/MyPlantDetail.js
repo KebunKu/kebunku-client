@@ -73,7 +73,10 @@ export default function MyPlantDetail({ route, navigation }) {
         </View>
 
         <TouchableOpacity onPress={() => toMyPlantDetail()}
-        style={{width: 100}}
+
+     
+
+        // style={{width: 100}}
         >
           <Text style={styles.cardSeeDetail}> Sudah di siram </Text>
         </TouchableOpacity>
