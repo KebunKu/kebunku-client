@@ -8,7 +8,7 @@ export default function PlantToWaterBox() {
     <View style={styles.waterToday}>
       <Text style={styles.heloUsername}>Hello Brandon,</Text>
       <Text style={styles.planToWater}>You Have 5 plants to water today</Text>
-      <ScrollView horizontal style={styles.horizontalScroll}>
+      <ScrollView horizontal style={styles.horizontalScroll} showsHorizontalScrollIndicator={false}>
         <PlantCard />
       </ScrollView>
     </View>

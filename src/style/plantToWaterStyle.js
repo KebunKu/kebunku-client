@@ -1,65 +1,27 @@
-import {StyleSheet} from 'react-native'
+import { StyleSheet } from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
-
-  waterToday: {
-    backgroundColor: '#F7F7F5',
-    // width: 360,
-  },
 
   heloUsername: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginTop: 8,
-    marginLeft: 16
-  },
-
-  horizontalScroll: {
-    flexDirection:'row',
-    marginTop: 8,
+    marginTop: hp('2%'),
+    paddingLeft: wp('3%'),
   },
 
   planToWater: {
-    // marginTop: 4,
-    marginLeft: 16,
     fontSize: 16,
-    color: '#C4C4C4',
+    color: '#A7A7A7',
+    paddingLeft: wp('3%'),
   },
 
-  waterTodayText: {
-    fontSize: 24,
-    fontWeight: 'bold',
+  horizontalScroll: {
+    flexDirection: 'row',
+    marginTop: 8,
+    paddingLeft: wp('3%'),
   },
-
-  containerCard: {
-    marginLeft:16,
-    // borderRadius:16,
-  },
-
-  card: {
-    width:80,
-    height:80,
-    borderRadius:45,
-    overflow : "hidden",
-    borderColor: '#00B761',
-    borderWidth: 3
-  },
-
-  cardTitle: {
-    fontSize:13,
-    fontWeight:'bold',
-    color:'#000000',
-    marginTop:12,
-    textAlign:'center',
-    marginTop: 0,
-  },
-
-  cardImage: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "cover",
-    // borderRadius:16,
-    flex:1,
-  },
-
-})
+});

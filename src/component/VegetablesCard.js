@@ -40,25 +40,33 @@ export default function VegetablesCard() {
   return (
     <>
       <TouchableOpacity onPress={() => toTomatPage()}>
-        <View style={styles.fruitCard}>
+      <View style={styles.overlay}>
+          <Text></Text>
+        </View>
+        <View style={styles.vegeCard}>
           <ImageBackground
-            style={styles.fruitCardImage}
+            style={styles.vegeCardImage}
             source={require('../../assets/image/detail/Tomat.jpg')}
           >
-            <Text style={styles.fruitCardTitle}>Tomat</Text>
+            
           </ImageBackground>
         </View>
+        <Text style={styles.vegeCardTitle}>Tomat</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => toWortelPage()}>
+      <View style={styles.overlay}>
+          <Text></Text>
+        </View>
         <View style={styles.fruitCard}>
           <ImageBackground
             style={styles.fruitCardImage}
             source={require('../../assets/image/detail/Wortel.jpg')}
           >
-            <Text style={styles.fruitCardTitle}>Wortel</Text>
+           
           </ImageBackground>
         </View>
+        <Text style={styles.fruitCardTitle}>Wortel</Text>
       </TouchableOpacity>
     </>
   );
