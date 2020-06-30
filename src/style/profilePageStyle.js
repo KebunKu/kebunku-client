@@ -1,80 +1,106 @@
-import {StyleSheet} from 'react-native'
+import { StyleSheet } from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+    backgroundColor: '#E5F8EF',
+    paddingHorizontal: wp('3%'),
   },
   header: {
     flexDirection: 'row',
   },
-  headerBoxInfo: {
-    width: 172,
-  },
   tinyLogo: {
-    width: 88,
-    height: 88,
-    borderRadius: 45,
-    margin:16,
+    width: wp('23%'),
+    height: hp('13%'),
+    borderRadius: wp('50%'),
+    marginTop: hp('2%'),
+    borderWidth: wp('1%'),
+    borderColor: '#00B761',
   },
+  headerBoxInfo: {
+    width: wp('70%'),
+    marginLeft: wp('6%'),
+  },
+
   textName: {
-    marginTop: 24,
-    fontSize: 18,
-    textAlign: 'center',
+    marginTop: hp('2%'),
+    fontSize: wp('7%'),
+    textAlign: 'left',
+    borderColor: 'red',
+    fontWeight: 'bold',
   },
 
   textEmail: {
-    color: '#828282',
-    textAlign: 'center',
+    color: '#A7A7A7',
+    textAlign: 'left',
+    fontSize: wp('4%'),
   },
 
   boxNumPlant: {
-    backgroundColor: '#FDEFAB',
-    borderRadius:10,
-    textAlign: 'center',
-    
+    backgroundColor: '#BCECD6',
+    borderRadius: wp('10%'),
+    width: wp('65%'),
+    height: hp('3.5%'),
+    marginTop: hp('1%'),
+    marginLeft: -wp('3%'),
+    paddingLeft: wp('3%'),
   },
 
   textNumPlant: {
-    color: '#828282'
-  },
-
-  cardBox: {
-    // backgroundColor: 'red',
-    width: 290,
-    height: 290,
-    flex: 1,
-    flexDirection:'row',
-    flexWrap: 'wrap'
-  },
-
-  card: {
-    // backgroundColor: 'yellow',
-    width: 129,
-    height: 129,
-    margin: 8,
-    borderWidth: 1,
-    borderColor: '#828282', 
-    borderRadius: 10  
-  },
-
-  myPlantImg: {
-    width: 127,
-    height: 88,
-    borderRadius: 8,
-    // margin:16,
-  },
-
-  cardTextName: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    textAlign: 'center'
-  },
-
-  cardSeeDetail: {
     color: '#00B761',
-    fontSize: 14,
-    textAlign: 'center'
-  }
-})
+    textAlign: 'left',
+    marginTop: hp('0.3%'),
+    fontSize: wp('3.5%'),
+  },
+
+  myPlant: {
+    marginTop: hp('2%'),
+    fontSize: wp('4%'),
+  },
+
+  fruitContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#E5F8EF',
+    marginTop: hp('2%'),
+  },
+
+  overlay: {
+    borderRadius: wp('3%'),
+    width: wp("45%"),
+    height: hp("30%"),
+    backgroundColor: '#00000050',
+    opacity: 100,
+    marginBottom: -hp('30%'),
+    zIndex: 2
+  },
+
+  fruitCard: {
+    overflow : "hidden",
+    borderRadius: wp('3%'),
+    width: wp("45%"),
+    height: hp("30%"),
+    marginBottom: -hp('30%'),
+  },
+
+  fruitCardImage: {
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover",
+    flex:1, 
+  },
+
+  fruitCardTitle: {
+    fontSize: hp('3%'),
+    fontWeight:'bold',
+    color:'white',
+    marginTop: -hp('30%'),
+    paddingLeft: 16,
+    marginTop: hp('25%'),
+    zIndex: 4
+  },
+});

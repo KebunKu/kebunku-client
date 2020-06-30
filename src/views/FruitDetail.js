@@ -11,45 +11,58 @@ import {
   Button,
   ImageBackground,
 } from 'react-native';
-import { color } from 'react-native-reanimated';
+import { useDispatch, useSelector } from 'react-redux';
+import { postFavorite, deleteFavorite } from '../store/actions/index';
 import styles from '../style/fruitDetailStyle';
 import detailImage from '../../assets/image/detail/detailImage';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function FruitDetail({ route }) {
   const [fruit, setFruit] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setFruit(route.params.obj);
   }, []);
 
   // math random cuma ilustrasi untuk nanti kan data data nya berbeda beda
-  let favor = false;
-  let rng = Math.ceil(Math.random() * 6);
-  if (rng > 3) favor = true;
+  let favor = true;
+  // let rng = Math.ceil(Math.random() * 6);
+  // if (rng > 3) favor = true;
 
   const checkIfFavorTop = function () {
     // TESTING IF PROPS APAAN GITU NTAR IJO / PUTIH
-    if (favor) return <View style={styles.boxFavTrue}></View>;
-    return <View style={styles.boxFavFalse}></View>;
+    if (favor)
+      return (
+        <TouchableOpacity style={styles.boxFav} onPress={() => toogleFav()}>
+          <MaterialCommunityIcons name="bookmark" style={styles.saveBtnTrue} />
+        </TouchableOpacity>
+      );
+    return (
+      <TouchableOpacity style={styles.boxFav} onPress={() => toogleFav()}>
+        <MaterialCommunityIcons
+          name="bookmark-outline"
+          style={styles.saveBtnTrue}
+        />
+      </TouchableOpacity>
+    );
   };
   //
-  const toogleFav = function () {
-    // kurang lebih nya dia nembak API ngirim data Lawan dari Favorite True atau False > Edit >
-    // Fect Dispatch data ambil yg paling baru
-    console.log(!favor);
+  const toogleFav = function (UserId, PlantId) {
+    // PERINNGATAAAAN INI TESTTING KARENA GUA BLOM BISA DAPT REQ.CURRENTIDUSER yang LOGIN
+    // Tapi Login Regist udah dapet token
+    if (!favor) return dispatch(postFavorite('5ef978cfa4dd0e33b0deadd7', '5ef978cfa4dd0e33b0deadd7'))
+    return dispatch(deleteFavorite('5ef978cfa4dd0e33b0deadd7'))
   };
 
   const checkIfFavorBot = function () {
     if (favor) {
       return (
-        <TouchableOpacity onPress={toogleFav}>
+        <TouchableOpacity onPress={()=> toogleFav(fruit.name, fruit.scientific_name)}>
           <View style={styles.actionFavFalse}>
-            <Image
-              style={styles.navMenuIcon}
-              source={{
-                uri:
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT8DxmsZBNcFIqvft4wi5XcbaoCQ-zZNKoKTw&usqp=CAU',
-              }}
+            <MaterialCommunityIcons
+              name="bookmark-outline"
+              style={styles.saveBtnBottom}
             />
             <Text style={styles.actionText}>Favourite</Text>
           </View>
@@ -57,14 +70,11 @@ export default function FruitDetail({ route }) {
       );
     } else {
       return (
-        <TouchableOpacity onPress={toogleFav}>
+        <TouchableOpacity onPress={()=> toogleFav(fruit.name, fruit.scientific_name)}>
           <View style={styles.actionFavFalse}>
-            <Image
-              style={styles.navMenuIcon}
-              source={{
-                uri:
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRpMm9lbXCcUmtmlvkuEdMvjZNjL_6pqo9V4Q&usqp=CAU',
-              }}
+            <MaterialCommunityIcons
+              name="bookmark"
+              style={styles.saveBtnBottom}
             />
             <Text style={styles.actionText}>Favourite</Text>
           </View>
@@ -83,15 +93,12 @@ export default function FruitDetail({ route }) {
 
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>How To Plant {fruit.name}</Text>
-          {checkIfFavorTop()}
-        </View>
-        <Image
-          style={styles.detailImg}
-          source={image}
-        />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {/* <View style={styles.header}> */}
+        <Text style={styles.headerText}>How To Plant {fruit.name}</Text>
+        {checkIfFavorTop()}
+        {/* </View> */}
+        <Image style={styles.detailImg} source={image} />
         <Text style={styles.paragrafTitle}>Nama Buah</Text>
         <Text style={styles.paragrafText}>{fruit.name}</Text>
 
@@ -116,12 +123,9 @@ export default function FruitDetail({ route }) {
 
         <TouchableOpacity>
           <View style={styles.actionPlant}>
-            <Image
-              style={styles.navMenuIcon}
-              source={{
-                uri:
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT8DxmsZBNcFIqvft4wi5XcbaoCQ-zZNKoKTw&usqp=CAU',
-              }}
+            <MaterialCommunityIcons
+              name="spa-outline"
+              style={styles.saveBtnBottom}
             />
             <Text style={styles.actionText}>Plant This</Text>
           </View>

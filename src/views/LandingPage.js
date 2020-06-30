@@ -9,14 +9,19 @@ import {
   ScrollView,
   TouchableOpacity,
   Button,
+  StatusBar,
 } from 'react-native';
 import styles from '../style/loginStyle';
 import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { useDispatch, useSelector } from 'react-redux';
+import { userRegister } from '../store/actions/index';
+import axios from 'axios';
 
 const Stack = createStackNavigator();
 
 export default function LandingPage() {
+  const dispatch = useDispatch()
   const navigation = useNavigation();
 
   const [register, setRegister] = useState(false);
@@ -40,7 +45,6 @@ export default function LandingPage() {
           style={styles.inputBox}
           placeholder="Name"
           placeholderTextColor="#828282"
-          // selectionColor="#FFFFFF"
           onChange={(e) => setName(e.nativeEvent.text)}
         />
       );
@@ -82,13 +86,39 @@ export default function LandingPage() {
 
   const btnHandle = function () {
     if (!register) {
-      // Sementara langsung ke HomePage
-      // console.log('brati ntar nembak post LOGIN');
-      navigation.navigate('Home');
+      navigation.navigate('Home')
+      return axios
+      .post('http://localhost:3000/login', {
+      email: email,
+      password: password
+    })
+    .then((result) => {
+      console.log(result.data)
+      setName('')
+      setEmail('')
+      setPassword('')
+      setConPassword('')
+    }).catch((err) => {
+      console.log(err.message)
+    });
     } else {
       if ((name, email, password, conPassword)) {
         if (password === conPassword) {
-          console.log('brati ntar nembak post REGISTER');
+          return axios
+            .post('http://localhost:3000/register', {
+            name: name,
+            email: email,
+            password: password
+          })
+          .then((result) => {
+            console.log(result.data)
+            setName('')
+            setEmail('')
+            setPassword('')
+            setConPassword('')
+          }).catch((err) => {
+            console.log(err.message)
+          });
         } else {
           setValid('Please Input You data Correctly');
         }
@@ -100,7 +130,7 @@ export default function LandingPage() {
     if (register) {
       return (
         <View>
-          <Text style={styles.textBig}>Let's Get Started!</Text>
+          <Text style={styles.started}>Let's Get Started!</Text>
           <Text style={styles.textMini}>
             Create a new account and start gardening
           </Text>
@@ -110,7 +140,7 @@ export default function LandingPage() {
       return (
         <View>
           <Text style={styles.textSmall}>Welcome On</Text>
-          <Text style={styles.textBig}>Kebunku</Text>
+          <Text style={styles.textBig}>KEBUNKU</Text>
         </View>
       );
     }
@@ -118,14 +148,11 @@ export default function LandingPage() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.RegLogLogoBox}>
+      <StatusBar hidden={true} />
+      <View>
         <Image
-          style={styles.RegLogLogoImg}
-          source={{
-            // Logo di Ganti ??
-            uri:
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRgUbNj4M940krAk__eEii1OBGaaRAgA7mfcw&usqp=CAU',
-          }}
+          style={styles.element}
+          source={require('../../assets/image/element/daun.png')}
         />
       </View>
 
@@ -162,9 +189,16 @@ export default function LandingPage() {
 
       {LoginGoogle()}
 
-      <TouchableOpacity onPress={regLogHandle}>
+      <TouchableOpacity onPress={regLogHandle} style={{ marginTop: 8 }}>
         <Text>{textRegLog}</Text>
       </TouchableOpacity>
+
+      <View>
+        <Image
+          style={styles.elementBottom}
+          source={require('../../assets/image/element/daun.png')}
+        />
+      </View>
     </View>
   );
 }
