@@ -3,7 +3,7 @@ import * as Permissions from 'expo-permissions';
 
 const PUSH_ENDPOINT = 'http://192.168.0.111:3000/pushtoken';
 
-const registerForPushNotifications = async () => {
+const registerForPushNotifications = async (token) => {
   const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
   if (status !== 'granted') {
     alert('No notification permissions!');
@@ -19,6 +19,7 @@ const registerForPushNotifications = async () => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      token
     },
     body: JSON.stringify({
       pushToken
