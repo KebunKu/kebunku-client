@@ -86,6 +86,7 @@ export default function LandingPage() {
 
   const btnHandle = function () {
     if (!register) {
+      navigation.navigate('Home')
       return axios
       .post('http://localhost:3000/login', {
       email: email,
