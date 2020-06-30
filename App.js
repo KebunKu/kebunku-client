@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import {
   LandingPage,
   HomePage,
@@ -30,10 +31,8 @@ const HomeNavigator = () => {
         name="Home"
         component={HomePage}
         // untuk menghilangkan back button ==> headerLeft: null
-        options={{ headerTitleAlign: 'center' }}
+        options={{ headerTitleAlign: 'center', headerLeft: null }}
       />
-      <Stack.Screen name="Profile Page" component={ProfilePage} />
-      <Stack.Screen name="MyPlantDetail" component={MyPlantDetail} />
       <Stack.Screen
         name="FruitsPage"
         component={FruitsPage}
@@ -59,12 +58,19 @@ const ProfileNavigator = () => {
       <Stack.Screen
         name="Profile"
         component={ProfilePage}
-        options={{ title: 'Profile', headerTitleAlign: 'center' }}
+        options={{
+          title: 'Profile',
+          headerTitleAlign: 'center',
+        }}
       />
       <Stack.Screen
         name="MyPlant"
         component={MyPlantDetail}
-        options={{ title: 'My Plant', headerTitleAlign: 'center' }}
+        options={{
+          title: 'My Plant',
+          headerTitleAlign: 'center',
+          headerShown: false,
+        }}
       />
     </Stack.Navigator>
   );
@@ -77,19 +83,15 @@ export default function App() {
         <Tab.Navigator
           initialRouteName="Feed"
           tabBarOptions={{
-            activeTintColor: '#4856fe',
+            activeTintColor: '#00B761',
           }}>
           <Tab.Screen
             name="Home"
             component={HomeNavigator}
             options={{
-              tabBarLabel: 'Play',
+              tabBarLabel: 'Home',
               tabBarIcon: ({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="gamepad-square"
-                  color={color}
-                  size={size}
-                />
+                <MaterialCommunityIcons name="home" color={color} size={size} />
               ),
             }}
           />

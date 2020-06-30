@@ -1,30 +1,67 @@
 import {StyleSheet} from 'react-native'
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
   fruitCardImage: {
     width: "100%",
     height: "100%",
     resizeMode: "cover",
-    borderRadius:16,
     flex:1, 
+  },
+
+  overlay: {
+    borderRadius: wp('3%'),
+    width: wp("45%"),
+    height: hp("30%"),
+    backgroundColor: '#00000050',
+    opacity: 100,
+    marginBottom: -hp('30%'),
+    zIndex: 2
   },
 
   fruitCard: {
     overflow : "hidden",
-    borderRadius:16,
-    width:150,
-    height:150,
-    margin: 8,
+    borderRadius: wp('3%'),
+    width: wp("45%"),
+    height: hp("30%"),
+    marginBottom: -hp('30%'),
   },
 
   fruitCardTitle: {
-    fontSize:16,
+    fontSize: hp('3%'),
     fontWeight:'bold',
-    color:'#FFFFFF',
-    // marginTop:12,
+    color:'white',
+    marginTop: -hp('30%'),
     paddingLeft: 16,
-    // textAlign:'center',
-    marginTop: 128,
-    backgroundColor: 'rgba(0,0,0,0.6)',
+    marginTop: hp('25%'),
+    zIndex: 4
+  },
+
+ vegeCard: {
+    overflow : "hidden",
+    borderRadius: wp('3%'),
+    width: wp("45%"),
+    height: hp("30%"),
+    // marginBottom: -hp('30%'),
+  },
+
+  vegeCardImage: {
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover",
+    flex:1, 
+  },
+
+  vegeCardTitle: {
+    fontSize: hp('3%'),
+    fontWeight:'bold',
+    color:'white',
+    marginTop: -hp('5%'),
+    paddingLeft: 16,
+    // marginTop: hp('25%'),
+    zIndex: 4
   },
 })
