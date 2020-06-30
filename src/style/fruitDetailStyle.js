@@ -1,83 +1,104 @@
-import {StyleSheet} from 'react-native'
+import { StyleSheet } from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
 export default StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: '#FFFFFF',
-  },
-
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: 360,
-    paddingTop: 16,
-    paddingHorizontal: 16,
-    paddingBottom:8,
-  },
-
-  boxFavTrue: {
-    width: 32,
-    height: 32,
-    borderWidth:2,
-    backgroundColor: '#00B761'
-  },
-
-  boxFavFalse: {
-    width: 32,
-    height: 32,
-    borderWidth:2,
-    backgroundColor: '#FFFFFF'
+    // alignItems: "center",
+    // justifyContent: "center",
+    backgroundColor: '#E5F8EF',
+    paddingHorizontal: wp('3%'),
   },
 
   headerText: {
-    fontSize: 24
+    marginTop: hp('2%'),
+    fontSize: wp('6%'),
+  },
+
+  boxFav: {
+    width: wp('9%'),
+    height: hp('5%'),
+    marginLeft: wp('85%'),
+    marginTop: -hp('4%'),
+    marginBottom: hp('2%'),
+    // borderWidth:2,
+    backgroundColor: '#BCECD6',
+    // borderColor: 'red',
+    borderRadius: wp('1%'),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  saveBtnTrue: {
+    color: '#00B761',
+    fontSize: wp('6%')
+  },
+
+  saveBtnBottom: {
+    color: 'white',
+    fontSize: wp('8%')
   },
 
   detailImg: {
-    marginTop: 8,
-    width: 376,
-    height: 212,
-    borderRadius: 10
+    // marginTop: 8,
+    width: wp('93%'),
+    // height: 212,
+    borderRadius: 10,
   },
 
   paragrafTitle: {
-    paddingHorizontal: 16,
-    paddingTop: 8,
+    marginTop: hp('2%'),
+    // paddingHorizontal: 16,
+    // paddingTop: 8,
     // textAlign: 'Left',
-    fontSize: 24,
+    fontSize: wp('5%'),
   },
 
   paragrafText: {
     color: '#828282',
-    width: 417,
-    paddingTop: 8,
-    paddingHorizontal: 16,
+    // width: 417,
+    // paddingTop: 8,
+    // paddingHorizontal: 16,
   },
 
   action: {
+    // paddingHorizontal: wp('0%'),
+    marginLeft: -wp('3%'),
+    // marginTop: hp('3%'),
     backgroundColor: '#00B761',
-    width: "100%",
-    height: 80,
+    width: wp('100%'),
+    height: hp('10%'),
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
 
+  actionText: {
+    textAlign: 'center',
+    color: 'white',
+  },
+
   actionFavTrue: {
-    padding: 16,
-    paddingLeft: 96
+    // padding: 16,
+    // paddingLeft: 96,
   },
 
   actionFavFalse: {
-    padding: 16,
-    paddingLeft: 96
+    // padding: 16,
+    // paddingLeft: 96,
+    alignItems: 'center',
+    marginTop: hp('1%'),
+    marginLeft: wp('19%')
   },
 
   actionPlant: {
-    padding: 16,
-    paddingRight: 96
+    alignItems: 'center',
+    marginTop: hp('1%'),
+    marginRight: wp('19%')
   },
 
   navMenuIcon: {
@@ -86,8 +107,5 @@ export default StyleSheet.create({
     width: 40,
   },
 
-  actionText: {
-    textAlign: 'center',
-    color: '#FFFFFF'
-  }
-})
+  
+});
