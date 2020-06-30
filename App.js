@@ -12,6 +12,7 @@ import {
   VegetablesPage,
   ProfilePage,
   MyPlantDetail,
+  PlantThisPage,
 } from './src/views';
 import { Provider } from 'react-redux';
 import store from './src/store/index';
@@ -32,12 +33,12 @@ const HomeNavigator = () => {
   }, []);
 
   return (
-    <Stack.Navigator initialRouteName="Landing">
-      <Stack.Screen
+    <Stack.Navigator initialRouteName="Home">
+      {/* <Stack.Screen
         name="Landing"
         component={LandingPage}
-        options={{ headerShown: false }}
-      />
+        options={{ headerShown: false, tabBarVisible: false }}
+      /> */}
       <Stack.Screen
         name="Home"
         component={HomePage}
@@ -61,7 +62,20 @@ const HomeNavigator = () => {
       <Stack.Screen
         name="FruitDetail"
         component={FruitDetail}
-        options={{ title: 'Plant Guide', headerTitleAlign: 'center' }}
+        options={{
+          title: 'Plant Guide',
+          headerTitleAlign: 'center',
+          tabBarVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="PlantThisPage"
+        component={PlantThisPage}
+        options={{
+          title: 'Plant Guide',
+          headerTitleAlign: 'center',
+          // tabBarVisible: false,
+        }}
       />
       <Stack.Screen
         name="VegetablesPage"
@@ -96,40 +110,61 @@ const ProfileNavigator = () => {
   );
 };
 
+const bottomTabNavigator = () => {
+  return (
+    <Tab.Navigator
+      initialRouteName="Feed"
+      tabBarOptions={{
+        activeTintColor: '#00B761',
+      }}>
+      <Tab.Screen
+        name="Home"
+        component={HomeNavigator}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileNavigator}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
+
 export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Tab.Navigator
-          initialRouteName="Feed"
-          tabBarOptions={{
-            activeTintColor: '#00B761',
-          }}>
-          <Tab.Screen
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Landing"
+            component={LandingPage}
+            options={{
+              title: 'Landing',
+              headerTitleAlign: 'center',
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
             name="Home"
-            component={HomeNavigator}
+            component={bottomTabNavigator}
             options={{
-              tabBarLabel: 'Home',
-              tabBarIcon: ({ color, size }) => (
-                <MaterialCommunityIcons name="home" color={color} size={size} />
-              ),
+              title: 'Landing',
+              headerTitleAlign: 'center',
+              headerShown: false,
             }}
           />
-          <Tab.Screen
-            name="Profile"
-            component={ProfileNavigator}
-            options={{
-              tabBarLabel: 'Profile',
-              tabBarIcon: ({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="account"
-                  color={color}
-                  size={size}
-                />
-              ),
-            }}
-          />
-        </Tab.Navigator>
+        </Stack.Navigator>
       </NavigationContainer>
     </Provider>
   );

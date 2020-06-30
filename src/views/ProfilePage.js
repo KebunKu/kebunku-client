@@ -43,7 +43,7 @@ export default function App({ navigation }) {
   const errorMyFav = useSelector((state) => state.favReducer.error);
   const loadingMyFav = useSelector((state) => state.favReducer.loading);
 
-  console.log(myFav, 'favorite ==========');
+  // console.log(myFav, 'favorite ==========');
 
   const toMyPlantDetail = (plant) => {
     navigation.navigate('MyPlant', {
@@ -52,7 +52,7 @@ export default function App({ navigation }) {
   };
 
   const toDetailPage = (fav) => {
-    console.log(fav, "ini fav =====")
+    // console.log(fav, "ini fav =====")
     navigation.navigate('FruitDetail', {
       obj: fav.PlantId,
       favor: true
@@ -180,8 +180,8 @@ export default function App({ navigation }) {
           </>
         )}
 
-        <TouchableOpacity style={{ marginTop: 40 }} onPress={() => logOut()}>
-          <Text>Log out</Text>
+        <TouchableOpacity style={styles.logout} onPress={() => logOut()}>
+          <Text style={styles.textBtn}>Log out</Text>
         </TouchableOpacity>
 
         <View style={{ marginBottom: 30 }}>
