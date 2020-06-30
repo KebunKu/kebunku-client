@@ -13,7 +13,7 @@ export const fetchAllPlant = () => {
       },
     })
     axios
-      .get('http://10.0.2.2:3000/plants')
+      .get('http://localhost:3000/plants')
       .then(({ data }) => {
         dispatch({
           type: FETCH_All_PLANT,

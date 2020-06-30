@@ -10,9 +10,10 @@ import {
   TouchableOpacity,
   Button,
   ImageBackground,
+  AsyncStorage,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { postFavorite, deleteFavorite } from '../store/actions/index';
+import { postFavorite, deleteFavorite, postUserPlant } from '../store/actions/index';
 import styles from '../style/fruitDetailStyle';
 import detailImage from '../../assets/image/detail/detailImage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -47,11 +48,13 @@ export default function FruitDetail({ route }) {
       </TouchableOpacity>
     );
   };
-  //
-  const toogleFav = function (UserId, PlantId) {
-    // PERINNGATAAAAN INI TESTTING KARENA GUA BLOM BISA DAPT REQ.CURRENTIDUSER yang LOGIN
-    // Tapi Login Regist udah dapet token
-    if (!favor) return dispatch(postFavorite('5ef978cfa4dd0e33b0deadd7', '5ef978cfa4dd0e33b0deadd7'))
+
+  const plantThis = function (PlantId) {
+    return dispatch(postUserPlant('5ef978cfa4dd0e33b0deadd7'))
+  }
+  
+  const toogleFav = async function (PlantId) {
+    if (!favor) return dispatch(postFavorite('5ef978cfa4dd0e33b0deadd7'))
     return dispatch(deleteFavorite('5ef978cfa4dd0e33b0deadd7'))
   };
 
@@ -121,7 +124,7 @@ export default function FruitDetail({ route }) {
 
         {checkIfFavorBot()}
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=> plantThis(fruit.name, fruit.scientific_name)}>
           <View style={styles.actionPlant}>
             <MaterialCommunityIcons
               name="spa-outline"

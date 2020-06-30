@@ -9,6 +9,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Button,
+  AsyncStorage,
   StatusBar,
 } from 'react-native';
 import styles from '../style/loginStyle';
@@ -19,7 +20,6 @@ import { userRegister } from '../store/actions/index';
 import axios from 'axios';
 
 const Stack = createStackNavigator();
-
 export default function LandingPage() {
   const dispatch = useDispatch()
   const navigation = useNavigation();
@@ -93,7 +93,11 @@ export default function LandingPage() {
       password: password
     })
     .then((result) => {
-      console.log(result.data)
+      AsyncStorage.setItem(
+        'token',
+        result.data.token
+      );
+      console.log(result.data.token)
       setName('')
       setEmail('')
       setPassword('')

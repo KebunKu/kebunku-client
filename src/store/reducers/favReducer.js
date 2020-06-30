@@ -10,7 +10,7 @@ const initialState = {
 
 const plantListReducer = (state = initialState, action) => {
   const { type, payload } = action;
-  console.log(state.favList)
+  // console.log(state.favList)
   switch (type) {
     case FETCH_All_FAV:
       return {
