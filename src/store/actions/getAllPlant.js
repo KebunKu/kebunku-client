@@ -13,7 +13,7 @@ export const fetchAllPlant = () => {
       },
     })
     axios
-      .get('http://192.168.43.189:3000/plants')
+      .get('http://192.168.0.111:3000/plants')
       .then(({ data }) => {
         dispatch({
           type: FETCH_All_PLANT,

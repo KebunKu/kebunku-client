@@ -23,8 +23,6 @@ import axios from 'axios';
 const Stack = createStackNavigator();
 
 export default function LandingPage() {
-  // const [loggedIn, setLoggedIn] = useState(false);
-
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
@@ -100,7 +98,7 @@ export default function LandingPage() {
   const btnHandle = function () {
     if (!register) {
       return axios
-        .post('http://192.168.43.189:3000/login', {
+        .post('http://192.168.0.111:3000/login', {
           email: email,
           password: password,
         })
@@ -129,13 +127,14 @@ export default function LandingPage() {
       if ((name, email, password, conPassword)) {
         if (password === conPassword) {
           return axios
-            .post('http://192.168.43.189:3000/register', {
+            .post('http://192.168.0.111:3000/register', {
               name: name,
               email: email,
               password: password,
             })
             .then((result) => {
-              // console.log(result.data);
+              console.log(result.data);
+              setRegister(!register);
               setName('');
               setEmail('');
               setPassword('');
