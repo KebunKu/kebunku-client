@@ -17,7 +17,7 @@ import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useDispatch, useSelector } from 'react-redux';
 import { userRegister } from '../store/actions/index';
-import registerForPushNotifications from './registerforPushNotificationsAsync';
+import registerforPushNotifications from '../../registerforPushNotificationsAsync';
 import axios from 'axios';
 
 const Stack = createStackNavigator();
@@ -30,7 +30,7 @@ export default function LandingPage() {
 
   useEffect(() => {
     AsyncStorage.getItem('token').then((result) => {
-      console.log(result, 'token habis logout');
+      // console.log(result, 'token habis logout');
       if (result) {
         navigation.navigate('Home');
       }
@@ -110,7 +110,7 @@ export default function LandingPage() {
             AsyncStorage.setItem('name', result.data.name);
             AsyncStorage.setItem('email', result.data.email);
             // console.log(result.data);
-            registerForPushNotifications(result.data.token);
+            registerforPushNotifications(result.data.token);
             AsyncStorage.getItem('token').then((result) => {
               // console.log(result, 'token login ==========');
             });

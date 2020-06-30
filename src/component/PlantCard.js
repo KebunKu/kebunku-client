@@ -26,19 +26,11 @@ const PlantCard = () => {
   }, [dispatch]);
 
   const myPlant = useSelector((state) => state.userPlantReducer.myPlant);
-  console.log(myPlant, '======dari plantcard');
+  // console.log(myPlant, '======dari plantcard');
 
-  const toDetailPage = () => {
+  const toDetailPage = (plant) => {
     navigation.navigate('MyPlant', {
-      obj: {
-        name: 'Wortel',
-        age: 12,
-        status: 'hidup',
-        reminder: 7,
-        pupuk: 'Pupuk cap 3 roda',
-        notes:
-          'Ini adalah contoh notes yang dibuat oleh user oleh karenanya wajib dirender',
-      },
+      obj: plant
     });
   };
 
@@ -58,7 +50,7 @@ const PlantCard = () => {
             }
 
             return (
-              <TouchableOpacity key={i} onPress={() => toDetailPage()}>
+              <TouchableOpacity key={i} onPress={() => toDetailPage(plant)}>
                 <View style={styles.containerCard}>
                   <View style={styles.card}>
                     <ImageBackground

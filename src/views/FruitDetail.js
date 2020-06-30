@@ -23,11 +23,11 @@ import styles from '../style/fruitDetailStyle';
 import detailImage from '../../assets/image/detail/detailImage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default function FruitDetail({ route }) {
+export default function FruitDetail({ route, navigation }) {
   const fruit = route.params.obj
   const favor = route.params.favor;
 
-  console.log(fruit, "ini fruit =======")
+  // console.log(fruit, "ini fruit =======")
 
   const dispatch = useDispatch();
 
@@ -37,12 +37,12 @@ export default function FruitDetail({ route }) {
     // TESTING IF PROPS APAAN GITU NTAR IJO / PUTIH
     if (favor)
       return (
-        <TouchableOpacity style={styles.boxFav} onPress={() => toogleFav()}>
+        <TouchableOpacity style={styles.boxFav} onPress={() => toogleFav(fruit._id)}>
           <MaterialCommunityIcons name="bookmark" style={styles.saveBtnTrue} />
         </TouchableOpacity>
       );
     return (
-      <TouchableOpacity style={styles.boxFav} onPress={() => toogleFav()}>
+      <TouchableOpacity style={styles.boxFav} onPress={() => toogleFav(fruit._id)}>
         <MaterialCommunityIcons
           name="bookmark-outline"
           style={styles.saveBtnTrue}
@@ -52,7 +52,9 @@ export default function FruitDetail({ route }) {
   };
 
   const plantThis = function (PlantId) {
-    return dispatch(postUserPlant(PlantId));
+    navigation.navigate('PlantThisPage', {
+      PlantId
+    })
   };
 
   const toogleFav = async function (PlantId) {

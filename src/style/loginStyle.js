@@ -13,7 +13,7 @@ export default StyleSheet.create({
   },
 
   element: {
-    marginTop: hp('10%'),
+    marginTop: hp('7%'),
     alignItems: 'center',
     marginBottom: -hp('73%'),
     width: wp('100%'),

@@ -22,6 +22,7 @@ export default StyleSheet.create({
   horizontalScroll: {
     flexDirection: 'row',
     marginTop: 8,
-    paddingLeft: wp('3%'),
+    // paddingLeft: wp('1%'),
+    // paddingRight: wp('35%')
   },
 });

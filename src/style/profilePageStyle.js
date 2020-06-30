@@ -66,41 +66,54 @@ export default StyleSheet.create({
     backgroundColor: '#E5F8EF',
     marginTop: hp('2%'),
     marginRight: wp('3%'),
-    height: hp('30%')
+    height: hp('30%'),
   },
 
   overlay: {
     borderRadius: wp('3%'),
-    width: wp("45%"),
-    height: hp("30%"),
+    width: wp('45%'),
+    height: hp('30%'),
     backgroundColor: '#00000050',
     opacity: 100,
     marginBottom: -hp('30%'),
-    zIndex: 2
+    zIndex: 2,
   },
 
   fruitCard: {
-    overflow : "hidden",
+    overflow: 'hidden',
     borderRadius: wp('3%'),
-    width: wp("45%"),
-    height: hp("30%"),
+    width: wp('45%'),
+    height: hp('30%'),
     marginBottom: -hp('30%'),
   },
 
   fruitCardImage: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "cover",
-    flex:1, 
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+    flex: 1,
   },
 
   fruitCardTitle: {
     fontSize: hp('3%'),
-    fontWeight:'bold',
-    color:'white',
+    fontWeight: 'bold',
+    color: 'white',
     marginTop: -hp('30%'),
     paddingLeft: 16,
     marginTop: hp('25%'),
-    zIndex: 4
+    zIndex: 4,
+  },
+  logout: {
+    marginTop: hp('5%'),
+    width: wp('50%'),
+    height: hp('6%'),
+    borderRadius: wp('2%'),
+    backgroundColor: '#00B761',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textBtn: {
+    color: 'white',
+    fontSize: wp('5%')
   },
 });
