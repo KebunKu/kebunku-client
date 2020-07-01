@@ -1,19 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllPlant } from '../store/actions/index';
 import {
-  Platform,
   StyleSheet,
   Text,
   View,
-  Image,
-  TextInput,
   ScrollView,
-  TouchableOpacity,
-  Button,
-  ImageBackground,
 } from 'react-native';
-import BottomNavBar from '../component/BottomNavBar';
 import VegetablePageCard from '../component/VegetablePageCard';
 import {
   widthPercentageToDP as wp,
@@ -31,13 +24,10 @@ export default function VegetablesPage() {
   const error = useSelector((state) => state.plantReducer.error);
   const loading = useSelector((state) => state.plantReducer.loading);
 
-  // console.log(plantList, "plantlist vegetable =========")
-
   const vegetableList = plantList.filter((element) => {
     return element.category == 'Sayuran';
   });
 
-  // console.log(vegetableList, "vegetableList =========")
   return (
     <View style={styles.container}>
       <ScrollView>

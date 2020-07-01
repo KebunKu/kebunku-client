@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Platform,
-  StyleSheet,
   Text,
   View,
   Image,
-  TextInput,
   ScrollView,
   TouchableOpacity,
-  Button,
   AsyncStorage,
   ImageBackground,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import BottomNavBar from '../component/BottomNavBar';
 import styles from '../style/profilePageStyle';
 import { fetchAllMyPlant, fetchAllFav } from '../store/actions';
 import detailImage from '../../assets/image/detail/detailImage';
@@ -42,8 +37,6 @@ export default function App({ navigation }) {
   const myFav = useSelector((state) => state.favReducer.favList);
   const errorMyFav = useSelector((state) => state.favReducer.error);
   const loadingMyFav = useSelector((state) => state.favReducer.loading);
-
-  // console.log(myFav, 'favorite ==========');
 
   const toMyPlantDetail = (plant) => {
     navigation.navigate('MyPlant', {

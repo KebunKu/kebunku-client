@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -8,16 +8,11 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   TextInput,
-  ScrollView,
   TouchableOpacity,
-  ImageBackground,
-  AsyncStorage,
-  StatusBar,
 } from 'react-native';
 import DatePicker from 'react-native-datepicker';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { postUserPlant, putUserPlant } from '../store/actions/index';
 
 export default function PlantThisPage({ route, navigation }) {
@@ -33,10 +28,8 @@ export default function PlantThisPage({ route, navigation }) {
     plant = route.params.plant;
     PlantId = plant._id;
   }
-  console.log(plant, PlantId);
 
   const dispatch = useDispatch();
-  //dapet PlantID dari pas nge click button Plant THIS ???
 
   const [ValidationText, setValid] = useState('');
   const [notes, setNotes] = useState(plant ? plant.notes : '');
@@ -54,7 +47,6 @@ export default function PlantThisPage({ route, navigation }) {
           onChange={(e) => setNotes(e.nativeEvent.text)}
           editable={false}
           selectTextOnFocus={false}
-          // value={props.plants.name} YANG ini yg bener yg bawah cuma sementara
           value={plant.PlantId.name}
         />
       );
@@ -73,13 +65,11 @@ export default function PlantThisPage({ route, navigation }) {
       setReminder(1);
       setDate('');
       setPupuk('');
-      console.log('disini');
       dispatch(putUserPlant(dataEditPlant));
       navigation.navigate('Home');
     } else {
       if (notes && reminder && pupuk) {
         let dataPlant = { PlantId, notes, reminder, plantedDate, pupuk };
-        console.log(dataPlant, 'dataPlant ===========');
         setNotes('');
         setReminder(1);
         setDate('');
@@ -102,18 +92,6 @@ export default function PlantThisPage({ route, navigation }) {
   return (
     <View style={styles.container}>
       <Text>{ValidationText}</Text>
-      {/* <View style={styles.rowContainerImg}>
-        <Text style={styles.textPlantThis}>
-          Nama Dari Klik Tombol Plant This
-        </Text>
-        <Image
-          style={styles.imgPlantThis}
-          source={{
-            uri:
-              'https://cdn-prod.medicalnewstoday.com/content/images/hero/325/325253/325253_1100.jpg',
-          }}
-        />
-      </View> */}
 
       <View style={styles.form}>
         {selectedItem()}
@@ -223,7 +201,6 @@ const styles = StyleSheet.create({
 
   form: {
     alignItems: 'center',
-    // backgroundColor: '#00B761',
     padding: hp('2%'),
     borderRadius: 15,
     borderWidth: 1,
@@ -248,13 +225,9 @@ const styles = StyleSheet.create({
     width: wp('70%'),
     paddingTop: wp('15%'),
     padding: wp('2%'),
-    // borderWidth: 3,
-    // padding: hp('4%'),
-    // marginHorizontal: hp('5%')
   },
 
   buttonSubmit: {
-    // backgroundColor: '#00B761',
     borderRadius: 15,
     width: wp('30%'),
     height: hp('5%'),

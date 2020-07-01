@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Platform,
-  StyleSheet,
   Text,
   View,
   Image,
-  TextInput,
   ScrollView,
   TouchableOpacity,
-  Button,
-  ImageBackground,
   Modal,
   ToastAndroid,
 } from 'react-native';
-import BottomNavBar from '../component/BottomNavBar';
 import styles from '../style/myPlantDetailStyle';
 import detailImage from '../../assets/image/detail/detailImage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -23,7 +17,6 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-
 
 const Toast = ({ visible, message }) => {
   if (visible) {
@@ -208,10 +201,6 @@ export default function MyPlantDetail({ route, navigation }) {
             </TouchableOpacity>
           )}
         </View>
-
-        {/* <TouchableOpacity onPress={() => toMyPlantDetail()}>
-          <Text style={styles.cardSeeDetail}> Sudah di siram </Text>
-        </TouchableOpacity> */}
       </ScrollView>
     </View>
   );

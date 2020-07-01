@@ -45,7 +45,7 @@ export default function FruitDetail({ route, navigation }) {
       }
     }
   }, [myFav]);
-  console.log(myFav);
+  // console.log(myFav);
 
   const checkIfFavorTop = function () {
     // TESTING IF PROPS APAAN GITU NTAR IJO / PUTIH

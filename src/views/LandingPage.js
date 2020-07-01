@@ -1,35 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Platform,
-  StyleSheet,
   Text,
-  ImageBackground,
   View,
   Image,
   TextInput,
-  ScrollView,
   TouchableOpacity,
-  Button,
   AsyncStorage,
   StatusBar,
 } from 'react-native';
 import styles from '../style/loginStyle';
 import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { useDispatch, useSelector } from 'react-redux';
-import { userRegister } from '../store/actions/index';
 import registerforPushNotifications from '../../registerforPushNotificationsAsync';
 import server from '../store/config.js';
 
 const Stack = createStackNavigator();
 
 export default function LandingPage() {
-  const dispatch = useDispatch();
   const navigation = useNavigation();
 
   useEffect(() => {
     AsyncStorage.getItem('token').then((result) => {
-      // console.log(result, 'token habis logout');
       if (result) {
         navigation.navigate('Home');
       }
@@ -70,7 +61,6 @@ export default function LandingPage() {
           style={styles.inputBox}
           placeholder="Ulangi Password"
           placeholderTextColor="#828282"
-          // selectionColor="#FFFFFF"
           secureTextEntry={true}
           onChange={(e) => setConPassword(e.nativeEvent.text)}
         />
@@ -108,12 +98,9 @@ export default function LandingPage() {
             AsyncStorage.setItem('token', result.data.token);
             AsyncStorage.setItem('name', result.data.name);
             AsyncStorage.setItem('email', result.data.email);
-            // console.log(result.data);
             registerforPushNotifications(result.data.token);
             AsyncStorage.getItem('token').then((result) => {
-              // console.log(result, 'token login ==========');
             });
-            // setLoggedIn(true);
             setName('');
             setEmail('');
             setPassword('');
@@ -134,7 +121,6 @@ export default function LandingPage() {
               password: password,
             })
             .then((result) => {
-              console.log(result.data);
               setRegister(!register);
               setName('');
               setEmail('');
@@ -170,57 +156,57 @@ export default function LandingPage() {
   };
 
   return (
-    <View style={styles.container}>
-      <StatusBar hidden={true} />
-      <View>
-        <Image
-          style={styles.element}
-          source={require('../../assets/image/element/daun_top.png')}
-        />
-      </View>
-
-      {isRegisterMsg()}
-
-      <Text>{ValidationText}</Text>
-
-      {isRegisterName()}
-      <TextInput
-        style={styles.inputBox}
-        placeholder="Email"
-        placeholderTextColor="#707070"
-        onChange={(e) => setEmail(e.nativeEvent.text)}
-      />
-
-      <TextInput
-        style={styles.inputBox}
-        placeholder="Password"
-        placeholderTextColor="#707070"
-        secureTextEntry={true}
-        onChange={(e) => setPassword(e.nativeEvent.text)}
-      />
-
-      {isRegister2ndPas()}
-
-      <TouchableOpacity style={styles.buttonBox} onPress={btnHandle}>
+      <View style={styles.container}>
+        <StatusBar hidden={true} />
         <View>
-          <Text style={{ color: 'white', fontSize: 16 }}>
-            {register ? 'Daftar' : 'Masuk'}
-          </Text>
+          <Image
+            style={styles.element}
+            source={require('../../assets/image/element/daun_top.png')}
+          />
         </View>
-      </TouchableOpacity>
 
-      <TouchableOpacity onPress={regLogHandle} style={{ marginTop: 8 }}>
-        <Text style={{color: '#323232'}}>{textRegLog}</Text>
-      </TouchableOpacity>
+        {isRegisterMsg()}
 
-      {LoginGoogle()}
+        <Text>{ValidationText}</Text>
 
-      <View>
-        <Image
-          style={styles.elementBottom}
-          source={require('../../assets/image/element/daun_bottom.png')}
+        {isRegisterName()}
+        <TextInput
+          style={styles.inputBox}
+          placeholder="Email"
+          placeholderTextColor="#707070"
+          onChange={(e) => setEmail(e.nativeEvent.text)}
         />
+
+        <TextInput
+          style={styles.inputBox}
+          placeholder="Password"
+          placeholderTextColor="#707070"
+          secureTextEntry={true}
+          onChange={(e) => setPassword(e.nativeEvent.text)}
+        />
+
+        {isRegister2ndPas()}
+
+        <TouchableOpacity style={styles.buttonBox} onPress={btnHandle}>
+          <View>
+            <Text style={{ color: 'white', fontSize: 16 }}>
+              {register ? 'Daftar' : 'Masuk'}
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={regLogHandle} style={{ marginTop: 8 }}>
+          <Text style={{ color: '#323232' }}>{textRegLog}</Text>
+        </TouchableOpacity>
+
+        {LoginGoogle()}
+
+        <View>
+          <Image
+            style={styles.elementBottom}
+            source={require('../../assets/image/element/daun_bottom.png')}
+          />
+        </View>
       </View>
-    </View>
   );
 }

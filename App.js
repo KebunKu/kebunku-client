@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { AsyncStorage, View, Image, Header } from 'react-native';
+import { AsyncStorage } from 'react-native';
 import {
   LandingPage,
   HomePage,
@@ -23,7 +23,6 @@ import {
 } from 'react-native-responsive-screen';
 import { StyleSheet } from 'react-native';
 
-// const navigation = useNavigation()
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
