@@ -165,7 +165,7 @@ export default function MyPlantDetail({ route, navigation }) {
               (<Image
                 source={require('../../assets/image/element/character.png')}
               />) : (<Image
-              source={require('../../assets/image/element/daun_kecil.png')}
+              source={require('../../assets/image/element/character_cry.png')}
             />) 
             }
           </View>
