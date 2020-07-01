@@ -1,4 +1,4 @@
-import axios from 'axios';
+import server from '../config.js';
 import {fetchAllFav} from './getAllFav'
 import { AsyncStorage } from 'react-native';
 
@@ -9,9 +9,9 @@ export const deleteFavorite = (id) => {
   return (dispatch) => {
     console.log('masuk delete ===========')
     AsyncStorage.getItem('token', (err, result) => {
-      axios({
+      server({
         method: 'DELETE',
-        url: `http://192.168.0.111:3000/userfav/${id}`,
+        url: `/userfav/${id}`,
         headers: {
           token: result
         }

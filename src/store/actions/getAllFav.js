@@ -1,4 +1,4 @@
-import axios from 'axios';
+import server from '../config.js';
 import { AsyncStorage } from 'react-native';
 export const FETCH_All_FAV = 'FETCH_All_FAV';
 
@@ -15,7 +15,7 @@ export const fetchAllFav = () => {
     })
     AsyncStorage.getItem('token', (err, result) => {
 
-      axios({
+      server({
         method: 'GET',
         url: 'http://192.168.0.111:3000/userfav',
         headers: {

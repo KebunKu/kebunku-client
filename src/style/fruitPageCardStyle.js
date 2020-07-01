@@ -59,6 +59,7 @@ export default StyleSheet.create({
   daun: {
     position: "absolute",
     marginTop: -hp('3.5%'),
+    zIndex: -99,
     marginLeft: -wp('16%')
   }
 });

@@ -23,15 +23,25 @@ export default function PlantToWaterBox() {
 
   const myPlant = useSelector((state) => state.userPlantReducer.myPlant);
 
+  const notWateredList = myPlant.filter((element) => {
+    return element.watered == false;
+  });
+
   return (
     <View style={styles.waterToday}>
       <Text style={styles.heloUsername}>Halo {name}</Text>
-      <Text style={styles.planToWater}>{myPlant.length} tanaman belum disiram hari ini</Text>
+      {
+        !notWateredList.length && myPlant.length ?     
+        <Text style={styles.planToWater}>Sudah disiram semua, Yey!</Text> : <Text style={styles.planToWater}>{notWateredList.length} tanaman belum disiram hari ini</Text>
+      }
+      {
+        !myPlant.length && <Text style={styles.planToWater}>Kamu belum menanam apapun :(</Text>
+      }
       <ScrollView
         horizontal
         style={styles.horizontalScroll}
         showsHorizontalScrollIndicator={false}>
-        <PlantCard />
+        <PlantCard notWateredList={notWateredList} />
       </ScrollView>
     </View>
   );
