@@ -68,6 +68,7 @@ export default function VegetablesPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#E5F8EF',
     alignItems: 'center',
     justifyContent: 'center',
   },
