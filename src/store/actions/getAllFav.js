@@ -17,7 +17,7 @@ export const fetchAllFav = () => {
 
       axios({
         method: 'GET',
-        url: 'http://192.168.0.111:3000/userfav',
+        url: 'http://192.168.43.189:3000/userfav',
         headers: {
           token: result
         }

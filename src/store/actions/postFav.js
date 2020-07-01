@@ -10,7 +10,7 @@ export const postFavorite = (PlantId) => {
     AsyncStorage.getItem('token', (err, result) => {
       axios({
         method: 'POST',
-        url: 'http://192.168.0.111:3000/userfav',
+        url: 'http://192.168.43.189:3000/userfav',
         data: {PlantId},
         headers: {
           token: result

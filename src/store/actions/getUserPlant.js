@@ -16,7 +16,7 @@ export const fetchAllMyPlant = () => {
     AsyncStorage.getItem('token', (err, result) => {
       axios({
         method: 'GET',
-        url: 'http://192.168.0.111:3000/userplant',
+        url: 'http://192.168.43.189:3000/userplant',
         headers: {
           token: result
         }

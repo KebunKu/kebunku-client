@@ -39,8 +39,8 @@ export default function PlantThisPage({ route, navigation }) {
       setReminder(1);
       setDate('');
       setPupuk('');
+      navigation.navigate('Home');
       dispatch(postUserPlant(dataPlant));
-      navigation.navigate('Home')
     } else {
       setValid('Data belum Lengkap');
     }
@@ -71,7 +71,7 @@ export default function PlantThisPage({ route, navigation }) {
       <View style={styles.form}>
         <TextInput
           style={styles.inputBox}
-          placeholder="Notes"
+          placeholder="Catatan"
           placeholderTextColor="#828282"
           multiline={true}
           onChange={(e) => setNotes(e.nativeEvent.text)}
@@ -80,7 +80,7 @@ export default function PlantThisPage({ route, navigation }) {
 
         <TextInput
           style={styles.inputBox}
-          placeholder="Reminder"
+          placeholder="Reminder (dalam jam)"
           placeholderTextColor="#828282"
           onChange={(e) => setReminder(e.nativeEvent.text)}
           keyboardType={'numeric'}
@@ -91,7 +91,7 @@ export default function PlantThisPage({ route, navigation }) {
           style={styles.inputDate}
           date={plantedDate} //initial date from state
           mode="date" //The enum of date, datetime and time
-          placeholder="select date"
+          placeholder="Pilih Tanggal"
           format="YYYY-MM-DD"
           minDate="2016-01-01"
           maxDate="2026-01-01"
@@ -122,11 +122,11 @@ export default function PlantThisPage({ route, navigation }) {
         />
         <View style={styles.rowContainer}>
           <TouchableOpacity onPress={submitPlant}>
-            <Text style={styles.buttonCancle}>Submit</Text>
+            <Text style={styles.buttonCancle}>Tanam</Text>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={cancle}>
-            <Text style={styles.buttonSubmit}>Cancel</Text>
+            <Text style={styles.buttonSubmit}>Batal</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     padding: hp('2%'),
     borderRadius: 15,
     borderWidth: 1,
-    borderColor: '#00B761'
+    borderColor: '#00B761',
   },
 
   inputDate: {
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     margin: hp('1%'),
     textAlign: 'center',
     borderWidth: 1,
-    borderColor: '#00B761'
+    borderColor: '#00B761',
   },
 
   buttonCancle: {

@@ -5,12 +5,11 @@ import { AsyncStorage } from 'react-native';
 export const POST_USER_PLANT = 'POST_USER_PLANT';
 
 export const postUserPlant = (dataPlant) => {
-  console.log('masukkUserPlanttttttttttttttt');
   return (dispatch) => {
     AsyncStorage.getItem('token', (err, result) => {
       axios({
         method: 'POST',
-        url: 'http://192.168.0.111:3000/userplant',
+        url: 'http://192.168.43.189:3000/userplant',
         // mungkin nanti Object Plant keseluruhan ?
         data: {
           PlantId: dataPlant.PlantId,

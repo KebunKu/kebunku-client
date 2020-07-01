@@ -57,7 +57,7 @@ export default function VegetablePageCard(props) {
           <TouchableOpacity
             style={styles.seeDetail}
             onPress={() => toDetailPage(props.vegetable)}>
-            <Text style={styles.seeDetailText}>See Detail</Text>
+            <Text style={styles.seeDetailText}>Lihat Detail</Text>
           </TouchableOpacity>
           <Image
             style={styles.daun}
