@@ -21,22 +21,13 @@ export default function VegetablePageCard(props) {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const [favor, setFavor] = useState(false);
-  const myFav = useSelector((state) => state.favReducer.favList);
-
   useEffect(() => {
     dispatch(fetchAllFav());
   }, [dispatch]);
 
   const toDetailPage = (obj) => {
-    for (let i = 0; i < myFav.length; i++) {
-      if (myFav[i].PlantId._id === obj._id) {
-        setFavor(true);
-      }
-    }
     navigation.navigate('FruitDetail', {
       obj,
-      favor,
     });
   };
 

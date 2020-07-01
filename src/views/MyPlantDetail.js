@@ -46,10 +46,9 @@ export default function MyPlantDetail({ route, navigation }) {
   };
 
   const editBtn = (plant) => {
-    navigation.navigate('PlantThisPage'),
-      {
-        plant,
-      };
+    navigation.navigate('PlantThisPage', {
+      plant,
+    });
   };
 
   const handleSiram = (plant) => {
@@ -77,9 +76,9 @@ export default function MyPlantDetail({ route, navigation }) {
               />
             </TouchableOpacity>
 
-            {/* <TouchableOpacity onPress={() => editBtn(plant)}>
+            <TouchableOpacity onPress={() => editBtn(plant)}>
               <MaterialCommunityIcons name="pencil" style={styles.pencil} />
-            </TouchableOpacity> */}
+            </TouchableOpacity>
 
             <Text style={styles.paragrafTitle}>{plant.PlantId.name}</Text>
             <Text style={styles.subtitle}>Umur</Text>

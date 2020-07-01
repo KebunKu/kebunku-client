@@ -14,10 +14,9 @@ export const fetchAllFav = () => {
       },
     })
     AsyncStorage.getItem('token', (err, result) => {
-
       server({
         method: 'GET',
-        url: 'http://192.168.43.189:3000/userfav',
+        url: '/userfav',
         headers: {
           token: result
         }

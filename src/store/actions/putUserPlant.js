@@ -1,22 +1,21 @@
-import axios from 'axios';
+import server from '../config.js';
 import { fetchAllMyPlant } from './getUserPlant';
 import { AsyncStorage } from 'react-native';
 
 export const PUT_USER_PLANT = 'PUT_USER_PLANT';
 
-export const postUserPlant = (dataPlant) => {
-  console.log('masukkUserPlanttttttttttttttt');
+export const putUserPlant = (dataPlant) => {
+  console.log(dataPlant, "dataplant nih========>")
   return (dispatch) => {
     AsyncStorage.getItem('token', (err, result) => {
-      axios({
-        method: 'POST',
-        url: 'http://192.168.0.111:3000/userplant',
+      server({
+        method: 'PUT',
+        url: `/userplant/${dataPlant.PlantId}`,
         // mungkin nanti Object Plant keseluruhan ?
         data: {
-          PlantId: dataPlant.PlantId,
           notes: dataPlant.notes,
           water_reminder: +dataPlant.reminder,
-          planted_date: new Date(dataPlant.plantedDate),
+          planted_date: dataPlant.plantedDate,
           pupuk: dataPlant.pupuk,
         },
         headers: {
