@@ -54,19 +54,10 @@ export default function FruitPageCard(props) {
         <Image style={styles.cardImg} source={image} />
         <View>
           <Text style={styles.cardTitle}>{props.fruit.name}</Text>
-          <Text style={styles.cardText}>
-            Scientific Name: {props.fruit.scientific_name}
-          </Text>
-          <Text style={styles.cardText}>
-            Fase Generatif: {props.fruit.fase_generatif} hari
-          </Text>
-          <Text style={styles.cardText}>
-            Fase Vegetatif: {props.fruit.fase_vegetatif} hari
-          </Text>
-
-          <TouchableOpacity onPress={() => toDetailPage(props.fruit)}>
-            <Text style={styles.seeDetail}>See Detail</Text>
+          <TouchableOpacity style={styles.seeDetail} onPress={() => toDetailPage(props.fruit)}>
+            <Text style={styles.seeDetailText}>Lihat Detail</Text>
           </TouchableOpacity>
+          <Image style={styles.daun} source={require('../../assets/image/element/daun_kecil.png')} />
         </View>
       </View>
     </View>

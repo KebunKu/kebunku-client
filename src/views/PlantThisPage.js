@@ -92,7 +92,7 @@ export default function PlantThisPage({ route, navigation }) {
           date={plantedDate} //initial date from state
           mode="date" //The enum of date, datetime and time
           placeholder="select date"
-          format="YYYY-DD-MM"
+          format="YYYY-MM-DD"
           minDate="2016-01-01"
           maxDate="2026-01-01"
           confirmBtnText="Confirm"

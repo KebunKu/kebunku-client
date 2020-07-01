@@ -31,9 +31,6 @@ export default function MyPlantDetail({ route, navigation }) {
     }
   }
 
-  // console.log(route.params.obj, "route <++++++++++++<")
-  // console.log(plant, "plant <++++++++++++<")
-
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -76,22 +73,17 @@ export default function MyPlantDetail({ route, navigation }) {
         <Image style={styles.imagePlant} source={image} />
         <View style={styles.backgroundWhite}>
           <View
-            style={{
-              width: '60%',
-              height: '30%',
-              backgroundColor: '#BCECD6',
-              marginTop: 20,
-            }}>
-            <Text>Image</Text>
+            >
+            <Image source={require('../../assets/image/element/character.png')}/>
           </View>
           <TouchableOpacity style={styles.button}>
             <Text style={styles.textButton}>Tanaman sudah disiram</Text>
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity onPress={() => toMyPlantDetail()}>
+        {/* <TouchableOpacity onPress={() => toMyPlantDetail()}>
           <Text style={styles.cardSeeDetail}> Sudah di siram </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </ScrollView>
     </View>
   );

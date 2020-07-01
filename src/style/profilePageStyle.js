@@ -14,8 +14,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
   },
   tinyLogo: {
-    width: wp('23%'),
-    height: hp('13%'),
+    width: wp('27%'),
+    height: wp('27%'),
     borderRadius: wp('50%'),
     marginTop: hp('2%'),
     borderWidth: wp('1%'),
@@ -43,7 +43,7 @@ export default StyleSheet.create({
   boxNumPlant: {
     backgroundColor: '#BCECD6',
     borderRadius: wp('10%'),
-    width: wp('65%'),
+    width: wp('55%'),
     height: hp('3.5%'),
     marginTop: hp('1%'),
     marginLeft: -wp('3%'),
@@ -106,7 +106,7 @@ export default StyleSheet.create({
   logout: {
     marginTop: hp('5%'),
     width: wp('50%'),
-    height: hp('6%'),
+    height: hp('5%'),
     borderRadius: wp('2%'),
     backgroundColor: '#00B761',
     justifyContent: 'center',
@@ -114,6 +114,6 @@ export default StyleSheet.create({
   },
   textBtn: {
     color: 'white',
-    fontSize: wp('5%')
+    fontSize: wp('4%')
   },
 });

@@ -15,6 +15,10 @@ import {
 } from 'react-native';
 import BottomNavBar from '../component/BottomNavBar';
 import VegetablePageCard from '../component/VegetablePageCard';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export default function VegetablesPage() {
   const dispatch = useDispatch();
@@ -45,9 +49,13 @@ export default function VegetablesPage() {
               <Text style={{ marginTop: 50 }}>{error}</Text>
             ) : (
               <>
+                <Text style={styles.rekomendasi}>
+                  Rekomendasi Sayuran Untuk di Tanam
+                </Text>
                 {vegetableList.map((vegetable, i) => {
                   return <VegetablePageCard key={i} vegetable={vegetable} />;
                 })}
+                <View style={{ marginTop: hp('5%') }}></View>
               </>
             )}
           </>
@@ -62,5 +70,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  rekomendasi: {
+    marginLeft: wp('3%'),
+    marginTop: hp('2%'),
+    fontSize: wp('4%'),
   },
 });

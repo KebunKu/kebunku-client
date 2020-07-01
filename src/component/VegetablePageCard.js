@@ -35,7 +35,8 @@ export default function VegetablePageCard(props) {
       }
     }
     navigation.navigate('FruitDetail', {
-      obj, favor
+      obj,
+      favor,
     });
   };
 
@@ -53,19 +54,15 @@ export default function VegetablePageCard(props) {
         <Image style={styles.cardImg} source={image} />
         <View>
           <Text style={styles.cardTitle}>{props.vegetable.name}</Text>
-          <Text style={styles.cardText}>
-            Scientific Name: {props.vegetable.scientific_name}
-          </Text>
-          <Text style={styles.cardText}>
-            Fase Generatif: {props.vegetable.fase_generatif} hari
-          </Text>
-          <Text style={styles.cardText}>
-            Fase Vegetatif: {props.vegetable.fase_vegetatif} hari
-          </Text>
-
-          <TouchableOpacity onPress={() => toDetailPage(props.vegetable)}>
-            <Text style={styles.seeDetail}>See Detail</Text>
+          <TouchableOpacity
+            style={styles.seeDetail}
+            onPress={() => toDetailPage(props.vegetable)}>
+            <Text style={styles.seeDetailText}>See Detail</Text>
           </TouchableOpacity>
+          <Image
+            style={styles.daun}
+            source={require('../../assets/image/element/daun_kecil.png')}
+          />
         </View>
       </View>
     </View>
