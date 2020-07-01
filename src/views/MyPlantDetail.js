@@ -113,7 +113,7 @@ export default function MyPlantDetail({ route, navigation }) {
         {/* gambar sebelum siram di sini */}
           <View>
             <Image
-              source={require('../../assets/image/element/character.png')}
+              source={require('../../assets/image/element/character_cry.png')}
             />
           </View>
           {!plant.watered && (
