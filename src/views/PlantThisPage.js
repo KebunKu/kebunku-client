@@ -21,7 +21,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { postUserPlant, putUserPlant } from '../store/actions/index';
 
 export default function PlantThisPage({ route, navigation }, props) {
-  const PlantId = route.params.PlantId;
+  let PlantId;
+
+  if (route.params.PlantId) {
+    PlantId = route.params.PlantId;
+  }
+
+  let plant
+
+  if(route.params.plant) {
+    plant = route.params.plant;
+  }
+
   const dispatch = useDispatch();
   //dapet PlantID dari pas nge click button Plant THIS ???
 
@@ -32,14 +43,15 @@ export default function PlantThisPage({ route, navigation }, props) {
   const [pupuk, setPupuk] = useState('');
 
   if (props.plants) {
-    setNotes(props.plants.notes)
-    setReminder(props.plants.reminder)
-    setDate(props.plants.plantedDate)
-    setPupuk(props.plants.pupuk)
+    setNotes(props.plants.notes);
+    setReminder(props.plants.reminder);
+    setDate(props.plants.plantedDate);
+    setPupuk(props.plants.pupuk);
   }
 
   const selectedItem = function () {
-    if (props.plants) return (
+    if (props.plants)
+      return (
         <TextInput
           style={styles.inputBoxDisable}
           placeholderTextColor="#828282"
@@ -48,14 +60,20 @@ export default function PlantThisPage({ route, navigation }, props) {
           editable={false}
           selectTextOnFocus={false}
           // value={props.plants.name} YANG ini yg bener yg bawah cuma sementara
-          value= "Apel"
+          value="Apel"
         />
-    )
-  }
+      );
+  };
 
   const submitPlant = function () {
-    if(props.plants) {
-      let dataEditPlant = { PlantId: props.plants._id, notes, reminder, plantedDate, pupuk };
+    if (props.plants) {
+      let dataEditPlant = {
+        PlantId: props.plants._id,
+        notes,
+        reminder,
+        plantedDate,
+        pupuk,
+      };
       setNotes('');
       setReminder(1);
       setDate('');
@@ -71,7 +89,7 @@ export default function PlantThisPage({ route, navigation }, props) {
         setDate('');
         setPupuk('');
         dispatch(postUserPlant(dataPlant));
-        navigation.navigate('Home')
+        navigation.navigate('Home');
       } else {
         setValid('Data belum Lengkap');
       }

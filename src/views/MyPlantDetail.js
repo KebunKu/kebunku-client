@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   Button,
   ImageBackground,
-  ToastAndroid
+  ToastAndroid,
 } from 'react-native';
 import BottomNavBar from '../component/BottomNavBar';
 import styles from '../style/myPlantDetailStyle';
@@ -45,6 +45,13 @@ export default function MyPlantDetail({ route, navigation }) {
     navigation.navigate('Profile');
   };
 
+  const editBtn = (plant) => {
+    navigation.navigate('PlantThisPage'),
+      {
+        plant,
+      };
+  };
+
   const handleSiram = (plant) => {
     setvisibleToast(true);
     dispatch(editUserPlant(plant));
@@ -69,6 +76,11 @@ export default function MyPlantDetail({ route, navigation }) {
                 style={styles.backBtn}
               />
             </TouchableOpacity>
+
+            {/* <TouchableOpacity onPress={() => editBtn(plant)}>
+              <MaterialCommunityIcons name="pencil" style={styles.pencil} />
+            </TouchableOpacity> */}
+
             <Text style={styles.paragrafTitle}>{plant.PlantId.name}</Text>
             <Text style={styles.subtitle}>Umur</Text>
             <Text style={styles.plantAge}>{plant.plant_age} days old</Text>
@@ -99,19 +111,19 @@ export default function MyPlantDetail({ route, navigation }) {
         </View>
         <Image style={styles.imagePlant} source={image} />
         <View style={styles.backgroundWhite}>
-          <View
-
-            >
-            <Image source={require('../../assets/image/element/character.png')}/>
-
+          <View>
+            <Image
+              source={require('../../assets/image/element/character.png')}
+            />
           </View>
-          {
-            !plant.watered && 
-            <TouchableOpacity style={styles.button} onPress={() => handleSiram(plant)}>
+          {!plant.watered && (
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => handleSiram(plant)}>
               <Toast visible={visibleToast} message="Sukses menyiram!" />
               <Text style={styles.textButton}>Tanaman sudah disiram</Text>
             </TouchableOpacity>
-          }
+          )}
         </View>
 
         {/* <TouchableOpacity onPress={() => toMyPlantDetail()}>

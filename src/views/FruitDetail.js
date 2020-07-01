@@ -134,26 +134,30 @@ export default function FruitDetail({ route, navigation }) {
         </Text>
 
         {/* cara menanam */}
-        <Text style={styles.paragrafTitle}>{fruit.howto[0].title}</Text>
-
-        {/* step */}
-        {fruit.howto[0].steps.map((buah, i) => {
-          return (
-            <View key={i}>
-              <View style={styles.containerSteps}>
-                <View style={styles.kotakSteps}></View>
-                <Text style={styles.langkah}>Langkah {i + 1}</Text>
-              </View>
-              <Text style={styles.langkahText}>{buah}</Text>
-            </View>
-          );
-        })}
+        {fruit.howto[0] ? (
+          <>
+            <Text style={styles.paragrafTitle}>{fruit.howto[0].title}</Text>
+            {/* step */}
+            {fruit.howto[0].steps.map((buah, i) => {
+              return (
+                <View key={i}>
+                  <View style={styles.containerSteps}>
+                    <View style={styles.kotakSteps}></View>
+                    <Text style={styles.langkah}>Langkah {i + 1}</Text>
+                  </View>
+                  <Text style={styles.langkahText}>{buah}</Text>
+                </View>
+              );
+            })}
+          </>
+        ) : null}
 
         <View style={styles.divider}></View>
 
         <Text style={styles.paragrafTitle}>Video Tutorial</Text>
         <View style={{ marginBottom: 30 }}></View>
-        <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center' }}>
+        <View
+          style={{ flex: 1, flexDirection: 'column', alignItems: 'center' }}>
           <YoutubePlayer
             ref={playerRef}
             height={300}
@@ -172,7 +176,7 @@ export default function FruitDetail({ route, navigation }) {
             }}
           />
         </View>
-        <View style={{alignItems: 'center'}}>
+        <View style={{ alignItems: 'center' }}>
           <TouchableOpacity
             style={styles.action}
             onPress={() => plantThis(fruit._id)}>

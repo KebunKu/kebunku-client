@@ -22,9 +22,17 @@ export default StyleSheet.create({
 
   backBtn: {
     color: 'white',
-    fontSize: wp('7%')
-    // width: wp('15%'),
-    // height: hp('15%')
+    fontSize: wp('7%'),
+  },
+
+  pencil: {
+    color: 'white',
+    fontSize: wp('7%'),
+    // position: 'absolute',
+    // marginLeft: wp('82%'),
+    // marginTop: hp('3%'),
+    zIndex: 99999,
+    width: wp('5%')
   },
 
   backgroundWhite: {
