@@ -1,4 +1,4 @@
-import axios from 'axios';
+import server from '../config.js';
 
 export const FETCH_All_PLANT = 'FETCH_All_PLANT';
 
@@ -12,8 +12,8 @@ export const fetchAllPlant = () => {
         loading: true,
       },
     })
-    axios
-      .get('http://192.168.0.111:3000/plants')
+    server
+      .get('/plants')
       .then(({ data }) => {
         dispatch({
           type: FETCH_All_PLANT,

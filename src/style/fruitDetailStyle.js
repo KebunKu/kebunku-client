@@ -7,8 +7,6 @@ import {
 export default StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: "center",
-    // justifyContent: "center",
     backgroundColor: '#E5F8EF',
     paddingHorizontal: wp('3%'),
   },
@@ -24,9 +22,7 @@ export default StyleSheet.create({
     marginLeft: wp('85%'),
     marginTop: -hp('4%'),
     marginBottom: hp('2%'),
-    // borderWidth:2,
     backgroundColor: '#BCECD6',
-    // borderColor: 'red',
     borderRadius: wp('1%'),
     alignItems: 'center',
     justifyContent: 'center',
@@ -43,62 +39,41 @@ export default StyleSheet.create({
   },
 
   detailImg: {
-    // marginTop: 8,
-    width: wp('93%'),
-    // height: 212,
-    borderRadius: 10,
+    width: wp('94%'),
+    borderRadius: wp('5%'),
   },
 
   paragrafTitle: {
     marginTop: hp('2%'),
-    // paddingHorizontal: 16,
-    // paddingTop: 8,
-    // textAlign: 'Left',
     fontSize: wp('5%'),
   },
 
   paragrafText: {
     color: '#828282',
-    // width: 417,
-    // paddingTop: 8,
-    // paddingHorizontal: 16,
+    fontSize: wp('4%'),
+    textAlign: 'justify'
   },
 
   action: {
-    // paddingHorizontal: wp('0%'),
-    marginLeft: -wp('3%'),
-    // marginTop: hp('3%'),
+    marginTop: -hp('2%'),
     backgroundColor: '#00B761',
-    width: wp('100%'),
-    height: hp('10%'),
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
+    width: wp('90%'),
+    height: hp('7%'),
+    borderRadius: wp('2%'),
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   actionText: {
-    textAlign: 'center',
+    fontSize: wp('5%'),
     color: 'white',
   },
 
-  actionFavTrue: {
-    // padding: 16,
-    // paddingLeft: 96,
-  },
-
   actionFavFalse: {
-    // padding: 16,
-    // paddingLeft: 96,
     alignItems: 'center',
     marginTop: hp('1%'),
     marginLeft: wp('19%')
-  },
-
-  actionPlant: {
-    alignItems: 'center',
-    marginTop: hp('1%'),
-    marginRight: wp('19%')
   },
 
   navMenuIcon: {
@@ -107,5 +82,37 @@ export default StyleSheet.create({
     width: 40,
   },
 
+  containerSteps: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    marginTop: hp('2%')
+  },
+
+  kotakSteps: {
+    width: wp('3%'),
+    height: wp('3%'),
+    backgroundColor: '#00B761',
+    borderRadius: wp('0.7%')
+  },
+
+  langkah: {
+    color: '#00B761',
+    fontSize: wp('4%'),
+    marginLeft: wp('2%'),
+    marginTop: -hp('0.8%')
+  },
+
+  langkahText: {
+    marginTop: hp('1%'),
+    fontSize: wp('4%'),
+    color: '#828282'
+  },
   
+  divider: {
+    marginTop: hp('3%'),
+    borderBottomColor: '#DEDEDE',
+    borderBottomWidth: 1,
+  },
+
 });

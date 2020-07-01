@@ -38,12 +38,13 @@ const HomeNavigator = () => {
   }, []);
 
   return (
-    <Stack.Navigator initialRouteName="Beranda">
+    <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
-        name="Beranda"
+        name="Home"
         component={HomePage}
         // untuk menghilangkan back button ==> headerLeft: null
         options={{
+          title: 'Beranda',
           headerTitleAlign: 'center',
           headerLeft: null,
           headerStyle: {
