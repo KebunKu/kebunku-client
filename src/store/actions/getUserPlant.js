@@ -1,4 +1,4 @@
-import axios from 'axios';
+import server from '../config.js';
 import { AsyncStorage } from 'react-native';
 
 export const FETCH_All_USER_PLANT = 'FETCH_All_USER_PLANT';
@@ -14,9 +14,9 @@ export const fetchAllMyPlant = () => {
       },
     })
     AsyncStorage.getItem('token', (err, result) => {
-      axios({
+      server({
         method: 'GET',
-        url: 'http://192.168.43.189:3000/userplant',
+        url: '/userplant',
         headers: {
           token: result
         }

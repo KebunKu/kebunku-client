@@ -1,4 +1,4 @@
-import axios from 'axios';
+import server from '../config.js';
 import { fetchAllFav } from './getAllFav'
 import { AsyncStorage } from 'react-native';
 
@@ -8,9 +8,9 @@ export const postFavorite = (PlantId) => {
   console.log('masuk ========')
   return (dispatch) => {
     AsyncStorage.getItem('token', (err, result) => {
-      axios({
+      server({
         method: 'POST',
-        url: 'http://192.168.43.189:3000/userfav',
+        url: '/userfav',
         data: {PlantId},
         headers: {
           token: result

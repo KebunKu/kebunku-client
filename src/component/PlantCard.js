@@ -17,9 +17,11 @@ import { fetchAllMyPlant } from '../store/actions';
 import detailImage from '../../assets/image/detail/detailImage';
 import styles from '../style/plantCardStyle';
 
-const PlantCard = () => {
+const PlantCard = (props) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const { notWateredList } = props;
+  console.log(notWateredList);
 
   useEffect(() => {
     dispatch(fetchAllMyPlant());
@@ -37,32 +39,26 @@ const PlantCard = () => {
 
   return (
     <>
-      {!myPlant.length ? (
-        <Text style={{ marginTop: 15 }}>Belum menanam</Text>
-      ) : (
-        <>
-          {myPlant.map((plant, i) => {
-            for (let i = 0; i < detailImage.length; i++) {
-              if (detailImage[i].imgName === plant.PlantId.name) {
-                image = detailImage[i].uri;
-              }
-            }
+      {notWateredList.map((plant, i) => {
+        for (let i = 0; i < detailImage.length; i++) {
+          if (detailImage[i].imgName === plant.PlantId.name) {
+            image = detailImage[i].uri;
+          }
+        }
 
-            return (
-              <TouchableOpacity key={i} onPress={() => toDetailPage(plant)}>
-                <View style={styles.containerCard}>
-                  <View style={styles.card}>
-                    <ImageBackground
-                      style={styles.cardImage}
-                      source={image}></ImageBackground>
-                  </View>
-                  <Text style={styles.cardTitle}>{plant.PlantId.name}</Text>
-                </View>
-              </TouchableOpacity>
-            );
-          })}
-        </>
-      )}
+        return (
+          <TouchableOpacity key={i} onPress={() => toDetailPage(plant)}>
+            <View style={styles.containerCard}>
+              <View style={styles.card}>
+                <ImageBackground
+                  style={styles.cardImage}
+                  source={image}></ImageBackground>
+              </View>
+              <Text style={styles.cardTitle}>{plant.PlantId.name}</Text>
+            </View>
+          </TouchableOpacity>
+        );
+      })}
     </>
   );
 };

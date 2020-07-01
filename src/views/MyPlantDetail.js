@@ -10,36 +10,44 @@ import {
   TouchableOpacity,
   Button,
   ImageBackground,
+  ToastAndroid
 } from 'react-native';
 import BottomNavBar from '../component/BottomNavBar';
 import styles from '../style/myPlantDetailStyle';
 import detailImage from '../../assets/image/detail/detailImage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import * as ImagePicker from 'expo-image-picker';
+import { editUserPlant } from '../store/actions';
+import { useDispatch } from 'react-redux';
+
+const Toast = ({ visible, message }) => {
+  if (visible) {
+    ToastAndroid.showWithGravityAndOffset(
+      message,
+      ToastAndroid.LONG,
+      ToastAndroid.CENTER,
+      25,
+      50
+    );
+    return null;
+  }
+  return null;
+};
 
 export default function MyPlantDetail({ route, navigation }) {
   const plant = route.params.obj;
-  const [uploadedimage, setUploaded] = useState(null)
+  const [visibleToast, setvisibleToast] = useState(false);
+
+  useEffect(() => setvisibleToast(false), [visibleToast]);
+
+  const dispatch = useDispatch();
 
   const backBtn = () => {
     navigation.navigate('Profile');
   };
-  const pickImage = async () => {
-    try {
-      let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
-        allowsEditing: true,
-        aspect: [4, 3],
-        quality: 1,
-      });
-      if (!result.cancelled) {
-        setUploaded(result.uri);
-      }
 
-      console.log(result);
-    } catch (E) {
-      console.log(E);
-    }
+  const handleSiram = (plant) => {
+    setvisibleToast(true);
+    dispatch(editUserPlant(plant));
   };
 
   let image;
@@ -97,9 +105,13 @@ export default function MyPlantDetail({ route, navigation }) {
             <Image source={require('../../assets/image/element/character.png')}/>
 
           </View>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.textButton}>Tanaman sudah disiram</Text>
-          </TouchableOpacity>
+          {
+            !plant.watered && 
+            <TouchableOpacity style={styles.button} onPress={() => handleSiram(plant)}>
+              <Toast visible={visibleToast} message="Sukses menyiram!" />
+              <Text style={styles.textButton}>Tanaman sudah disiram</Text>
+            </TouchableOpacity>
+          }
         </View>
 
         {/* <TouchableOpacity onPress={() => toMyPlantDetail()}>

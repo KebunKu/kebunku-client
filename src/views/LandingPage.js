@@ -19,7 +19,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useDispatch, useSelector } from 'react-redux';
 import { userRegister } from '../store/actions/index';
 import registerforPushNotifications from '../../registerforPushNotificationsAsync';
-import axios from 'axios';
+import server from '../store/config.js';
 
 const Stack = createStackNavigator();
 
@@ -98,8 +98,8 @@ export default function LandingPage() {
 
   const btnHandle = function () {
     if (!register) {
-      return axios
-        .post('http://192.168.43.189:3000/login', {
+      return server
+        .post('/login', {
           email: email,
           password: password,
         })
@@ -127,8 +127,8 @@ export default function LandingPage() {
     } else {
       if ((name, email, password, conPassword)) {
         if (password === conPassword) {
-          return axios
-            .post('http://192.168.43.189:3000/register', {
+          return server
+            .post('/register', {
               name: name,
               email: email,
               password: password,
