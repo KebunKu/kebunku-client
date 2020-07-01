@@ -7,10 +7,9 @@ import {
 export default StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#E5F8EF',
+    backgroundColor: '#E5F8EF',
     alignItems: 'center',
-    justifyContent: 'center',
-    // marginBottom: hp('10%')
+    paddingHorizontal: wp('5%'),
   },
 
   scroll: {
@@ -24,24 +23,18 @@ export default StyleSheet.create({
     borderBottomWidth: 0.5,
   },
 
-  fruitContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: '#E5F8EF',
-    paddingHorizontal: wp('3%'),
-  },
-
   fruitTitle: {
-    fontSize: 20,
+    fontSize: wp('4.5%'),
     fontWeight: 'bold',
-    color: '#1C1C1C',
+    color: '#323232',
     marginTop: hp('3%'),
-    marginBottom: hp('1%'),
   },
 
-  seeAllBtn: {
-    fontSize: 16,
-    color: '#00B761',
-    marginTop: hp('3%'),
+  poster: {
+    marginTop: hp('2%'),
+    borderRadius: wp('5%'),
+    width: wp('90%'),
+    height: hp('27%'),
+    resizeMode: 'cover',
   },
 });

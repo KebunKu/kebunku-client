@@ -35,6 +35,6 @@ export default StyleSheet.create({
     marginTop: hp('0.5%'),
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#000000',
+    color: '#323232',
   },
 });

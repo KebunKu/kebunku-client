@@ -21,7 +21,6 @@ import {
 import { useNavigation } from '@react-navigation/native';
 
 export default function HomePage() {
-
   const navigation = useNavigation();
 
   const toAllFruit = () => {
@@ -35,41 +34,34 @@ export default function HomePage() {
   // PROPS
   return (
     <View style={styles.container}>
+     
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        
         <PlantToWaterBox />
 
         <View style={styles.divider}></View>
 
         {/* Yang di bawah ini Komponen My Fruits */}
 
-        <View style={styles.fruitContainer}>
-          <Text style={styles.fruitTitle}>Buah</Text>
-          <TouchableOpacity onPress={() => toAllFruit()}>
-            <Text style={styles.seeAllBtn}>Lihat Semua</Text>
-          </TouchableOpacity>
+        <Text style={styles.fruitTitle}>Rekomendasi Buah</Text>
+
+        <TouchableOpacity onPress={() => toAllFruit()}>
+          <Image
+            style={styles.poster}
+            source={require('../../assets/image/element/fruitRecommendation.jpg')}
+          />
+        </TouchableOpacity>
+
+        <Text style={styles.fruitTitle}>Rekomendasi Sayuran</Text>
+        <TouchableOpacity onPress={() => toAllVegetable()}>
+          <Image
+            style={styles.poster}
+            source={require('../../assets/image/element/vegeRecommendation.jpg')}
+          />
+        </TouchableOpacity>
+
+        <View style={{ marginBottom: 30 }}>
+          <Text></Text>
         </View>
-
-        <View style={styles.fruitContainer}>
-          <FruitsCard />
-        </View>
-
-        <View style={{marginBottom: 1}}><Text></Text></View>
-
-        {/* Yang di bawah ini Komponen My Vegetable */}
-
-        <View style={styles.fruitContainer}>
-          <Text style={styles.fruitTitle}>Sayuran</Text>
-          <TouchableOpacity onPress={() => toAllVegetable()}>
-            <Text style={styles.seeAllBtn}>Lihat Semua</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.fruitContainer}>
-          <VegetablesCard />
-        </View>
-
-        <View style={{marginBottom: 30}}><Text></Text></View>
       </ScrollView>
     </View>
   );

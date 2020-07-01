@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, View, Image, Header } from 'react-native';
 import {
   LandingPage,
   HomePage,
@@ -17,6 +17,11 @@ import {
 import { Provider } from 'react-redux';
 import store from './src/store/index';
 import { useNavigation } from '@react-navigation/native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import { StyleSheet } from 'react-native';
 import registerForPushNotifications from './registerforPushNotificationsAsync';
 
 // const navigation = useNavigation()
@@ -33,28 +38,43 @@ const HomeNavigator = () => {
   }, []);
 
   return (
-    <Stack.Navigator initialRouteName="Home">
-      {/* <Stack.Screen
-        name="Landing"
-        component={LandingPage}
-        options={{ headerShown: false, tabBarVisible: false }}
-      /> */}
+    <Stack.Navigator initialRouteName="Beranda">
       <Stack.Screen
-        name="Home"
+        name="Beranda"
         component={HomePage}
         // untuk menghilangkan back button ==> headerLeft: null
-        options={{ headerTitleAlign: 'center', headerLeft: null }}
+        options={{
+          headerTitleAlign: 'center',
+          headerLeft: null,
+          headerStyle: {
+            backgroundColor: '#00B761',
+            height: hp('8%'),
+          },
+          headerTitleStyle: {
+            color: 'white',
+          },
+        }}
       />
       <Stack.Screen
         name="FruitsPage"
         component={FruitsPage}
-        options={{ title: 'Fruits', headerTitleAlign: 'center' }}
+        options={{
+          title: 'Buah',
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: '#00B761',
+            height: hp('8%'),
+          },
+          headerTitleStyle: {
+            color: 'white',
+          },
+        }}
       />
       <Stack.Screen
         name="MyPlant"
         component={MyPlantDetail}
         options={{
-          title: 'My Plant',
+          title: 'Kebunku',
           headerTitleAlign: 'center',
           headerShown: false,
         }}
@@ -63,24 +83,47 @@ const HomeNavigator = () => {
         name="FruitDetail"
         component={FruitDetail}
         options={{
-          title: 'Plant Guide',
+          title: 'Panduan Menanam',
           headerTitleAlign: 'center',
           tabBarVisible: false,
+          headerStyle: {
+            backgroundColor: '#00B761',
+            height: hp('8%'),
+          },
+          headerTitleStyle: {
+            color: 'white',
+          },
         }}
       />
       <Stack.Screen
         name="PlantThisPage"
         component={PlantThisPage}
         options={{
-          title: 'Plant Guide',
+          title: 'Tambah tanaman',
           headerTitleAlign: 'center',
-          // tabBarVisible: false,
+          headerStyle: {
+            backgroundColor: '#00B761',
+            height: hp('8%'),
+          },
+          headerTitleStyle: {
+            color: 'white',
+          },
         }}
       />
       <Stack.Screen
         name="VegetablesPage"
         component={VegetablesPage}
-        options={{ title: 'Vegetables', headerTitleAlign: 'center' }}
+        options={{
+          title: 'Sayuran',
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: '#00B761',
+            height: hp('8%'),
+          },
+          headerTitleStyle: {
+            color: 'white',
+          },
+        }}
       />
     </Stack.Navigator>
   );
@@ -93,17 +136,32 @@ const ProfileNavigator = () => {
         name="Profile"
         component={ProfilePage}
         options={{
+          headerLeft: null,
           title: 'Profile',
           headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: '#00B761',
+            height: hp('8%'),
+          },
+          headerTitleStyle: {
+            color: 'white',
+          },
         }}
       />
       <Stack.Screen
         name="MyPlant"
         component={MyPlantDetail}
         options={{
-          title: 'My Plant',
-          headerTitleAlign: 'center',
+          title: 'Kebunku',
           headerShown: false,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: '#00B761',
+            height: hp('8%'),
+          },
+          headerTitleStyle: {
+            color: 'white',
+          },
         }}
       />
     </Stack.Navigator>
@@ -121,7 +179,7 @@ const bottomTabNavigator = () => {
         name="Home"
         component={HomeNavigator}
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: 'Beranda',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
           ),

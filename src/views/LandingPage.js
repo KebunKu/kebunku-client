@@ -3,6 +3,7 @@ import {
   Platform,
   StyleSheet,
   Text,
+  ImageBackground,
   View,
   Image,
   TextInput,
@@ -36,7 +37,7 @@ export default function LandingPage() {
   }, []);
 
   const [register, setRegister] = useState(false);
-  const [textRegLog, setText] = useState('Didnt Have Account? Sign up');
+  const [textRegLog, setText] = useState('Belum punya akun? Daftar');
   const [ValidationText, setValid] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -45,8 +46,8 @@ export default function LandingPage() {
 
   const regLogHandle = function () {
     setRegister(!register);
-    if (!register) setText('Already Have Account? Sign in');
-    if (register) setText('Didnt Have Account? Sign up');
+    if (!register) setText('Sudah punya akun? Masuk');
+    if (register) setText('Belum punya akun? Daftar');
   };
 
   const isRegisterName = function () {
@@ -54,7 +55,7 @@ export default function LandingPage() {
       return (
         <TextInput
           style={styles.inputBox}
-          placeholder="Name"
+          placeholder="Nama"
           placeholderTextColor="#828282"
           onChange={(e) => setName(e.nativeEvent.text)}
         />
@@ -67,7 +68,7 @@ export default function LandingPage() {
       return (
         <TextInput
           style={styles.inputBox}
-          placeholder="Confirm Password"
+          placeholder="Ulangi Password"
           placeholderTextColor="#828282"
           // selectionColor="#FFFFFF"
           secureTextEntry={true}
@@ -85,7 +86,7 @@ export default function LandingPage() {
           {/* Button Handel nya nanti di Ganti Tambak API GOOGLE */}
           <TouchableOpacity style={styles.button} onPress={btnHandle}>
             <View style={styles.buttonGoogle}>
-              <Text style={{ color: 'white', fontSize: 16 }}>
+              <Text style={{ color: '#E5F8EF', fontSize: 16 }}>
                 Continue with Google
               </Text>
             </View>
@@ -144,7 +145,7 @@ export default function LandingPage() {
               console.log(err.message);
             });
         } else {
-          setValid('Please Input You data Correctly');
+          setValid('Harap masukkan data dengan benar');
         }
       }
     }
@@ -154,10 +155,8 @@ export default function LandingPage() {
     if (register) {
       return (
         <View>
-          <Text style={styles.started}>Let's Get Started!</Text>
-          <Text style={styles.textMini}>
-            Create a new account and start gardening
-          </Text>
+          <Text style={styles.started}>Mari Berkebun!</Text>
+          <Text style={styles.textMini}>Daftar akun dan mulai menanam.</Text>
         </View>
       );
     } else {
@@ -176,7 +175,7 @@ export default function LandingPage() {
       <View>
         <Image
           style={styles.element}
-          source={require('../../assets/image/element/daun.png')}
+          source={require('../../assets/image/element/daun_top.png')}
         />
       </View>
 
@@ -188,15 +187,14 @@ export default function LandingPage() {
       <TextInput
         style={styles.inputBox}
         placeholder="Email"
-        placeholderTextColor="#828282"
+        placeholderTextColor="#707070"
         onChange={(e) => setEmail(e.nativeEvent.text)}
       />
 
       <TextInput
         style={styles.inputBox}
         placeholder="Password"
-        placeholderTextColor="#828282"
-        // selectionColor="black"
+        placeholderTextColor="#707070"
         secureTextEntry={true}
         onChange={(e) => setPassword(e.nativeEvent.text)}
       />
@@ -206,21 +204,21 @@ export default function LandingPage() {
       <TouchableOpacity style={styles.buttonBox} onPress={btnHandle}>
         <View>
           <Text style={{ color: 'white', fontSize: 16 }}>
-            {register ? 'Register' : 'Login'}
+            {register ? 'Daftar' : 'Masuk'}
           </Text>
         </View>
       </TouchableOpacity>
 
-      {LoginGoogle()}
-
       <TouchableOpacity onPress={regLogHandle} style={{ marginTop: 8 }}>
-        <Text>{textRegLog}</Text>
+        <Text style={{color: '#323232'}}>{textRegLog}</Text>
       </TouchableOpacity>
+
+      {LoginGoogle()}
 
       <View>
         <Image
           style={styles.elementBottom}
-          source={require('../../assets/image/element/daun.png')}
+          source={require('../../assets/image/element/daun_bottom.png')}
         />
       </View>
     </View>

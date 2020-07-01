@@ -13,26 +13,21 @@ export default StyleSheet.create({
   },
 
   element: {
-    marginTop: hp('7%'),
-    alignItems: 'center',
-    marginBottom: -hp('73%'),
-    width: wp('100%'),
-    height: hp('100%'),
-    resizeMode: 'cover',
+    marginTop: -hp('18%'),
+    marginLeft: -wp('35%'),
+    position: "absolute",
   },
 
   elementBottom: {
-    transform: [{ rotate: '180deg' }],
-    width: wp('100%'),
-    height: hp('100%'),
     resizeMode: 'cover',
-    marginTop: -hp('75%'),
-    marginLeft: -wp('30%'),
-    zIndex: -99
-    
+    marginTop: -hp('88%'),
+    marginLeft: -wp('50%'),
+    position: "absolute",
+    zIndex: -99,
   },
 
   started: {
+    marginTop: hp('10%'),
     textAlign: 'left',
     fontSize: wp('9%'),
     fontWeight: 'bold',
@@ -52,16 +47,14 @@ export default StyleSheet.create({
   },
 
   textOr: {
-    // fontFamily: 'roboto',
     fontWeight: 'bold',
-    color: '#828282',
+    color: '#E5F8EF',
     margin: 8,
     justifyContent: 'center',
     textAlign: 'center',
   },
 
   textBig: {
-    // fontFamily: 'roboto',
     textAlign: 'left',
     fontSize: wp('15%'),
     fontWeight: 'bold',
@@ -69,8 +62,8 @@ export default StyleSheet.create({
   },
 
   textSmall: {
-    // fontFamily: 'roboto',
     marginBottom: -hp('2%'),
+    marginTop: hp('10%'),
     textAlign: 'left',
     fontSize: wp('5%'),
     fontWeight: 'bold',
@@ -78,10 +71,8 @@ export default StyleSheet.create({
   },
 
   textMini: {
-    // fontFamily: 'roboto',
     textAlign: 'center',
     fontSize: wp('3.7%'),
-    // fontWeight: 'bold',
     color: '#00B761',
   },
 
@@ -92,13 +83,12 @@ export default StyleSheet.create({
     borderRadius: wp('2%'),
     width: wp('70%'),
     height: hp('6%'),
-    // padding: 8,
     marginTop: hp('1%'),
     marginBottom: hp('2%'),
   },
 
   buttonGoogle: {
-    backgroundColor: '#395EE1',
+    backgroundColor: '#E5F8EF',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: wp('2%'),

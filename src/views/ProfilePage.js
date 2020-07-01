@@ -55,10 +55,10 @@ export default function App({ navigation }) {
     // console.log(fav, "ini fav =====")
     navigation.navigate('FruitDetail', {
       obj: fav.PlantId,
-      favor: true
+      favor: true,
     });
   };
-  
+
   const logOut = () => {
     AsyncStorage.clear();
     navigation.navigate('Landing');
@@ -88,10 +88,6 @@ export default function App({ navigation }) {
           </View>
         </View>
 
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Text style={styles.myPlant}> My Plant </Text>
-        </View>
-
         {loadingMyPlant ? (
           <Text>Loading..</Text>
         ) : (
@@ -99,39 +95,45 @@ export default function App({ navigation }) {
             {errorMyPlant ? (
               <Text>{error.message}</Text>
             ) : (
-              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                {myPlant.map((plant, i) => {
-                  for (let i = 0; i < detailImage.length; i++) {
-                    if (detailImage[i].imgName === plant.PlantId.name) {
-                      image = detailImage[i].uri;
+              <>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
+                  <Text style={styles.myPlant}> My Plant </Text>
+                </View>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                  {myPlant.map((plant, i) => {
+                    for (let i = 0; i < detailImage.length; i++) {
+                      if (detailImage[i].imgName === plant.PlantId.name) {
+                        image = detailImage[i].uri;
+                      }
                     }
-                  }
-                  return (
-                    <View key={i} style={styles.fruitContainer}>
-                      <TouchableOpacity onPress={() => toMyPlantDetail(plant)}>
-                        <View style={styles.overlay}>
-                          <Text></Text>
-                        </View>
-                        <View style={styles.fruitCard}>
-                          <ImageBackground
-                            style={styles.fruitCardImage}
-                            source={image}></ImageBackground>
-                        </View>
-                        <Text style={styles.fruitCardTitle}>
-                          {plant.PlantId.name}
-                        </Text>
-                      </TouchableOpacity>
-                    </View>
-                  );
-                })}
-              </ScrollView>
+                    return (
+                      <View key={i} style={styles.fruitContainer}>
+                        <TouchableOpacity
+                          onPress={() => toMyPlantDetail(plant)}>
+                          <View style={styles.overlay}>
+                            <Text></Text>
+                          </View>
+                          <View style={styles.fruitCard}>
+                            <ImageBackground
+                              style={styles.fruitCardImage}
+                              source={image}></ImageBackground>
+                          </View>
+                          <Text style={styles.fruitCardTitle}>
+                            {plant.PlantId.name}
+                          </Text>
+                        </TouchableOpacity>
+                      </View>
+                    );
+                  })}
+                </ScrollView>
+              </>
             )}
           </>
         )}
-
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Text style={styles.myPlant}> My Favourite </Text>
-        </View>
 
         {loadingMyFav ? (
           <Text>Loading..</Text>
@@ -140,42 +142,50 @@ export default function App({ navigation }) {
             {errorMyFav ? (
               <Text>{error.message}</Text>
             ) : (
-              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                {!myFav.length ? (
-                  <Text style={{ marginTop: 15 }}>
-                    Belum menambahkan favorite
-                  </Text>
-                ) : (
-                  <>
-                    {myFav.map((fav, i) => {
-                      for (let i = 0; i < detailImage.length; i++) {
-                        if (detailImage[i].imgName === fav.PlantId.name) {
-                          image = detailImage[i].uri;
+              <>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
+                  <Text style={styles.myPlant}> My Favourite </Text>
+                </View>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                  {!myFav.length ? (
+                    <Text style={{ marginTop: 15 }}>
+                      Belum menambahkan favorite
+                    </Text>
+                  ) : (
+                    <>
+                      {myFav.map((fav, i) => {
+                        for (let i = 0; i < detailImage.length; i++) {
+                          if (detailImage[i].imgName === fav.PlantId.name) {
+                            image = detailImage[i].uri;
+                          }
                         }
-                      }
-              
-                      return (
-                        <View key={i} style={styles.fruitContainer}>
-                          <TouchableOpacity
-                            onPress={() => toDetailPage(fav)}>
-                            <View style={styles.overlay}>
-                              <Text></Text>
-                            </View>
-                            <View style={styles.fruitCard}>
-                              <ImageBackground
-                                style={styles.fruitCardImage}
-                                source={image}></ImageBackground>
-                            </View>
-                            <Text style={styles.fruitCardTitle}>
-                              {fav.PlantId.name}
-                            </Text>
-                          </TouchableOpacity>
-                        </View>
-                      );
-                    })}
-                  </>
-                )}
-              </ScrollView>
+
+                        return (
+                          <View key={i} style={styles.fruitContainer}>
+                            <TouchableOpacity onPress={() => toDetailPage(fav)}>
+                              <View style={styles.overlay}>
+                                <Text></Text>
+                              </View>
+                              <View style={styles.fruitCard}>
+                                <ImageBackground
+                                  style={styles.fruitCardImage}
+                                  source={image}></ImageBackground>
+                              </View>
+                              <Text style={styles.fruitCardTitle}>
+                                {fav.PlantId.name}
+                              </Text>
+                            </TouchableOpacity>
+                          </View>
+                        );
+                      })}
+                    </>
+                  )}
+                </ScrollView>
+              </>
             )}
           </>
         )}

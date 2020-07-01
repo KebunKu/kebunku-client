@@ -26,7 +26,6 @@ const PlantCard = () => {
   }, [dispatch]);
 
   const myPlant = useSelector((state) => state.userPlantReducer.myPlant);
-  // console.log(myPlant, '======dari plantcard');
 
   const toDetailPage = (plant) => {
     navigation.navigate('MyPlant', {

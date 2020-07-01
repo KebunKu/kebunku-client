@@ -30,7 +30,7 @@ export default StyleSheet.create({
   backgroundWhite: {
     width: wp('100%'),
     marginTop: hp('14%'),
-    height: hp('60%'),
+    height: hp('30%'),
     backgroundColor: '#E5F8EF',
     borderTopLeftRadius: wp('7%'),
     borderTopRightRadius: wp('7%'),
