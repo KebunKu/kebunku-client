@@ -15,12 +15,31 @@ import BottomNavBar from '../component/BottomNavBar';
 import styles from '../style/myPlantDetailStyle';
 import detailImage from '../../assets/image/detail/detailImage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import * as ImagePicker from 'expo-image-picker';
 
 export default function MyPlantDetail({ route, navigation }) {
   const plant = route.params.obj;
+  const [uploadedimage, setUploaded] = useState(null)
 
   const backBtn = () => {
     navigation.navigate('Profile');
+  };
+  const pickImage = async () => {
+    try {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+      if (!result.cancelled) {
+        setUploaded(result.uri);
+      }
+
+      console.log(result);
+    } catch (E) {
+      console.log(E);
+    }
   };
 
   let image;
@@ -73,8 +92,10 @@ export default function MyPlantDetail({ route, navigation }) {
         <Image style={styles.imagePlant} source={image} />
         <View style={styles.backgroundWhite}>
           <View
+
             >
             <Image source={require('../../assets/image/element/character.png')}/>
+
           </View>
           <TouchableOpacity style={styles.button}>
             <Text style={styles.textButton}>Tanaman sudah disiram</Text>
