@@ -52,10 +52,8 @@ export default function App({ navigation }) {
   };
 
   const toDetailPage = (fav) => {
-    // console.log(fav, "ini fav =====")
     navigation.navigate('FruitDetail', {
-      obj: fav.PlantId,
-      favor: true,
+      obj: fav.PlantId
     });
   };
 
@@ -74,7 +72,7 @@ export default function App({ navigation }) {
             style={styles.tinyLogo}
             source={{
               uri:
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/President_Suharto%2C_1983.jpg/170px-President_Suharto%2C_1983.jpg',
+                'https://pbs.twimg.com/profile_images/1246725245957861377/OrTjwuTn_400x400.jpg',
             }}
           />
           <View style={styles.headerBoxInfo}>
@@ -82,7 +80,7 @@ export default function App({ navigation }) {
             <Text style={styles.textEmail}>{email}</Text>
             <View style={styles.boxNumPlant}>
               <Text style={styles.textNumPlant}>
-                has {myPlant.length} plants in the garden
+                Ada {myPlant.length} tanaman di kebun
               </Text>
             </View>
           </View>
@@ -101,7 +99,7 @@ export default function App({ navigation }) {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                   }}>
-                  <Text style={styles.myPlant}> My Plant </Text>
+                  <Text style={styles.myPlant}> Tanamanku </Text>
                 </View>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   {myPlant.map((plant, i) => {
@@ -140,7 +138,7 @@ export default function App({ navigation }) {
         ) : (
           <>
             {errorMyFav ? (
-              <Text>{error.message}</Text>
+              <Text>{errorMyFav.message}</Text>
             ) : (
               <>
                 <View
@@ -148,7 +146,7 @@ export default function App({ navigation }) {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                   }}>
-                  <Text style={styles.myPlant}> My Favourite </Text>
+                  <Text style={styles.myPlant}> Daftar Favorit </Text>
                 </View>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   {!myFav.length ? (
@@ -191,7 +189,7 @@ export default function App({ navigation }) {
         )}
 
         <TouchableOpacity style={styles.logout} onPress={() => logOut()}>
-          <Text style={styles.textBtn}>Log out</Text>
+          <Text style={styles.textBtn}>Keluar</Text>
         </TouchableOpacity>
 
         <View style={{ marginBottom: 30 }}>

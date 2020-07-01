@@ -30,13 +30,22 @@ import YoutubePlayer from 'react-native-youtube-iframe';
 
 export default function FruitDetail({ route, navigation }) {
   const fruit = route.params.obj;
-  const favor = route.params.favor;
+  const [favor, setFavor] = useState();
   const playerRef = useRef(null);
   const [playing, setPlaying] = useState(false);
 
   const dispatch = useDispatch();
 
   const myFav = useSelector((state) => state.favReducer.favList);
+
+  useEffect(() => {
+    for(let i = 0; i < myFav.length; i++) {
+      if(myFav[i].PlantId._id == fruit._id) {
+        setFavor(true);
+      }
+    }
+  }, [myFav]);
+  console.log(myFav);
 
   const checkIfFavorTop = function () {
     // TESTING IF PROPS APAAN GITU NTAR IJO / PUTIH
@@ -67,8 +76,13 @@ export default function FruitDetail({ route, navigation }) {
   };
 
   const toogleFav = async function (PlantId) {
-    if (!favor) return dispatch(postFavorite(PlantId));
-    return dispatch(deleteFavorite(PlantId));
+    if (!favor) {
+      setFavor(!favor);
+      dispatch(postFavorite(PlantId));
+    } else {
+      setFavor(!favor);
+      dispatch(deleteFavorite(PlantId));
+    }
   };
 
   const checkIfFavorBot = function () {

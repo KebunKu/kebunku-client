@@ -20,37 +20,32 @@ import DatePicker from 'react-native-datepicker';
 import { useDispatch, useSelector } from 'react-redux';
 import { postUserPlant, putUserPlant } from '../store/actions/index';
 
-export default function PlantThisPage({ route, navigation }, props) {
+export default function PlantThisPage({ route, navigation }) {
   let PlantId;
 
-  if (route.params.PlantId) {
+  if (route.params && route.params.PlantId) {
     PlantId = route.params.PlantId;
   }
 
-  let plant
+  let plant;
 
-  if(route.params.plant) {
+  if(route.params && route.params.plant) {
     plant = route.params.plant;
+    PlantId = plant._id;
   }
+  console.log(plant, PlantId);
 
   const dispatch = useDispatch();
   //dapet PlantID dari pas nge click button Plant THIS ???
 
   const [ValidationText, setValid] = useState('');
-  const [notes, setNotes] = useState('');
-  const [reminder, setReminder] = useState(1);
-  const [plantedDate, setDate] = useState('');
-  const [pupuk, setPupuk] = useState('');
-
-  if (props.plants) {
-    setNotes(props.plants.notes);
-    setReminder(props.plants.reminder);
-    setDate(props.plants.plantedDate);
-    setPupuk(props.plants.pupuk);
-  }
+  const [notes, setNotes] = useState(plant ? plant.notes : '');
+  const [reminder, setReminder] = useState( plant ? plant.water_reminder.toString() : '');
+  const [plantedDate, setDate] = useState(plant ? plant.planted_date : '');
+  const [pupuk, setPupuk] = useState(plant ? plant.pupuk : '');
 
   const selectedItem = function () {
-    if (props.plants)
+    if (plant)
       return (
         <TextInput
           style={styles.inputBoxDisable}
@@ -66,9 +61,9 @@ export default function PlantThisPage({ route, navigation }, props) {
   };
 
   const submitPlant = function () {
-    if (props.plants) {
+    if (plant) {
       let dataEditPlant = {
-        PlantId: props.plants._id,
+        PlantId: plant._id,
         notes,
         reminder,
         plantedDate,
@@ -78,6 +73,7 @@ export default function PlantThisPage({ route, navigation }, props) {
       setReminder(1);
       setDate('');
       setPupuk('');
+      console.log('disini');
       dispatch(putUserPlant(dataEditPlant));
       navigation.navigate('Home');
     } else {
@@ -173,7 +169,7 @@ export default function PlantThisPage({ route, navigation }, props) {
         />
         <View style={styles.rowContainer}>
           <TouchableOpacity onPress={submitPlant}>
-            <Text style={styles.buttonCancle}>Tanam</Text>
+          <Text style={styles.buttonCancle}>{ plant ? 'Simpan' : 'Tanam'}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={cancle}>
