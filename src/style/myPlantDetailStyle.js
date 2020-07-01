@@ -23,54 +23,104 @@ export default StyleSheet.create({
   backBtn: {
     color: 'white',
     fontSize: wp('7%'),
+    marginBottom: hp('3%'),
   },
 
   centeredView: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    marginTop: -hp('1%'),
+    // marginBottom: hp('2%'),
+    height: hp('150%')
+    // position: 'absolute'
   },
 
   modalView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
+    alignItems: 'center',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5
+    elevation: 5,
   },
   openButton: {
-    backgroundColor: "#F194FF",
+    backgroundColor: '#F194FF',
     borderRadius: 20,
     padding: 10,
-    elevation: 2
+    elevation: 2,
   },
   textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
+    color: '#e83f4e',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  textStyleBatal: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   modalText: {
     marginBottom: 15,
-    textAlign: "center"
+    textAlign: 'center',
+  },
+
+  containerDelete: {
+    // flex: 1,
+    flexDirection: 'row',
+    // justifyContent: "space-between",
+    // height: hp('20%'),
+    // width: wp('90%'),
+    alignItems: 'center',
+    // borderWidth: 1,
+    // borderColor: 'yellow',
+  },
+
+  containerHapus: {
+    width: wp('50%'),
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
 
   pencil: {
     color: 'white',
     fontSize: wp('7%'),
     // position: 'absolute',
-    // marginLeft: wp('82%'),
-    // marginTop: hp('3%'),
+    marginLeft: wp('73%'),
+    // marginTop: -hp('1%'),
     zIndex: 99999,
-    width: wp('5%')
+    width: wp('10%'),
+    // borderWidth: 1,
+    // borderColor: 'red',
+  },
+  delete: {
+    color: 'white',
+    fontSize: wp('7%'),
+    // position: 'absolute',
+    // marginLeft: wp('82%'),
+    // marginTop: hp('5%'),
+    zIndex: 99999,
+    width: wp('100%'),
+  },
+
+  paragrafTitle: {
+    fontSize: wp('10%'),
+    color: 'white',
+    fontWeight: 'bold',
+    position: 'absolute',
+    // marginTop: hp('2%'),
+    // borderWidth: 1,
+    // borderColor: 'red',
+    zIndex: -99999,
   },
 
   backgroundWhite: {
@@ -99,11 +149,7 @@ export default StyleSheet.create({
     color: 'white',
   },
 
-  paragrafTitle: {
-    fontSize: wp('10%'),
-    color: 'white',
-    fontWeight: 'bold',
-  },
+  
 
   subtitle: {
     marginTop: hp('2%'),

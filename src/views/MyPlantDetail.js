@@ -19,6 +19,10 @@ import detailImage from '../../assets/image/detail/detailImage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { editUserPlant, deleteUserPlant } from '../store/actions';
 import { useDispatch } from 'react-redux';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const Toast = ({ visible, message }) => {
   if (visible) {
@@ -52,7 +56,6 @@ export default function MyPlantDetail({ route, navigation }) {
       plant,
     });
   };
-  
 
   const handleSiram = (plant) => {
     setvisibleToast(true);
@@ -68,7 +71,7 @@ export default function MyPlantDetail({ route, navigation }) {
     dispatch(deleteUserPlant(id));
     setToastDelete(true);
     navigation.goBack();
-  }
+  };
 
   let image;
 
@@ -90,46 +93,60 @@ export default function MyPlantDetail({ route, navigation }) {
               />
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => editBtn(plant)}>
-              <MaterialCommunityIcons name="pencil" style={styles.pencil} />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => confirmDelete()}>
-              <MaterialCommunityIcons name="delete" style={styles.pencil} />
-            </TouchableOpacity>
             <View style={styles.centeredView}>
               <Toast visible={toastDelete} message="Sukses menghapus!" />
               <Modal
                 animationType="slide"
                 transparent={true}
-                visible={modalDelete}
-              >
+                visible={modalDelete}>
                 <View style={styles.centeredView}>
                   <View style={styles.modalView}>
-                    <Text style={styles.modalText}>Hapus tanaman {plant.PlantId.name} dari kebun anda ?</Text>
+                    <Text style={styles.modalText}>
+                      Hapus tanaman {plant.PlantId.name} dari kebun anda ?
+                    </Text>
 
-                    <TouchableOpacity
-                      style={{ ...styles.openButton, backgroundColor: "#f00" }}
-                      onPress={() => {
-                        deleteMyPlant(plant._id);
-                      }}
-                    >
-                      <Text style={styles.textStyle}>Hapus</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
-                      onPress={() => {
-                        setModalDelete(!modalDelete);
-                      }}
-                    >
-                      <Text style={styles.textStyle}>Batal</Text>
-                    </TouchableOpacity>
+                    <View style={styles.containerHapus}>
+                      <TouchableOpacity
+                        style={{
+                          ...styles.openButton,
+                          backgroundColor: 'white',
+                          borderColor: '#e83f4e',
+                          borderWidth: 1,
+                          width: wp('22%')
+                        }}
+                        onPress={() => {
+                          deleteMyPlant(plant._id);
+                        }}>
+                        <Text style={styles.textStyle}>Hapus</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        style={{
+                          ...styles.openButton,
+                          backgroundColor: '#00b761',
+                          width: wp('22%')
+                        }}
+                        onPress={() => {
+                          setModalDelete(!modalDelete);
+                        }}>
+                        <Text style={styles.textStyleBatal}>Batal</Text>
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 </View>
               </Modal>
             </View>
 
-            <Text style={styles.paragrafTitle}>{plant.PlantId.name}</Text>
+            <View style={styles.containerDelete}>
+              <Text style={styles.paragrafTitle}>{plant.PlantId.name}</Text>
+              <TouchableOpacity onPress={() => editBtn(plant)}>
+                <MaterialCommunityIcons name="pencil" style={styles.pencil} />
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={() => confirmDelete()}>
+                <MaterialCommunityIcons name="delete" style={styles.delete} />
+              </TouchableOpacity>
+            </View>
+
             <Text style={styles.subtitle}>Umur</Text>
             <Text style={styles.plantAge}>{plant.plant_age} hari</Text>
 
@@ -160,14 +177,15 @@ export default function MyPlantDetail({ route, navigation }) {
         <Image style={styles.imagePlant} source={image} />
         <View style={styles.backgroundWhite}>
           <View>
-            {
-              plant.watered ? 
-              (<Image
+            {plant.watered ? (
+              <Image
                 source={require('../../assets/image/element/character.png')}
-              />) : (<Image
-              source={require('../../assets/image/element/character_cry.png')}
-            />) 
-            }
+              />
+            ) : (
+              <Image
+                source={require('../../assets/image/element/character_cry.png')}
+              />
+            )}
           </View>
           {!plant.watered && (
             <TouchableOpacity
