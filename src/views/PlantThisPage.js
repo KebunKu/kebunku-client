@@ -18,9 +18,9 @@ import {
 } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import { useDispatch, useSelector } from 'react-redux';
-import { postUserPlant } from '../store/actions/index';
+import { postUserPlant, putUserPlant } from '../store/actions/index';
 
-export default function PlantThisPage({ route, navigation }) {
+export default function PlantThisPage({ route, navigation }, props) {
   const PlantId = route.params.PlantId;
   const dispatch = useDispatch();
   //dapet PlantID dari pas nge click button Plant THIS ???
@@ -31,18 +31,49 @@ export default function PlantThisPage({ route, navigation }) {
   const [plantedDate, setDate] = useState('');
   const [pupuk, setPupuk] = useState('');
 
+  if (props.plants) {
+    setNotes(props.plants.notes)
+    setReminder(props.plants.reminder)
+    setDate(props.plants.plantedDate)
+    setPupuk(props.plants.pupuk)
+  }
+
+  const selectedItem = function () {
+    if (props.plants) return (
+        <TextInput
+          style={styles.inputBoxDisable}
+          placeholderTextColor="#828282"
+          multiline={true}
+          onChange={(e) => setNotes(e.nativeEvent.text)}
+          editable={false}
+          selectTextOnFocus={false}
+          // value={props.plants.name} YANG ini yg bener yg bawah cuma sementara
+          value= "Apel"
+        />
+    )
+  }
+
   const submitPlant = function () {
-    if (notes && reminder && pupuk) {
-      let dataPlant = { PlantId, notes, reminder, plantedDate, pupuk };
-      console.log(dataPlant, 'dataPlant ===========');
+    if(props.plants) {
+      let dataEditPlant = { PlantId: props.plants._id, notes, reminder, plantedDate, pupuk };
       setNotes('');
       setReminder(1);
       setDate('');
       setPupuk('');
-      dispatch(postUserPlant(dataPlant));
-      navigation.navigate('Home')
+      dispatch(putUserPlant(dataEditPlant));
     } else {
-      setValid('Data belum Lengkap');
+      if (notes && reminder && pupuk) {
+        let dataPlant = { PlantId, notes, reminder, plantedDate, pupuk };
+        console.log(dataPlant, 'dataPlant ===========');
+        setNotes('');
+        setReminder(1);
+        setDate('');
+        setPupuk('');
+        dispatch(postUserPlant(dataPlant));
+        navigation.navigate('Home')
+      } else {
+        setValid('Data belum Lengkap');
+      }
     }
   };
   const cancle = function () {
@@ -69,6 +100,7 @@ export default function PlantThisPage({ route, navigation }) {
       </View> */}
 
       <View style={styles.form}>
+        {selectedItem()}
         <TextInput
           style={styles.inputBox}
           placeholder="Notes"
@@ -157,6 +189,15 @@ const styles = StyleSheet.create({
   },
 
   inputBox: {
+    backgroundColor: 'white',
+    padding: hp('1%'),
+    margin: hp('1%'),
+    width: wp('70%'),
+    borderRadius: 15,
+  },
+
+  inputBoxDisable: {
+    color: 'grey',
     backgroundColor: 'white',
     padding: hp('1%'),
     margin: hp('1%'),
