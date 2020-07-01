@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   Platform,
   StyleSheet,
@@ -22,10 +22,13 @@ import {
 import styles from '../style/fruitDetailStyle';
 import detailImage from '../../assets/image/detail/detailImage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import YoutubePlayer from 'react-native-youtube-iframe';
 
 export default function FruitDetail({ route, navigation }) {
   const fruit = route.params.obj
   const favor = route.params.favor;
+  const playerRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
 
   // console.log(fruit, "ini fruit =======")
 
@@ -121,6 +124,25 @@ export default function FruitDetail({ route, navigation }) {
         <Text style={styles.paragrafTitle}>Fase Vegetatif</Text>
         <Text style={styles.paragrafText}>{fruit.fase_vegetatif}</Text>
         <View style={{ marginBottom: 50 }}></View>
+        <View style={{flex: 1, flexDirection:'column'}}>
+        <YoutubePlayer
+          ref={playerRef}
+          height={300}
+          width={400}
+          videoId={fruit.video}
+          play={playing}
+          onChangeState={event => console.log(event)}
+          onReady={() => console.log("ready")}
+          onError={e => console.log(e)}
+          onPlaybackQualityChange={q => console.log(q)}
+          volume={50}
+          playbackRate={1}
+          playerParams={{
+            cc_lang_pref: "us",
+            showClosedCaptions: true
+          }}
+        />
+        </View>
       </ScrollView>
       <View style={styles.action}>
         {/* <View style={styles.}></View> */}
