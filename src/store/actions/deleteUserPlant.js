@@ -4,7 +4,6 @@ import server from '../config.js';
 export const DELETE_USER_PLANT = 'DELETE_USER_PLANT';
 
 export const deleteUserPlant = (id) => {
-  console.log(id, 'dari deleteuser plant nih!!!')
   return (dispatch) => {
     AsyncStorage.getItem('token', (err, result) => {
       server({
@@ -15,7 +14,6 @@ export const deleteUserPlant = (id) => {
         }
       })
       .then(({ data }) => {
-        console.log(data);
         dispatch(fetchAllMyPlant())
       })
       .catch((error) => {
