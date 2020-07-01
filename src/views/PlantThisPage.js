@@ -55,7 +55,7 @@ export default function PlantThisPage({ route, navigation }) {
           editable={false}
           selectTextOnFocus={false}
           // value={props.plants.name} YANG ini yg bener yg bawah cuma sementara
-          value="Apel"
+          value={plant.PlantId.name}
         />
       );
   };
@@ -96,6 +96,7 @@ export default function PlantThisPage({ route, navigation }) {
     setReminder(1);
     setDate('');
     setPupuk('');
+    navigation.goBack()
   };
 
   return (

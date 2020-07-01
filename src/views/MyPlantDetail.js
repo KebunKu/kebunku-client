@@ -82,7 +82,7 @@ export default function MyPlantDetail({ route, navigation }) {
 
             <Text style={styles.paragrafTitle}>{plant.PlantId.name}</Text>
             <Text style={styles.subtitle}>Umur</Text>
-            <Text style={styles.plantAge}>{plant.plant_age} days old</Text>
+            <Text style={styles.plantAge}>{plant.plant_age} hari</Text>
 
             <Text style={styles.subtitle}>Status</Text>
             <Text style={styles.plantAge}>{plant.status}</Text>
@@ -100,7 +100,7 @@ export default function MyPlantDetail({ route, navigation }) {
               <Text style={styles.plantAge}>{plant.pupuk}</Text>
             )}
 
-            <Text style={styles.subtitle}>Notes</Text>
+            <Text style={styles.subtitle}>Catatan</Text>
             {!plant.notes ? (
               <Text style={styles.plantAge}>-</Text>
             ) : (
@@ -110,6 +110,7 @@ export default function MyPlantDetail({ route, navigation }) {
         </View>
         <Image style={styles.imagePlant} source={image} />
         <View style={styles.backgroundWhite}>
+        {/* gambar sebelum siram di sini */}
           <View>
             <Image
               source={require('../../assets/image/element/character.png')}
