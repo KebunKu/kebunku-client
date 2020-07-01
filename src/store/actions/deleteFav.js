@@ -11,7 +11,7 @@ export const deleteFavorite = (id) => {
     AsyncStorage.getItem('token', (err, result) => {
       axios({
         method: 'DELETE',
-        url: `http://192.168.43.189:3000/userfav/${id}`,
+        url: `http://192.168.0.111:3000/userfav/${id}`,
         headers: {
           token: result
         }
