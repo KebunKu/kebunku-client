@@ -79,9 +79,14 @@ export default function App({ navigation }) {
             <Text style={styles.textName}>{name}</Text>
             <Text style={styles.textEmail}>{email}</Text>
             <View style={styles.boxNumPlant}>
-              <Text style={styles.textNumPlant}>
-                Ada {myPlant.length} tanaman di kebun
-              </Text>
+              {
+                myPlant.length ?
+                (<Text style={styles.textNumPlant}>
+                  Ada {myPlant.length} tanaman di kebun
+                </Text>) : (<Text style={styles.textNumPlant}>
+                  Belum menanam
+                </Text>) 
+              }
             </View>
           </View>
         </View>
@@ -102,31 +107,39 @@ export default function App({ navigation }) {
                   <Text style={styles.myPlant}> Tanamanku </Text>
                 </View>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                  {myPlant.map((plant, i) => {
-                    for (let i = 0; i < detailImage.length; i++) {
-                      if (detailImage[i].imgName === plant.PlantId.name) {
-                        image = detailImage[i].uri;
-                      }
-                    }
-                    return (
-                      <View key={i} style={styles.fruitContainer}>
-                        <TouchableOpacity
-                          onPress={() => toMyPlantDetail(plant)}>
-                          <View style={styles.overlay}>
-                            <Text></Text>
+                {!myPlant.length ? (
+                    <Text style={{ marginTop: 15 }}>
+                      Belum Menanam
+                    </Text>
+                  ) : (
+                    <>
+                      {myPlant.map((plant, i) => {
+                        for (let i = 0; i < detailImage.length; i++) {
+                          if (detailImage[i].imgName === plant.PlantId.name) {
+                            image = detailImage[i].uri;
+                          }
+                        }
+                        return (
+                          <View key={i} style={styles.fruitContainer}>
+                            <TouchableOpacity
+                              onPress={() => toMyPlantDetail(plant)}>
+                              <View style={styles.overlay}>
+                                <Text></Text>
+                              </View>
+                              <View style={styles.fruitCard}>
+                                <ImageBackground
+                                  style={styles.fruitCardImage}
+                                  source={image}></ImageBackground>
+                              </View>
+                              <Text style={styles.fruitCardTitle}>
+                                {plant.PlantId.name}
+                              </Text>
+                            </TouchableOpacity>
                           </View>
-                          <View style={styles.fruitCard}>
-                            <ImageBackground
-                              style={styles.fruitCardImage}
-                              source={image}></ImageBackground>
-                          </View>
-                          <Text style={styles.fruitCardTitle}>
-                            {plant.PlantId.name}
-                          </Text>
-                        </TouchableOpacity>
-                      </View>
-                    );
-                  })}
+                        );
+                      })}
+                    </>
+                  )}                 
                 </ScrollView>
               </>
             )}
@@ -151,7 +164,7 @@ export default function App({ navigation }) {
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   {!myFav.length ? (
                     <Text style={{ marginTop: 15 }}>
-                      Belum menambahkan favorite
+                      Belum menambahkan favorit
                     </Text>
                   ) : (
                     <>

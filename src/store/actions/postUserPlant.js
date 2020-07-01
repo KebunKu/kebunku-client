@@ -23,7 +23,6 @@ export const postUserPlant = (dataPlant) => {
         },
       })
         .then(({ data }) => {
-          console.log(data, 'data post user plant ======');
           dispatch(fetchAllMyPlant());
         })
         .catch((error) => {

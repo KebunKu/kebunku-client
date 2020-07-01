@@ -22,7 +22,6 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import { StyleSheet } from 'react-native';
-import registerForPushNotifications from './registerforPushNotificationsAsync';
 
 // const navigation = useNavigation()
 const Stack = createStackNavigator();
@@ -31,7 +30,6 @@ const Tab = createBottomTabNavigator();
 const HomeNavigator = () => {
   const navigation = useNavigation();
   useEffect(() => {
-    // registerForPushNotifications();
     if (AsyncStorage.getItem('token')) {
       navigation.navigate('Home');
     }
@@ -201,6 +199,7 @@ const bottomTabNavigator = () => {
 };
 
 export default function App() {
+  //buat disable warning
   console.disableYellowBox = true;
 
   return (

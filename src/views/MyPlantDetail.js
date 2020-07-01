@@ -18,13 +18,13 @@ import styles from '../style/myPlantDetailStyle';
 import detailImage from '../../assets/image/detail/detailImage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { editUserPlant, deleteUserPlant } from '../store/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Toast = ({ visible, message }) => {
   if (visible) {
     ToastAndroid.showWithGravityAndOffset(
       message,
-      ToastAndroid.LONG,
+      ToastAndroid.SHORT,
       ToastAndroid.CENTER,
       25,
       50
@@ -38,10 +38,21 @@ export default function MyPlantDetail({ route, navigation }) {
   const plant = route.params.obj;
   const [visibleToast, setvisibleToast] = useState(false);
   const [toastDelete, setToastDelete] = useState(false);
+  const [markWatered, setMarkWatered] = useState(plant.watered ? plant.watered : false);
   const [modalDelete, setModalDelete] = useState(false);
   useEffect(() => setvisibleToast(false), [visibleToast]);
 
   const dispatch = useDispatch();
+
+  const myPlant = useSelector((state) => state.userPlantReducer.myPlant);
+
+  useEffect(() => {
+    for(let i = 0; i < myPlant.length; i++) {
+      if(myPlant[i]._id == plant._id) {
+        setMarkWatered(myPlant[i].watered);
+      }
+    }
+  }, [myPlant]);
 
   const backBtn = () => {
     navigation.navigate('Profile');
@@ -57,7 +68,6 @@ export default function MyPlantDetail({ route, navigation }) {
   const handleSiram = (plant) => {
     setvisibleToast(true);
     dispatch(editUserPlant(plant));
-    navigation.goBack();
   };
 
   const confirmDelete = () => {
@@ -161,7 +171,7 @@ export default function MyPlantDetail({ route, navigation }) {
         <View style={styles.backgroundWhite}>
           <View>
             {
-              plant.watered ? 
+              markWatered ? 
               (<Image
                 source={require('../../assets/image/element/character.png')}
               />) : (<Image
@@ -169,7 +179,7 @@ export default function MyPlantDetail({ route, navigation }) {
             />) 
             }
           </View>
-          {!plant.watered && (
+          {!markWatered && (
             <TouchableOpacity
               style={styles.button}
               onPress={() => handleSiram(plant)}>
