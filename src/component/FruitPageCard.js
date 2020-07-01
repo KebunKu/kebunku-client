@@ -30,6 +30,7 @@ export default function FruitPageCard(props) {
   }, [dispatch]);
 
   const toDetailPage = (obj) => {
+    console.log('masuk')
     for (let i = 0; i < myFav.length; i++) {
       if (myFav[i].PlantId._id === obj._id) {
         setFavor(true);

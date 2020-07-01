@@ -20,7 +20,7 @@ export default StyleSheet.create({
   divider: {
     marginTop: hp('3%'),
     borderBottomColor: '#DEDEDE',
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 1,
   },
 
   fruitTitle: {

@@ -5,7 +5,6 @@ import { AsyncStorage } from 'react-native';
 export const POST_USER_PLANT = 'POST_USER_PLANT';
 
 export const postUserPlant = (dataPlant) => {
-  console.log('masukkUserPlanttttttttttttttt');
   return (dispatch) => {
     AsyncStorage.getItem('token', (err, result) => {
       server({
